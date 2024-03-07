@@ -1,0 +1,114 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Deposit Request With Cash Account Number",
+    "version": "1.0",
+    "description": "<i>METHOD_API_DEPOSIT_WITH_CASH_ACCOUNT - 38</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Cash Account No </td>\n     <td> Cash Account Number</td>\n  </tr>\n    <tr>\n  \t<td>Amount </td>\n     <td> Deposit Amount</td>\n  </tr>\n \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Deposit With Cash Account",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|3303497360097|3621.0|1651748680051"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n   1|3303497360097|3621.0|1651748680051<br>\n<h6>Response Sample Fail</h6>\n -1|10005|error msg|1"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|3303497360097|3621.0|1651748680051"
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": "-1|10005|error msg|1"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "38",
+                    "MSG_ID": "692",
+                    "PARM": "C000068797|400"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "institution id"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "message type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "message id"
+                  },
+                  "PARM": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "38",
+                    "MSG_ID": "692",
+                    "PARM": "C000068797|400"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">Cash Account number|Deposit Amount</div>\n<br></td></tr>\n</div>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

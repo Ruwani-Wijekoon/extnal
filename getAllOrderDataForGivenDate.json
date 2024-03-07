@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get All Order Data For a Date",
+    "version": "1.0",
+    "description": "<i>METHOD_API_GET_ALL_ORDER_DATA-32</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Export Date</td>\n     <td> Date to get cash balances for (dd/MM/yyyy)\n\n</td>\n  </tr>\n  \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Get Order Data",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|  CUSTOMER_NO~PORTFOLIO_NO~CUSTODIAN~ORDER_STATUS~OR DER_CHANNEL~SYMBOL~EXCHANGE~ORDER_TYPE~SIDE~ORDER_Q TY~TIME_IN_FORCE~MINIMUM_QTY~MAX_FLOOR~ORDER_ID~EXEC _ID~COMMISSION~CREATED_DATE~FIX_MSG_TYPE~PRICE~TRADIN G_AC_NO~EXPIRE_TIME~EXG_COMMISSION~REMOTE_CLORDER_ID~ REMOTE_ORIG_CLORDER_ID~REMOTE_ORDER_NO~ISSUE_STL_RATE ~AS_OF_DATE~EXTERNAL_REF_NO~CURRENCY~STOP_PRICE~LAST_ UPDATED_DATE~ORDER_REJECT_REASON~DEALER_NAME~CHANNE L~ORD_TYPE~ORDER_VALUE~NET_SETTLE~COST_COMMISSION~OR DER_FEES~BROKER_COMMISSION~VAT_AMOUNT~EXTERNAL_CASH _ACC_NO~PORTFOLIO_NAME~ISIN_CODE~AVERAGE_PRICE~EXTERN AL_SECURITY_ACOOUNT_NO|Data list separated by commas and ~"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n   1|  CUSTOMER_NO~PORTFOLIO_NO~CUSTODIAN~ORDER_STATUS~OR DER_CHANNEL~SYMBOL~EXCHANGE~ORDER_TYPE~SIDE~ORDER_Q TY~TIME_IN_FORCE~MINIMUM_QTY~MAX_FLOOR~ORDER_ID~EXEC _ID~COMMISSION~CREATED_DATE~FIX_MSG_TYPE~PRICE~TRADIN G_AC_NO~EXPIRE_TIME~EXG_COMMISSION~REMOTE_CLORDER_ID~ REMOTE_ORIG_CLORDER_ID~REMOTE_ORDER_NO~ISSUE_STL_RATE ~AS_OF_DATE~EXTERNAL_REF_NO~CURRENCY~STOP_PRICE~LAST_ UPDATED_DATE~ORDER_REJECT_REASON~DEALER_NAME~CHANNE L~ORD_TYPE~ORDER_VALUE~NET_SETTLE~COST_COMMISSION~OR DER_FEES~BROKER_COMMISSION~VAT_AMOUNT~EXTERNAL_CASH _ACC_NO~PORTFOLIO_NAME~ISIN_CODE~AVERAGE_PRICE~EXTERN AL_SECURITY_ACOOUNT_NO|Data list separated by commas and ~<br>\n<h6>Response Sample Fail</h6>\n -1| Failure Reason"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|  CUSTOMER_NO~PORTFOLIO_NO~CUSTODIAN~ORDER_STATUS~OR DER_CHANNEL~SYMBOL~EXCHANGE~ORDER_TYPE~SIDE~ORDER_Q TY~TIME_IN_FORCE~MINIMUM_QTY~MAX_FLOOR~ORDER_ID~EXEC _ID~COMMISSION~CREATED_DATE~FIX_MSG_TYPE~PRICE~TRADIN G_AC_NO~EXPIRE_TIME~EXG_COMMISSION~REMOTE_CLORDER_ID~ REMOTE_ORIG_CLORDER_ID~REMOTE_ORDER_NO~ISSUE_STL_RATE ~AS_OF_DATE~EXTERNAL_REF_NO~CURRENCY~STOP_PRICE~LAST_ UPDATED_DATE~ORDER_REJECT_REASON~DEALER_NAME~CHANNE L~ORD_TYPE~ORDER_VALUE~NET_SETTLE~COST_COMMISSION~OR DER_FEES~BROKER_COMMISSION~VAT_AMOUNT~EXTERNAL_CASH _ACC_NO~PORTFOLIO_NAME~ISIN_CODE~AVERAGE_PRICE~EXTERN AL_SECURITY_ACOOUNT_NO|Data list separated by commas and ~"
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": "-1| Failure Reason"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "19/09/2021"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameter-<br>\nExport Date\n"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "32",
+                    "MSG_ID": "692",
+                    "PARM": "19/09/2021"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">export date</div>\n<br></td></tr>\n</div>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

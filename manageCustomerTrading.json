@@ -1,0 +1,107 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Customer Trading Restrictions",
+    "version": "1.0",
+    "description": "<i>METHOD_API_MANAGE_TRADING - 24</i>\n<br>\n<br>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Restriction Type</td>\n    <td>1 = Buy, 2 = Sell, 3 = Both</td>\n  </tr>\n  <tr>\n    <td>Portfolios</td>\n    <td>ALL or comma separated list of GTN portfolio numbers<br>Ex: <b>P000064434, P000064433, P000064432</b></td>\n  </tr>\n  <tr>\n    <td>isEnabled</td>\n    <td>1= enable, 0 = disable</td>\n  </tr>\n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Trading Restrictions",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|Success"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: 1|Success<br>\n<h6>Response Sample Fail</h6>\nResponse: 0|Error\n"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|Success"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "0|Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "24",
+                    "MSG_ID": "692",
+                    "PARM": "0|P000064434, P000064433, P000064432"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nRestriction Type|Portfolios|isEnabled"
+                  }
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "24",
+                    "MSG_ID": "692",
+                    "PARM": "0|P000064434, P000064433, P000064432|1"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<table><th>Request</th> \n<tr>\n<td rowspan=\"6\">Request parameters</td>\n<td>tradingType|securityAc|isEnabled<br>\nBuy enable for institution level<br>\n<b>eg.1</b> : 1|ALL|1<br>\nBuy disbale for institution level<br>\n1|ALL|0<br><br>\nSell enable for institution level\n2|ALL|1<br>\nSell disbale for institution level\n2|ALL|0<br><br>\nBoth enable for institution level\n3|ALL|1<br>\nBoth disbale for institution level\n3|ALL|0<br><br>\nBuy enable for one/multiple security accounts<br>\n<b>eg.2</b> : 1|P000024027,P000023553|1<br>\nBuy disable for one/multiple security accounts\n1|P000024027,P000023553|0<br><br>\nSell enable for one/multiple security accounts\n2|P000024027,P000023553|1<br>\nSell disable for one/multiple security accounts<br>\n2|P000024027,P000023553|0<br><br>\nBoth enable for one/multiple security accounts\n3|P000024027,P000023553|1<br>\nBoth disable for one/multiple security accounts\n3|P000024027,P000023553|0<br></td>\n<tr><td>tradingType=1 (eg. 1)</td></tr>\n<tr><td>securityAc = ALL (eg. 1)</td><br>\n<tr><td>securityAc = P000024027,P000023553 (eg. 2)</td><tr>\n<tr><td>isEnabled = 1 (eg. 1)</td></tr>\n<tr><td>Sample \nrequest for \nsingle record</td>\n<td>{<br>\n\"institutionId\":\"136\",<br>\n“messageType\": \"24\",<br>\n\"messageID\":\"700\",<br>\n\"parameters\":\"1|ALL|1\"<br>}<br></td></tr>\n<tr><td>Sample \nrequest for \nmultiple \nrecords</td><td>\n{<br>\"institutionId\":\"136\",<br>\n\"messageType\":\"24\",<br>\n\"messageID\":\"700\",<br>\n\"parameters\":\"1|P000024027,P000023553|1\"<br>}<br></td></tr>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

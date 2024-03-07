@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Manual Cash Block Removal",
+    "version": "1.0",
+    "description": "<i>METHOD_API_REMOVE_MANUAL_CASH_BLOCK - 23</i><br><br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>GTN Customer Account No</td>\n     <td> GTN Customer Number in OMS</td>\n  </tr>\n  <tr>\n  \t<td>GTN Cash Account No </td>\n     <td> Cash Account Number in OMS</td>\n  </tr>\n    <tr>\n  \t<td>Broker Cash Account Ref </td>\n     <td> Cash Account External Reference Id</td>\n  </tr>\n    <tr>\n  \t<td>Currency</td>\n      <td> Currency (Eg: AED, USD)</td>\n  </tr>\n    <tr>\n  \t<td>Amount </td>\n     <td> Block Amount needs to be removed</td>\n  </tr>\n  <tr>\n  \t<td>Withdraw</td>\n     <td> 1 = Yes, 0 = No</td>\n  </tr>\n \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Cash Block Removal",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|Cash log id| Account Balance|T12_ID"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: 1|Cash Log ID| Account Balance|T12_ID<br>\n<h6>Response Sample Fail</h6>\nResponse: 0|error\n"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|Cash log id| Account Balance|T12_ID"
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": "0|error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "gtn number|cash account number|cash account external ref id|currency|block amount|1"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nGTN Number in OMS|Cash Account Number in OMS|Cash Account External Reference ID|Currency|Block Amount needs to be removed|Withdraw\n"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "23",
+                    "MSG_ID": "692",
+                    "PARM": "100009578|C000068797|98292000|USD|400|1"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": ""
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

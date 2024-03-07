@@ -1,0 +1,119 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Create Portfolio Account",
+    "version": "1.0",
+    "description": "<i>METHOD_API_CREATE_PF_ACCOUNT - 04</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>GTN Account No</td>\n     <td>GTN Number in OMS\n</td>\n  </tr>\n  <tr>\n  \t<td>Cash Account No  </td>\n     <td> Customer Cash Account Number in GTN</td>\n  </tr>\n  <tr>\n  \t<td>Broker Portfolio Ref</td>\n     <td> Portfolio External Reference Id</td>\n  </tr>\n  <tr>\n"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Create Account",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "-1|Cash Account Reference Number Already Assigned.| + existingCashAccNo",
+                      "messageID": "string"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n Response: 1| Portfolio Account Number<br>\n <h6>Response Sample Fail</h6>\n Response: 0|..."
+                    },
+                    "messageID": {
+                      "type": "string",
+                      "description": "Message ID"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1| Portfolio Account Number",
+                      "messageID": "string"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "0|...",
+                      "messageID": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "04",
+                    "MSG_ID": "692",
+                    "PARM": "ASI358685691|C000131427|Security_100"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nGTN Customer Account Number|Cash Account Number|Broker Portfolio Reference ID"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "04",
+                    "MSG_ID": "692",
+                    "PARM": "ASI358685691|C000131427|Security_100"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": ""
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Create Exchange Account",
+    "version": "1.0",
+    "description": "<i>METHOD_API_CREATE_EXG_ACCOUNT - 05</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>GTN Customer Account No</td>\n     <td>GTN Customer number in OMS</td>\n  </tr>\n  <tr>\n  \t<td>Portfolio No</td>\n     <td> Portfolio Number in GTN</td>\n  </tr>\n  <tr>\n  \t<td>Exchange or Country Code </td>\n     <td> 0, AE – (Only ADSM & DFM)</td>\n  </tr>\n  <tr>\n  \t<td>Exchange</td>\n     <td>Exchange Code</td>\n  </tr>\n  <tr>\n    <td>Exchange Account Type</td>\n    <td>0 = Fully Disclosed, 1 = Omnibus, 2 = Omnibus segregate</td>\n  </tr>\n  <tr>\n    <td>Exchange Account</td>\n    <td>Exchange Account Number in GTN</td>\n  </tr>\n  <tr>\n    <td>Exchange Investor</td>\n    <td>Investor Account Number</td>\n  </tr>\n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Create Account",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1| Cash Account Number",
+                      "messageID": "string"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<br>\n<h6>Response Sample Success</h6>\n  Response: 1| Exchange Account Number<br>\n<h6>Response Sample Fail</h6>\nResponse: 0|..."
+                    },
+                    "messageID": {
+                      "type": "string",
+                      "description": "Message ID"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1| Exchange Account Number",
+                      "messageID": "string"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "0|...",
+                      "messageID": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "05",
+                    "MSG_ID": "692",
+                    "PARM": "271017683|S000008258|271017683|ADSM|1|00996712886|SAU001025373992|1|53446"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nGTN Number in OMS|Portfolio Number|Exchange or Country Code|Exchange|Exchange Account Type|Exchange Account|Exchange Investor"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "05",
+                    "MSG_ID": "692",
+                    "PARM": "271017683|S000008258|271017683|ADSM|1|00996712886|SAU001025373992|1|53446"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": ""
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

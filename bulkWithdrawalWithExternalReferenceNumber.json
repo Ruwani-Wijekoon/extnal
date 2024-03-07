@@ -1,0 +1,179 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bulk Withdrawal With External Reference Number",
+    "version": "1.0",
+    "description": "<i>METHOD_API_BULK_WITHDRAW - 34</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>External Reference \nNumber</td>\n     <td> External reference number of the customer </td>\n  </tr>\n  <tr>\n  \t<td>Cash Account Number</td>\n     <td> Cash account number (Optional)\n</td>\n  </tr>\n    <tr>\n  \t<td>Currency </td>\n     <td> currency</td>\n  </tr>\n    <tr>\n  \t<td>Amount</td>\n      <td> amount to withdraw </td>\n  </tr>\n    <tr>\n  \t<td>Transaction Reference \nNumber</td>\n     <td> Transaction reference numbers\n</td>\n  </tr>\n \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Bulk Withdrawal",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "object",
+                      "properties": {
+                        "transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Status": {
+                                "type": "string"
+                              },
+                              "Reason": {
+                                "type": "string"
+                              },
+                              "Transaction Reference Number": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "response": {
+                        "transactions": [
+                          {
+                            "Status": "1",
+                            "Reason": "",
+                            "Transaction Reference Number": "54"
+                          },
+                          {
+                            "Status": "0",
+                            "Reason": "Cash Account Not Found",
+                            "Transaction Reference Number": "4"
+                          },
+                          {
+                            "Status": "0",
+                            "Reason": "Cash Account Not Found",
+                            "Transaction Reference Number": "67"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "success/failed": {
+                    "value": {
+                      "response": {
+                        "transactions": [
+                          {
+                            "Status": "1",
+                            "Reason": "",
+                            "Transaction Reference Number": "54"
+                          },
+                          {
+                            "Status": "0",
+                            "Reason": "Cash Account Not Found",
+                            "Transaction Reference Number": "4"
+                          },
+                          {
+                            "Status": "0",
+                            "Reason": "Cash Account Not Found",
+                            "Transaction Reference Number": "67"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "34",
+                    "MSG_ID": "692",
+                    "PARM": "{\"transactions\":[{\"ExternalReferenceNumber\":\"98293020\",\"CashAccountNumber\":\"C000130620\",\"Currency\":\"AED\",\"Amount\":\"100\",\"TransactionReferenceNumber\":\"54\"},{\"ExternalReferenceNumber\":\"98292000\",\"CashAccountNumber\":\"C000068940\",\"Currency\":\"BHD\",\"Amount\":\"643.7\",\"TransactionReferenceNumber\":\"4\"}]}"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "institution id"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "message type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "message id"
+                  },
+                  "PARM": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "34",
+                    "MSG_ID": "692",
+                    "PARM": {
+                      "transactions": [
+                        {
+                          "External Reference Number": "124562",
+                          "Currency": "AED",
+                          "Amount": "1000",
+                          "Transaction Reference Number": "54"
+                        },
+                        {
+                          "External Reference Number": "86455",
+                          "Cash Account Number ": "C0000002",
+                          "Currency": "BHD",
+                          "Amount": "643.7",
+                          "Transaction Reference Number": "4"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">external reference number|cash account number|currency|amount|transaction reference number</div>\n<br></td></tr>\n</div>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

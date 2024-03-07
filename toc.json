@@ -1,0 +1,225 @@
+{
+  "collapseTableOfContents": true,
+  "items": [
+    {
+      "type": "divider",
+      "title": "Account Management"
+    },
+    {
+      "type": "group",
+      "title": "Investor Account",
+      "items": [
+        {
+          "type": "item",
+          "title": "Create Individual Investor Account",
+          "uri": "/createIndividualInvestorAccount.json"
+        },
+        {
+          "type": "item",
+          "title": "Update Individual Investor Account",
+          "uri": "/updateIndividualInvestorAccount.json"
+        },
+        {
+          "type": "item",
+          "title": "Create Individual Investor Account with Cash, Portfolio and Exchange Accounts",
+          "uri": "/createIndividualInvestorAccountWithCashPortExchange.json"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Cash Account",
+      "items": [
+        {
+          "type": "item",
+          "title": "Create Cash Account",
+          "uri": "/createCashAccount.json"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Portfolio Account",
+      "items": [
+        {
+          "type": "item",
+          "title": "Create Portfolio Account",
+          "uri": "/createPortfolioAccount.json"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Exchange Account",
+      "items": [
+        {
+          "type": "item",
+          "title": "Create Exchange Account",
+          "uri": "/createExchangeAccount.json"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Bank Account",
+      "items": [
+        {
+          "type": "item",
+          "title": "Create Bank Account For Customer",
+          "uri": "/createBankAccountForCustomer.json"
+        },
+        {
+          "type": "item",
+          "title": "Update Bank Account For Customer",
+          "uri": "/updateBankAccountForCustomer.json"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Other",
+      "items": [
+        {
+          "type": "item",
+          "title": "Get Account Balance",
+          "uri": "/getAccountBalance.json"
+        },
+        {
+          "type": "item",
+          "title": "Enable Trading Account",
+          "uri": "/enableTradingAccount.json"
+        },
+        {
+          "type": "item",
+          "title": "Get whether the customer account is opened",
+          "uri": "/getWhetherTheCustomerAccountIsOpened.json"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "Finance Management"
+    },
+    {
+      "type": "group",
+      "title": "Deposit",
+      "items": [
+        {
+          "type": "item",
+          "title": "Deposit Request",
+          "uri": "/depositRequest.json"
+        },
+        {
+          "type": "item",
+          "title": "Deposit Request With Cash Account Number",
+          "uri": "/depositRequestWithCashAccountNumber.json"
+        },
+        {
+          "type": "item",
+          "title": "Bulk Deposit With External Reference Number",
+          "uri": "/bulkDepositWithExternalReferenceNumber.json"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Withdrawal",
+      "items": [
+        {
+          "type": "item",
+          "title": "Withdrawal Request",
+          "uri": "/withdrawRequest.json"
+        },
+        {
+          "type": "item",
+          "title": "API Approved Withdrawal",
+          "uri": "/getCashWithdrawalInformation.json"
+        },
+        {
+          "type": "item",
+          "title": "Bulk Withdrawal With External Reference Number",
+          "uri": "/bulkWithdrawalWithExternalReferenceNumber.json"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Other",
+      "items": [
+        {
+          "type": "item",
+          "title": "Get All Cash Balances For a Date",
+          "uri": "/getAllCashBalancesForGivenDate.json"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "Account and Portfolio"
+    },
+    {
+      "type": "item",
+      "title": "Available Cash Balance Inquiry",
+      "uri": "/availableCashBalanceToWithdraw.json"
+    },
+    {
+      "type": "item",
+      "title": "Manual Cash Block",
+      "uri": "/manualCashBlock.json"
+    },
+    {
+      "type": "item",
+      "title": "Manual Cash Block Removal",
+      "uri": "/manualCashBlockRemoval.json"
+    },
+    {
+      "type": "item",
+      "title": "Customer Trading Restrictions",
+      "uri": "/manageCustomerTrading.json"
+    },
+    {
+      "type": "item",
+      "title": "Add/Remove Symbol wise Buy/Sell Restrictions",
+      "uri": "/addRemoveSymbolwiseBuySellRestrictions.json"
+    },
+    {
+      "type": "divider",
+      "title": "Trade Management"
+    },
+    {
+      "type": "item",
+      "title": "Get Portfolio Wise Holdings",
+      "uri": "/getPortfoliowiseHoldings.json"
+    },
+    {
+      "type": "item",
+      "title": "Get All Order Data For a Date",
+      "uri": "/getAllOrderDataForGivenDate.json"
+    },
+    {
+      "type": "divider",
+      "title": "Master Data"
+    },
+    {
+      "type": "item",
+      "title": "FX Currency Rate Upload",
+      "uri": "/fxRateUpload.json"
+    },
+    {
+      "type": "item",
+      "title": "Upload Sharia Symbol",
+      "uri": "/uploadShariaSymbols.json"
+    },
+         {
+      "type": "item",
+      "title": "Get Account Balance",
+      "uri": "/getAccountBalance.json"
+    },
+    {
+      "type": "item",
+      "title": "Release Notes",
+      "uri": "/docs/Release-Notes.md"
+    }
+
+  ]
+}

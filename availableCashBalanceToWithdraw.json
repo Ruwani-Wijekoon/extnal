@@ -1,0 +1,128 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Available Cash Balance Inquiry",
+    "version": "1.0",
+    "description": "<i>METHOD_API_AVAILABLE_CASH_TO_WITHDRAW - 18</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Cash Account No </td>\n     <td> Customer Cash Account No in GTN</td>\n  </tr>\n  </table>\n<br>\n<table>\n  <tr>\n  \t<th>Response Status</th>\n    <th>Response String</th>\n  </tr>\n  <tr>\n  \t<td>Success </td>\n     <td> 1|cash balance that can be withdraw |currency</td>\n  </tr>\n  <tr>\n  \t<td>Fail </td>\n     <td> -1|error message</td>\n  </tr>\n  </table>\n\n \n\n"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Cash Balance Inquiry",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|cash balance that can be withdraw |currency"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: 1|cash balance that can be withdraw |currency<br>\n<h6>Response Sample Fail</h6>\nResponse: -1|error message\n"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|cash balance that can be withdraw |currency"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "-1|error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "18",
+                    "MSG_ID": "692",
+                    "PARM": "C000001397"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nCustomer Account No Reference"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "18",
+                    "MSG_ID": "692",
+                    "PARM": "C000001397"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": "{\n}"
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

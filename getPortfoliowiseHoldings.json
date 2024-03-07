@@ -1,0 +1,226 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Portfolio Wise Holdings",
+    "version": "1.0",
+    "description": "<i>METHOD_API_HOLDINGS_PORTFOLIO_WISE</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Portfolio Number</td>\n     <td>Portfolio number of the customer</td>\n  </tr>\n  <tr>\n  \t<td>Exchanges</td>\n     <td>Exchange list separated by ,\n</td>\n  </tr>\n \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Get Holdings",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "object",
+                      "properties": {
+                        "holdingList": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "exchange": {
+                                "type": "string"
+                              },
+                              "symbol": {
+                                "type": "string"
+                              },
+                              "isin": {
+                                "type": "string"
+                              },
+                              "avgCost": {
+                                "type": "number"
+                              },
+                              "netHoldings": {
+                                "type": "integer"
+                              },
+                              "buyPending": {
+                                "type": "integer"
+                              },
+                              "sellPending": {
+                                "type": "integer"
+                              },
+                              "blockedQty": {
+                                "type": "integer"
+                              },
+                              "marketValue": {
+                                "type": [
+                                  "integer",
+                                  "number"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "response": {
+                        "holdingList": [
+                          {
+                            "exchange": "DFM",
+                            "symbol": "DFM",
+                            "isin": "AED000901010",
+                            "avgCost": 11.64368,
+                            "netHoldings": 150,
+                            "buyPending": 50,
+                            "sellPending": 0,
+                            "blockedQty": 0,
+                            "marketValue": 216
+                          },
+                          {
+                            "exchange": "DFM",
+                            "symbol": "EMAAR",
+                            "isin": "AEE000301012",
+                            "avgCost": 5.8607,
+                            "netHoldings": 1810,
+                            "buyPending": 0,
+                            "sellPending": 0,
+                            "blockedQty": 0,
+                            "marketValue": 9013.8
+                          },
+                          {
+                            "exchange": "DFM",
+                            "symbol": "GFH",
+                            "isin": "BH000A0CAQK6",
+                            "avgCost": 1.85785,
+                            "netHoldings": 1351,
+                            "buyPending": 0,
+                            "sellPending": 0,
+                            "blockedQty": 0,
+                            "marketValue": 1783.32
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": {
+                        "holdingList": [
+                          {
+                            "exchange": "DFM",
+                            "symbol": "DFM",
+                            "isin": "AED000901010",
+                            "avgCost": 11.64368,
+                            "netHoldings": 150,
+                            "buyPending": 50,
+                            "sellPending": 0,
+                            "blockedQty": 0,
+                            "marketValue": 216
+                          },
+                          {
+                            "exchange": "DFM",
+                            "symbol": "EMAAR",
+                            "isin": "AEE000301012",
+                            "avgCost": 5.8607,
+                            "netHoldings": 1810,
+                            "buyPending": 0,
+                            "sellPending": 0,
+                            "blockedQty": 0,
+                            "marketValue": 9013.8
+                          },
+                          {
+                            "exchange": "DFM",
+                            "symbol": "GFH",
+                            "isin": "BH000A0CAQK6",
+                            "avgCost": 1.85785,
+                            "netHoldings": 1351,
+                            "buyPending": 0,
+                            "sellPending": 0,
+                            "blockedQty": 0,
+                            "marketValue": 1783.32
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": "0|reject reason"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "P000060868|NYSE,DFM"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nPortfolio Number| Exchanges "
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "36",
+                    "MSG_ID": "8737",
+                    "PARM": "P000126963|NYSE,DFM"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">Portfolio Number| Exchanges (list separated by ,)\n</div>\n<br></td></tr>\n</div>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

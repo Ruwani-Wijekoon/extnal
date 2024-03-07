@@ -1,0 +1,151 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "mkvm95osh1fus"
+  },
+  "info": {
+    "title": "Create Cash Account",
+    "version": "1.0",
+    "description": "<i>METHOD_API_CREATE_CASH_ACCOUNT - 03</i>\n<br><br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>GTN Customer Account No</td>\n     <td> GTN Customer Number in OMS</td>\n  </tr>\n  <tr>\n  \t<td>Broker Cash Reference </td>\n     <td> Cash Account External Reference Id</td>\n  </tr>\n  <tr>\n  \t<td>Currency </td>\n     <td> Currency (Eg: AED, USD)</td>\n  </tr>\n  <tr>\n  \t<td>Cash Account Type</td>\n     <td> 0 = Current, 1 = Savings, 2 = Investment</td>\n  </tr>\n  <tr>\n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Create Account",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|C000131561",
+                      "messageID": "692"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: 1| Cash Account Number<br>\n<h6>Response Sample Fail</h6>\nResponse: -1| Cash Account Reference Number Already Assigned.| + existingCashAccNo\n"
+                    },
+                    "messageID": {
+                      "type": "string",
+                      "description": "Message ID"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1| Cash Account Number",
+                      "messageID": "string"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "-1|Cash Account Reference Number Already Assigned.| + existingCashAccNo",
+                      "messageID": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "03",
+                    "MSG_ID": "692",
+                    "PARM": "704385477|9829808|USD|2"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters- <br>\nGTN Customer Number in OMS|Cash Account External Reference ID|Currency|Cash Account Type"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "03",
+                    "MSG_ID": "692",
+                    "PARM": "704385477|9829808|USD|2"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "multipart/form-data": {
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "03",
+                    "MSG_ID": "692",
+                    "PARM": "704385477|9829808|USD|2"
+                  }
+                }
+              }
+            },
+            "text/html": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": {}
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": ""
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

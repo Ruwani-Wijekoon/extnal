@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Approved Withdrawal",
+    "version": "1.0",
+    "description": "<i>METHOD_API_CASH_WITHDRAWAL_DETAILS - 20</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>BeginDate</td>\n    <td>Transaction Date</td>\n  </tr>\n  <tr>\n    <td>BeginTransactionID</td>\n    <td>Transaction ID\n</td>\n  <tr>\n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Approved Withdrawal",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|Cash log id| Account Balance|T12_ID"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": [
+                        {
+                          "institutionCode": "INSTCODE",
+                          "transactionId": "1505322904143",
+                          "instBank": "ABC BANK",
+                          "instBankAccName": "ACCNAME",
+                          "instBankAccNumber": "12222432",
+                          "instBankAccIBAN": "34424234",
+                          "customerNumber": "357676415",
+                          "custBank": "ABU DHABI COMMERCIAL BANK",
+                          "cusBankAccNumber": "23434543534",
+                          "cusSwiftCode": "ADCBAEAA",
+                          "customerName": "TEST ACCOUNT",
+                          "customerAddress": "AABU DHBAI",
+                          "valueDate": "Jun 13, 2017",
+                          "currency": "AED",
+                          "amount": -9998,
+                          "level1AppDate": "Jun 13, 2018",
+                          "level2AppDate": "Sep 13, 2017",
+                          "createdDate": "Sep 13, 2017",
+                          "reference": "8619068",
+                          "paymentType": "Transfer",
+                          "rate": 1,
+                          "cusBackAccId": 3282
+                        }
+                      ]
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "-1|Error Message"
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "20",
+                    "MSG_ID": "692",
+                    "PARM": "20200205|1580903272233|1580903272233|20200205|1580903272233|1580903272233"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nTransaction Begin Date|Transaction ID"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "20",
+                    "MSG_ID": "692",
+                    "PARM": "20200205|1580903272233|1580903272233|20200205|1580903272233|1580903272233"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": "\n"
+        },
+        "description": "<table>\n<tr><th>Request</th></tr>\n<tr ><td rowspan =\"4\">Code that needs to be encrypted</td>\n<tr><td>BeginDate| BeginTransactionId<br> \n( example :::: 2017-01-01|1505307673131)</td></tr>\n<tr><td>BeginDate=2017-01-01</td></tr>\n<tr><td>BeginTransactionId = 1505307673131</td></tr>\n</tr>\n<tr>\n<td>Encrypted \nCode:</td>\n<td>PltpUhmt3TVF+sxKGE7XE/mgLL90GQfG3GTYITIAHT9zt3eueHwPtq\nkaAgDd7oqMon9EwCdVliJOG4</td></tr>\n<tr><td>Request \nParameter:</td>\n<td>{CLIENTNAME}PltpUhmt3TVF+sxKGE7XE/mgLL90GQfG3GTYITIAH\nT9zt3eueHwPtqkaAgDd7oqMon9EwCdVliJOG4</td>\n<tr><td>\nSample \nrequest</td><td>\n{<br>\n \"institutionId\":\"136\",<br>\n \"messageType\":\"20\",<br>\n \"messageID\":\"308\",<br>\n \"parameters\": \n\"abx7UZOdhp471UJdn\\/U6FGHIEpgWznBGenIHEbw8vlfFiS2KMAke\n6ZBoJs6NU45ifdiIIZL5Hcbu44JkAfMDFba5D+jg+Zv2p\\/6v\\/xYBOgt\nVtsg\\/xoOq+fnl7UKDHW4tVRijuI6UbHNiuTDCzMuMK9Y0DqBR9qp\nw6FGRkIBHPGl1tPXyTWniBmAiU3W08gkcqRs+3AAthi89YK2sclGPi\nIJ3glR9c0PG+N\\/2O4Fwqql9d4XlepzGR8usL3pmrrBAjCXe3asZncG3\nHQO7DAhaJw18LbnOmTexACWSKZJLwmJ1S1fmNxYxctgErOSCvvhg\nLopwFX36H9vjPWV9i5RolA==\"\n}</td></tr>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

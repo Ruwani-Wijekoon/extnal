@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update Individual Investor Account",
+    "version": "1.0",
+    "description": "<i>METHOD_API_UPDATE_GTN_INDIV_INV_ACCOUNT-28<br><br></i>\n\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>GTN Customer Number</td>\n     <td> GTN Customer Number in OMS</td>\n  </tr>\n  <tr>\n  \t<td>Family Name </td>\n     <td> Last Name</td>\n  </tr>\n    <tr>\n  \t<td>Other Names\n      <td> First Name</td>\n  </tr>\n    <tr>\n  \t<td>Passport No </td>\n     <td> Passport Number</td>\n  </tr>\n    <tr>\n  \t<td>National ID </td>\n     <td>National Identity Number</td>\n  </tr>\n    <tr>\n  \t<td>Driving License </td>\n     <td> Driving License Number</td>\n  </tr>\n    <tr>\n  \t<td>Home Tel </td>\n     <td> Home Telephone Number</td>\n  </tr>\n  <tr>\n    <td>Office Tel</td>\n     <td> Office Telephone Number</td>\n  </tr>\n    <tr>\n  \t<td>Mobile</td>\n    <td>  Mobile Number</td>\n  </tr>\n    <tr>\n  \t<td>Fax</td>\n     <td>  Fax Number</td>\n  </tr>\n    <tr>\n  \t<td>Email</td>\n     <td> Email Address</td>\n  </tr>\n  <tr>\n  \t<td>Profession</td>\n    <td>Profession</td>\n  </tr>\n\n  <tr>\n  \t<td>Address1</td>\n    <td>Address - 01</td>\n  </tr>\n  <tr>\n  \t<td>Address2</td>\n    <td>Address - 02</td>\n  </tr>\n  <tr>\n  \t<td>City</td>\n    <td>Address -03 City</td>\n  </tr>\n  <tr>\n  \t<td>Zip</td>\n    <td>Address -04 Zip</td>\n  </tr>\n  <tr>\n  \t<td>Gender</td>\n    <td>Gender (0-M, 1-F)</td>\n  </tr>\n  <tr>\n  \t<td>Birth Date </td>\n    <td>Customer’s Birth Day</td>\n  </tr>\n  <tr>\n  \t<td>Country</td>\n    <td>Customer’s country</td>\n  </tr>\n  <tr>\n  \t<td>Nationality</td>\n    <td>Customer’s Nationality</td>\n  </tr>\n    <tr>\n  \t<td>Full Name Arabic</td>\n    <td> Full Name in Arabic (optional)</td>\n  </tr>\n    <tr>\n  \t<td>Full Address Arabic</td>\n    <td> Full Address in Arabic (optional)</td>\n  </tr>\n  \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Update Account",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": " 1| 392251924"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n   1| GTN Number<br>\n<h6>Response Sample Fail</h6>\n -1| error\n"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": " 1| GTN Number"
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": " -1| error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "552069292|familyName|otherName|passport|Natio nalID|DrivingLicense|OfficeTelephone|HomeTel|mobile|Fax|email| Profession|Address1|Address2|City|111|1|12/12/1994|WS|WS|لعربي |لعربي"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nGTN Number| Family Name | Other Names | Passport No | National \nID | Driving License | Home Tel | Office Tel | Mobile | Fax | Email |\nProfession | Address1| Address2| City | Zip | Gender | Birth Date |\nCountry | Nationality | Full Name Arabic | Full Address Arabic"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "28",
+                    "MSG_ID": "692",
+                    "PARM": "100611952|familyName|TestWith_Hash|9811212530|National ID|DrivingLicense|53446|991133|3412129|Fax|a@a.com|Profession|Address1|Address2|City|111|1|09/09/1986|Country|Nationality|ArabicName|لعربي"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">552069292|familyName|otherName|passport|Natio\nnalID|DrivingLicense|OfficeTelephone|HomeTel|mobile|Fax|email|\nProfession|Address1|Address2|City|111|1|12/12/1994|WS|WS|لعربي\n|لعربي</div>\n<br></td></tr>\n</div>\n</table>\n"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

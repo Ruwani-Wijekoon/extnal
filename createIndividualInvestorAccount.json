@@ -1,0 +1,143 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Create Individual Investor Account",
+    "version": "1.0",
+    "description": "<i>METHOD_API_CREATE_INDIV_INV_ACCOUNT - 01</i>\n\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Master Account No</td>\n     <td> Master Account Number in OMS</td>\n  </tr>\n  <tr>\n  \t<td>Broker Reference </td>\n     <td> Customer External Reference Number</td>\n  </tr>\n    <tr>\n  \t<td>Family Name </td>\n     <td> Last Name</td>\n  </tr>\n    <tr>\n  \t<td>Other Names\n      <td> First Name</td>\n  </tr>\n    <tr>\n  \t<td>Passport No </td>\n     <td> Passport Number</td>\n  </tr>\n    <tr>\n  \t<td>National ID </td>\n     <td>National Identity Number</td>\n  </tr>\n    <tr>\n  \t<td>Driving License </td>\n     <td> Driving License Number</td>\n  </tr>\n    <tr>\n  \t<td>Home Tel </td>\n     <td> Home Telephone Number</td>\n  </tr>\n  <tr>\n    <td>Office Tel</td>\n     <td> Office Telephone Number</td>\n  </tr>\n    <tr>\n  \t<td>Mobile</td>\n    <td>  Mobile Number</td>\n  </tr>\n    <tr>\n  \t<td>Fax</td>\n     <td>  Fax Number</td>\n  </tr>\n    <tr>\n  \t<td>Email</td>\n     <td> Email Address</td>\n  </tr>\n  <tr>\n  \t<td>Profession</td>\n    <td>Profession</td>\n  </tr>\n  <tr>\n  \t<td>POB</td>\n    <td>PO BOX</td>\n  </tr>\n  <tr>\n  \t<td>Address1</td>\n    <td>Address - 01</td>\n  </tr>\n  <tr>\n  \t<td>Address2</td>\n    <td>Address - 02</td>\n  </tr>\n  <tr>\n  \t<td>City</td>\n    <td>Address -03 City</td>\n  </tr>\n  <tr>\n  \t<td>Zip</td>\n    <td>Address -04 Zip</td>\n  </tr>\n  <tr>\n  \t<td>Gender</td>\n    <td>Gender (0-M, 1-F)</td>\n  </tr>\n  <tr>\n  \t<td>Birth Date </td>\n    <td>Customer’s Birth Day</td>\n  </tr>\n  <tr>\n  \t<td>Country</td>\n    <td>Customer’s country</td>\n  </tr>\n  <tr>\n  \t<td>Nationality</td>\n    <td>Customer’s Nationality</td>\n  </tr>\n    <tr>\n  \t<td>Full Name Arabic</td>\n    <td> Full Name in Arabic (optional)</td>\n  </tr>\n    <tr>\n  \t<td>Full Address Arabic</td>\n    <td> Full Address in Arabic (optional)</td>\n  </tr>\n    <tr>\n  \t<td>Login Name </td>\n      <td>Login Name for the customer (optional)</td>\n  </tr>\n</table>\n\n \n \n \n \n \n \n\n \n \n\n"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Create Account",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|221254052|C000067357,P000064434,TDWL;C000067358,P000064435,LKCSE;C000067359,P000064436,CASE;C000067360,P000064437,NYSE~NSDQ~OPRA;C000067361,P000064438,ADSM~DFM;C000067362,P000064439,LSE",
+                      "messageId": "string"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\nResponse: 1|Cash Account No|Sec Acc No|Exg~Exg~Exg|Cash Account No|Sec Acc No|Exg~Exg~Exg<br>\n<h6>Response Sample Success and Currency Flag Enabled</h6>\nResponse: 1|Cash Account No|Sec Acc No|Currency|Exg~Exg~Exg|Cash Account No|Sec Acc No|Currency|Exg~Exg~Exg<br>\n<h6>Response Sample Fail</h6>\nResponse: -1|Customer already exists. | GTN Account No |Broker Ref"
+                    },
+                    "messageId": {
+                      "type": "string",
+                      "description": "Message ID"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|Cash Account No|Sec Acc No|Exg~Exg~Exg|Cash Account No|Sec Acc No|Exg~Exg~Exg",
+                      "messageID": "string"
+                    }
+                  },
+                  "success (if  currency  flag  enabled)": {
+                    "value": {
+                      "response": "1|Cash Account No|Sec Acc No|Currency|Exg~Exg~Exg|Cash Account No|Sec Acc No|Currency|Exg~Exg~Exg",
+                      "messageID": "string"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "-1|Customer already exists. | GTN Account No |Broker Ref",
+                      "messageID": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "271017683|98294703|Risith_6|TestWith_Hash|9811212530|National ID|Driving License|53446|991133|3412129|Fax|a@a.com|Profession|POB|Address1|Address2|City|111|1|09/09/1986|Country|Nationality|ArabicName|لعربي"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters - <br>\nGTN Customer Number in OMS|External Reference Number|Name|First Name|Passport Number|National ID Number|Driving Licence Number|Home Telephone Number|Office Telephone Number|Mobile Number|Fax Number|Email Address|Profession|PO Box|Address1|Address2|City|Zip Code|Gender|Birth Date|Country|Nationality|Full Name Arabic|Full Address Arabic|Login Name"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "271017683|98294703|Risith_6|TestWith_Hash|9811212530|National ID|Driving License|53446|991133|3412129|Fax|a@a.com|Profession|POB|Address1|Address2|City|111|1|09/09/1986|Country|Nationality|ArabicName|لعربي"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "text/html": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "\n\n<b>Example Request Parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">123865938|123|lName|fName|passNo|NationalID|DrivingLicense|0771212345|07712123\n45|0771212345|0771212345|a@a.com|Profession|POB|Address1|Address2|City|111|1|09\n/09/1986|Country|Nationality| اختبار |اختبار|loginName</div>\n<br></td></tr>\n<tr><td><ins><b>Optional Arabic Full Name</b></ins><br><br>\n<div style= \"font-size:14px\">123865938|123|lName|fName|passNo|NationalID|DrivingLicense|0771212345|07712123\n45|0771212345|0771212345|a@a.com|Profession|POB|Address1|Address2|City|111|1|09\n/09/1986|Country|Nationality| | اختبار|loginName</div>\n<br></td></tr>\n<tr><td><ins><b>Optional Arabic Full Name and Arabic Address</b></ins><br><br>\n<div style= \"font-size:14px\">123865938|123|lName|fName|passNo|NationalID|DrivingLicense|0771212345|07712123\n45|0771212345|0771212345|a@a.com|Profession|POB|Address1|Address2|City|111|1|09\ns/09/1986|Country|Nationality| | |loginName</div>\n<br></td></tr>\n<tr><td><ins><b>Optional Arabic Full Name, Arabic Address and Login Name.</b></ins><br><br>\n<div style= \"font-size:14px\">123865938|123|lName|fName|passNo|NationalID|DrivingLicense|0771212345|07712123\n45|0771212345|0771212345|a@a.com|Profession|POB|Address1|Address2|City|111|1|09\n/09/1986|Country|Nationality</div>\n</div>\n</table>\n"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

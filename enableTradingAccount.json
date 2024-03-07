@@ -1,0 +1,121 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "eijursfpna3wu"
+  },
+  "info": {
+    "title": "Enable Trading Account",
+    "version": "1.0",
+    "description": "<i>METHOD_API_ENABLE_TRADING_ACCOUNTS - 26</i>\n<br>\n<br>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Type</td>\n    <td>0 – enable existing trading accounts</td>\n  </tr>\n  <tr>\n    <td>Portfolios</td>\n    <td>Comma separated list of GTN portfolio numbers <br> Ex: <b>P000064434, P000064433, P000064432/<b></td>\n  </tr>\n</table>\n  "
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Enable Accounts",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|Success"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: 1|Success<br>\n<h6>Response Sample Fail</h6>\nResponse: 0| Error\n"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|Success"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "0| Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "26",
+                    "MSG_ID": "544123",
+                    "PARM": "1|99999196~US"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nType|Portfolios"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "26",
+                    "MSG_ID": "544123",
+                    "PARM": "1|99999196~US"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "\n<table>\n<tr><th>Request</th></tr>\n<tr>\n  <td>Request parameters</td>\n  <td>Type|Portfolios<br>Ex : 0|P000064434, P000064433, P000064432</td>\n</tr>\n</table>\n"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

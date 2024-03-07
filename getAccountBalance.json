@@ -1,0 +1,126 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "clkrjeb14j7p3"
+  },
+  "info": {
+    "title": "getAccountBalance",
+    "version": "1.0",
+    "description": "<i>METHOD_API_GET_ACCOUNT_INQUIRY-43</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>External Reference number</td>\n     <td> External Reference Number of a customer\n\n</td>\n  </tr>\n  \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Get Balance",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "string"
+                    },
+                    "messageID": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "response": "1|103205615|C000170087,AED,-6.75393,0.0,0.0,0.0,0.0,0.0;C000063819,AED,1.04176038E7,-1000.0,0.0,0.0,12222.0,122.0;C000069530,AED,1.0E9,0.0,0.0,0.0,0.0,0.0",
+                      "messageID": "8740"
+                    }
+                  }
+                },
+                "examples": {
+                  "Success": {
+                    "value": {
+                      "response": "1|103205615|C000170087,AED,-6.75393,0.0,0.0,0.0,0.0,0.0; C000063819,AED,1.04176038E7,-1000.0,0.0,0.0,12222.0,122.0; C000069530,AED,1.0E9,0.0,0.0,0.0,0.0,0.0",
+                      "messageID": "8740"
+                    }
+                  },
+                  "Failure": {
+                    "value": {
+                      "response": "-1|Reason for failure ",
+                      "messageID": "8740"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          },
+          "409": {
+            "description": "Email Already Taken"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "43",
+                    "MSG_ID": "8740",
+                    "PARM": "17645"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution id\n"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message id"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters: External reference number of a customer"
+                  }
+                }
+              },
+              "examples": {
+                "Get Account balance of account with 12345 externalRefNo": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "43",
+                    "MSG_ID": "8740",
+                    "PARM": "123467"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Post the necessary fields for the API to create a new user."
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">External Reference Number</div>\n<br></td></tr>\n</div>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "Bearer Auth": []
+    }
+  ]
+}

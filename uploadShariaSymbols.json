@@ -1,0 +1,111 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "akj7s2yzvk0xz"
+  },
+  "info": {
+    "title": "Upload Sharia Symbol",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Upload Symbol",
+        "operationId": "upload-sharia-symbol",
+        "description": "> Both ISIN and Symbol should be as optional but mandatory to use one of them.  (Exchange & ISIN * OR * Exchange & Symbol)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "41",
+                    "MSG_ID": "692",
+                    "PARM": "DFM|DXBEX20|DB191120001"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string"
+                  },
+                  "MSG_TYP": {
+                    "type": "string"
+                  },
+                  "MSG_ID": {
+                    "type": "string"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "example": "{exchange} | {symbol} | {ISIN}"
+                  }
+                },
+                "required": [
+                  "INST_ID",
+                  "MSG_TYP",
+                  "MSG_ID",
+                  "PARM"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "41",
+                    "MSG_ID": "692",
+                    "PARM": "DFM|DXBEX20|DB191120001"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "integer",
+                        "string"
+                      ],
+                      "example": 1,
+                      "enum": [
+                        "success",
+                        1,
+                        -1
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

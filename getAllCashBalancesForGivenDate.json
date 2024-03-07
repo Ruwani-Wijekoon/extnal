@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get All Cash Balances For a Date",
+    "version": "1.0",
+    "description": "<i>METHOD_API_GET_CASH_BALANCES-31</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Export Date</td>\n     <td> Date to get cash balances for (dd/MM/yyyy)\n\n</td>\n  </tr>\n  \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Get Cash Balances",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|CUSTOMER_NO~CASH_ACCOUNT_NO~TOTAL_BALANCE~AS_OF_DATE~EXTERNAL_REF_NO~CURRENCY~BLOCKED_AMOUNT~AVAILABLE_AMOUNT~UNSETTLED_CASH~PRIMARY_LIMIT~PRIMARY_LIMIT_EXPIRY_DATE~SECONDARY_LIMIT~SECONDARY_LIMIT_EXPIRY_DATE|109529809~C000107791~1000000000~11/03/2022~100003778 ~TRY~0~1000000000~0~0~~0~,109529809~C000107792~1000000000~11/03/2022100003778~EGP~0~1000000000~0~0~~0~,377379550~C000107818~1000000000~11/03/2022~100003782~LKR~0"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n   1|CUSTOMER_NO~CASH_ACCOUNT_NO~TOTAL_BALANCE~AS_OF_DATE~EXTERNAL_REF_NO~CURRENCY~BLOCKED_AMOUNT~AVAILABLE_AMOUNT~UNSETTLED_CASH~PRIMARY_LIMIT~PRIMARY_LIMIT_EXPIRY_DATE~SECONDARY_LIMIT~SECONDARY_LIMIT_EXPIRY_DATE|109529809~C000107791~1000000000~11/03/2022~100003778 ~TRY~0~1000000000~0~0~~0~,109529809~C000107792~1000000000~11/03/2022100003778~EGP~0~1000000000~0~0~~0~,377379550~C000107818~1000000000~11/03/2022~100003782~LKR~0<br>\n<h6>Response Sample Fail</h6>\n-1| Failure Reason"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|CUSTOMER_NO~CASH_ACCOUNT_NO~TOTAL_BALANCE~AS_OF_DATE~EXTERNAL_REF_NO~CURRENCY~BLOCKED_AMOUNT~AVAILABLE_AMOUNT~UNSETTLED_CASH~PRIMARY_LIMIT~PRIMARY_LIMIT_EXPIRY_DATE~SECONDARY_LIMIT~SECONDARY_LIMIT_EXPIRY_DATE|109529809~C000107791~1000000000~11/03/2022~100003778 ~TRY~0~1000000000~0~0~~0~,109529809~C000107792~1000000000~11/03/2022100003778~EGP~0~1000000000~0~0~~0~,377379550~C000107818~1000000000~11/03/2022~100003782~LKR~0"
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": "-1| Failure Reason"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "26/03/2022"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameter-<br>\nExport Date"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "31",
+                    "MSG_ID": "692",
+                    "PARM": "26/03/2022"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">export date</div>\n<br></td></tr>\n</div>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

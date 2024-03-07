@@ -1,0 +1,127 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "9pmikhxz5oojf"
+  },
+  "info": {
+    "title": "FX Currency Rate Upload",
+    "version": "1.0",
+    "description": "<i>METHOD_API_UPLOAD_FX_RATE - 25</i>\n<br>\n<br>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>fromCurrency</td>\n    <td>From Currency</td>\n  </tr>\n  <tr>\n    <td>toCurrency</td>\n    <td>To Currency</td>\n  </tr>\n  <tr>\n    <td>midRate</td>\n    <td>midRate</td>\n  </tr>\n  <tr>\n    <td>spread</td>\n    <td>spread</td>\n  </tr>\n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Currency Rate Upload",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|successfully uploaded",
+                      "messageID": "700"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: \"1|Successfully Uploaded<br>\n<h6>Response Sample Fail (Partially)</h6>\nResponse: -2| Failed to upload some Records |fromCurrency,toCurrency; fromCurrency,toCurrency<br>\n<h6>Response Sample Fail</h6>\n0|Error Message"
+                    },
+                    "messageID": {
+                      "type": "string",
+                      "description": "Message ID"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|successfully uploaded",
+                      "messageID": "700"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "0|Error Message"
+                    }
+                  },
+                  "partially failed": {
+                    "value": {
+                      "response": "-2|Failed to upload some Records|AED,LKR;LKR,USD;",
+                      "messageID": "700"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "25",
+                    "MSG_ID": "692",
+                    "PARM": "USD|USD|6.00|6.00"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nFrom Currency|To Currency|Mid Rate|Spread"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "25",
+                    "MSG_ID": "692",
+                    "PARM": "USD|USD|6.00|6.00"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<table><th>Request</th> \n<tr>\n<td rowspan=\"5\">Request parameters</td>\n<td>fromCurrency|toCurrency|midRate|spread<br>\n(Ex 1: <b>USD|LKR1.1111|0.0011</b>)<br>\nfor multiple records seperate records using comma(,)<br>\n(Ex. 2: <b>USD|LKR|1.1111|0.0011,USD|AED|2.111|0.0015</b>)</td>\n<tr><td><b>fromCurrency</b>=USD <b>(Ex. 1)</b></td></tr>\n<tr><td><b>toCurrency</b>=LKR<b>(Ex. 1)</b></td></tr>\n<tr><td><b>midRate</b>=1.1111<b>(Ex. 1)</b></td></tr>\n<tr><td><b>spread</b>=0.0011<b>(Ex. 1)</b></td></tr></tr>\n<tr><td>Sample \nrequest for \nsingle record</td>\n<td>{<br>\n\"institutionId\":\"136\",<br>\n“messageType\": \"24\",<br>\n\"messageID\":\"700\",<br>\n\"parameters\":\"1|ALL|1\"<br>}<br></td></tr>\n<tr><td>Sample \nrequest for \nmultiple \nrecords</td><td>\n{<br>\"institutionId\":\"136\",<br>\n\"messageType\": \"25\",<br>\n\"messageID\":\"700\",\"<br>\nparameters\":\"USD|LKR|1.1111|0.0011,USD|AED|2.111|0.0015\"<br>}<br></td></tr>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

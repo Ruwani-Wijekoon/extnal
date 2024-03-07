@@ -1,0 +1,125 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create Bank Account For Customer",
+    "version": "1.0",
+    "description": "<i>METHOD_API_CREATE_BANK_ACCOUNT-29</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>GTN Customer Number</td>\n     <td> GTN Customer Number in OMS\n</td>\n  </tr>\n  <tr>\n  \t<td>Bank Name </td>\n     <td> Bank Name as per GTN system defined bank name\n</td>\n  </tr>\n    <tr>\n  \t<td>Account Number </td>\n     <td> Bank Account number</td>\n  </tr>\n    <tr>\n  \t<td>Currency</td>\n      <td> Currency for the bank account</td>\n  </tr>\n    <tr>\n  \t<td>IBAN number </td>\n     <td> IBAN of bank. This is optional</td>\n  </tr>\n \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Create Account",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|Customer bank account created successfully|bankAccountID"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n   1|Customer bank account created successfully|bankAccountID<br>\n<h6>Response Sample Fail (If Bank Name Does Not Exist In GTN system)</h6>\n -1|Error occurred. Bank Name does not exist for institution<br>\n <h6>Response Sample Fail (If The Bank Account Already Exists For The Customer)</h6>\n   -1|Error occurred. This bank account already exists for the customer<br>\n<h6>Response Sample Fail (If The Customer Does Not Exist)</h6>\n -1|Error occurred. Customer does not exist"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|Customer bank account created successfully|bankAccountID"
+                    }
+                  },
+                  "failure(if bank name doesn't exist in GTN system)": {
+                    "value": {
+                      "response": "-1|Error occurred. Bank Name does not exist for institution"
+                    }
+                  },
+                  "failure(if the bank account already exists for the customer)": {
+                    "value": {
+                      "response": "-1|Error occurred. This bank account already exists for the customer"
+                    }
+                  },
+                  "failure(if the customer does not exist)": {
+                    "value": {
+                      "response": "-1|Error occurred. Customer does not exist"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "123134915|AL RAJHI BANK| 12345| USD| 123"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nGTN Number|Bank Name|Account Number|Currency|IBAN Number"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "136",
+                    "MSG_TYP": "29",
+                    "MSG_ID": "692",
+                    "PARM": "123134915|AL RAJHI BANK| 12345|USD|123"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">gtn number|bank name|bank account number|currency|iban number</div>\n<br></td></tr>\n</div>\n</table>"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Add/Remove Symbol wise Buy/Sell Restrictions",
+    "version": "1.0",
+    "description": "<i>METHOD_API_RESTRICT_BUY_SELL_SYMBOL_WISE - 35</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Portfolio Number</td>\n     <td> Portfolio number of the customer \n</td>\n  </tr>\n  <tr>\n  \t<td>Restriction type</td>\n     <td>Buy/sell/both (restriction removal works without \ntype)</td>\n  </tr>\n    <tr>\n  \t<td>Side</td>\n     <td> Add/remove</td>\n  </tr>\n    <tr>\n  \t<td>Symbol</td>\n      <td> Symbol</td>\n  </tr>\n    <tr>\n  \t<td>Exchange</td>\n     <td> Exchange</td>\n  </tr>\n \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Add/Remove Symbol Restrictions",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n   1<br>\n<h6>Response Sample Fail</h6>\n 0| Reason for rejection"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1"
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": "0| Reason for rejection"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "35",
+                    "MSG_ID": "692",
+                    "PARM": "P000128215|buy|remove|EMAAR|DFM"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "institution id"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "message type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "message id"
+                  },
+                  "PARM": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "35",
+                    "MSG_ID": "692",
+                    "PARM": "P000128215|buy|remove|EMAAR|DFM"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "<b>Example Request parameters:</b><br><br>\n<table>\n<div>\n<tr><td><ins><b>All Parameters</b></ins><br><br>\n<div style= \"font-size:14px\">Customer Portfolio Number|Restriction type|Side|Symbol|Exchange</div>\n<br></td></tr>\n</div>\n</table>",
+        "parameters": []
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "API Key - 1": []
+    }
+  ]
+}

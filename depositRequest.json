@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Deposit Request",
+    "version": "1.0",
+    "description": "<i>METHOD_API_DEPOSIT - 10</i>\n<br><br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>GTN Customer Account No</td>\n     <td> GTN Customer Number in OMS</td>\n  </tr>\n  <tr>\n  \t<td>GTN Cash Account No </td>\n     <td> Cash Account Number in OMS</td>\n  </tr>\n    <tr>\n  \t<td>Broker Cash Account Ref </td>\n     <td> Cash Account External Reference Id</td>\n  </tr>\n    <tr>\n  \t<td>Currency</td>\n      <td> Currency (Eg: AED, USD)</td>\n  </tr>\n    <tr>\n  \t<td>Amount </td>\n     <td> Deposit Amount</td>\n  </tr>\n \n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Deposit",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1|Cash log id| Account Balance|T12_ID"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: 1|Cash Log ID| Account Balance|T12_ID<br>\n<h6>Response Sample Fail</h6>\nResponse: 0|error\n"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1|Cash log id| Account Balance|T12_ID"
+                    }
+                  },
+                  "failure": {
+                    "value": {
+                      "response": "0|error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "01",
+                    "MSG_ID": "692",
+                    "PARM": "271017683|98294703|Risith_6|TestWith_Hash|9811212530|National ID|Driving License|53446|991133|3412129|Fax|a@a.com|Profession|POB|Address1|Address2|City|111|1|09/09/1986|Country|Nationality|ArabicName|لعربي"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nGtn Number|Cash Account Number|Cash Account External Ref ID|Currency|Deposit Amount"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "22",
+                    "MSG_ID": "692",
+                    "PARM": "100009578|C000068797|98292000|USD|1000"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": ""
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

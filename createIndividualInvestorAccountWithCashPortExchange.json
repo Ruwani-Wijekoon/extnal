@@ -1,0 +1,164 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Create Individual Investor Account with Cash, Portfolio and Exchange Accounts",
+    "version": "1.0",
+    "description": "<i>METHOD_API_CREATE_INDIV_INV_CPE_ACCOUNT - 06</i>\n<br>\n<br>\n<table>\n  <tr>\n  \t<th>Parameter</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n  \t<td>Master Account No</td>\n     <td> Master Account Number in OMS</td>\n  </tr>\n  <tr>\n  \t<td>Broker Reference </td>\n     <td> Customer External Reference Number</td>\n  </tr>\n    <tr>\n  \t<td>Family Name </td>\n     <td> Last Name</td>\n  </tr>\n    <tr>\n  \t<td>Other Names\n      <td> First Name</td>\n  </tr>\n    <tr>\n  \t<td>Passport No </td>\n     <td> Passport Number</td>\n  </tr>\n    <tr>\n  \t<td>National ID </td>\n     <td>National Identity Number</td>\n  </tr>\n    <tr>\n  \t<td>Driving License </td>\n     <td> Driving License Number</td>\n  </tr>\n    <tr>\n  \t<td>Home Tel </td>\n     <td> Home Telephone Number</td>\n  </tr>\n  <tr>\n    <td>Office Tel</td>\n     <td> Office Telephone Number</td>\n  </tr>\n    <tr>\n  \t<td>Mobile</td>\n    <td>  Mobile Number</td>\n  </tr>\n    <tr>\n  \t<td>Fax</td>\n     <td>  Fax Number</td>\n  </tr>\n    <tr>\n  \t<td>Email</td>\n     <td> Email Address</td>\n  </tr>\n  <tr>\n  \t<td>Profession</td>\n    <td>Profession</td>\n  </tr>\n  <tr>\n  \t<td>POB</td>\n    <td>PO BOX</td>\n  </tr>\n  <tr>\n  \t<td>Address1</td>\n    <td>Address - 01</td>\n  </tr>\n  <tr>\n  \t<td>Address2</td>\n    <td>Address - 02</td>\n  </tr>\n  <tr>\n  \t<td>City</td>\n    <td>Address -03 City</td>\n  </tr>\n  <tr>\n  \t<td>Zip</td>\n    <td>Address -04 Zip</td>\n  </tr>\n  <tr>\n  \t<td>Gender</td>\n    <td>Gender (0-M, 1-F)</td>\n  </tr>\n  <tr>\n  \t<td>Birth Date </td>\n    <td>Customer’s Birth Day</td>\n  </tr>\n  <tr>\n  \t<td>Country</td>\n    <td>Customer’s country</td>\n  </tr>\n  <tr>\n  \t<td>Nationality</td>\n    <td>Customer’s Nationality</td>\n  </tr>\n  <tr>\n    <td>Broker Cash Account Ref</td>\n    <td>Cash Account External Reference Id</td>\n  </tr>\n  <tr>\n    <td>Currency </td>\n    <td>Currency (Eg: AED, USD)</td>\n  </tr>\n  <tr>\n    <td>Cash Account Type</td>\n    <td>0 = Current, 1 = Savings, 2 = Investment</td>\n  </tr>\n  <tr>\n    <td>Broker Portfolio Ref</td>\n    <td>Portfolio External Reference Id</td>\n  </tr>\n  <tr>\n    <td>Exchange or Country Code</td>\n    <td>0, AE – (Only ADSM & DFM)</td>\n  </tr>\n  <tr>\n    <td>Exchange</td>\n    <td>Exchange Code\n</td>\n  </tr>\n  <tr>\n    <td>Exchange Account Type </td>\n    <td>0 = Fully Disclosed, 1 = Omnibus, 2 = Omnibus segregate</td>\n  </tr>\n  <tr>\n    <td>Exchange Account</td>\n    <td>Exchange Account Number</td>\n  </tr>\n  <tr>\n    <td>Exchange Investor ID</td>\n    <td>Investor Account Number</td>\n  </tr>\n  <tr>\n    <td>Commission Type</td>\n    <td>0=Default, 1=Custom</td>\n  </tr>\n  <tr>\n    <td>Commission Group ID</td>\n    <td>Commission Group Id</td>\n  </tr>\n    <tr>\n    <td>Guardian</td>\n    <td></td>\n  </tr>\n  <tr>\n    <td>Guardian Name</td>\n    <td></td>\n  </tr>\n  <tr>\n    <td>Guardian NIN</td>\n    <td></td>\n  </tr>\n    <tr>\n  \t<td>Full Name Arabic</td>\n    <td> Full Name in Arabic (optional)</td>\n  </tr>\n    <tr>\n  \t<td>Full Address Arabic</td>\n    <td> Full Address in Arabic (optional)</td>\n  </tr>\n</table>"
+  },
+  "servers": [
+    {
+      "url": "https://external-service-api.globaltradingnetwork.com/MubasherExternalService"
+    }
+  ],
+  "paths": {
+    "/GTNExternalClientService/accountCreate": {
+      "post": {
+        "summary": "Create Account with Cash, Portfolio and Exchange Account",
+        "operationId": "post-MubasherExternalClientService-accountCreate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "response": "1| GTN Number| Cash Account Number| PF number"
+                    }
+                  },
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "<h6>Response Sample Success</h6>\n  Response: 1| GTN Number| Cash Account Number| PF number<br>\n<h6>Response Sample Fail</h6>\nResponse: 0|….\n\n"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "response": "1| GTN Number| Cash Account Number| PF number"
+                    }
+                  },
+                  "failed": {
+                    "value": {
+                      "response": "0|Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "05",
+                    "MSG_ID": "692",
+                    "PARM": "100869414|98292002|Customer 4|Test|9811212530|National ID|Driving License|53446|991133|3412129|Fax|a@a.com|Profession|POB|Address1|Address2|City|111|1|09/09/1986|Country|Nationality|98292000|USD|0|98292015|DSM|DSM|0|98292116|98292118|test||test|98292000|1"
+                  }
+                },
+                "properties": {
+                  "INST_ID": {
+                    "type": "string",
+                    "description": "Institution ID"
+                  },
+                  "MSG_TYP": {
+                    "type": "string",
+                    "description": "Message Type"
+                  },
+                  "MSG_ID": {
+                    "type": "string",
+                    "description": "Message ID"
+                  },
+                  "PARM": {
+                    "type": "string",
+                    "description": "Parameters-<br>\nMaster Account Number in OMS|External Reference Number|Name|First Name|Passport Number|National ID Number|Driving Licence Number|Home Telephone Number|Office Telephone Number|Mobile Number|Fax Number|Email Address|Profession|PO Box|Address1|Address2|City|Zip Code|Gender|Birth Date|Country|Nationality|Cash Account External Reference ID|Currency|Portfolio External Reference ID|Exchange or Country Code|Exchange|Exchange Account Type|Exchange Account Number|Investor Account Number|Commission Type|Commission Group ID|Guardian|Guardian Name|Guardian NIN|Full Name Arabic|Full Address Arabic"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "INST_ID": "365",
+                    "MSG_TYP": "05",
+                    "MSG_ID": "692",
+                    "PARM": "100869414|98292002|Customer 4|Test|9811212530|National ID|Driving License|53446|991133|3412129|Fax|a@a.com|Profession|POB|Address1|Address2|City|111|1|09/09/1986|Country|Nationality|98292000|USD|0|98292015|DSM|DSM|0|98292116|98292118|0|123|test|test|98292000|اختبار|اختبار|"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {
+                "example-1": {
+                  "value": "{\n  \"masterAccountNumber\" : \"123865938\",\n  \"brokerReference\": \"\",\n  \"familyName\": \"\",\n  \"otherNames\" : \"\",\n  \"passportNumber\" : \"\",\n  \"nationalId\": \"\",\n  \n  \n\n\n}\n"
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "text/html": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "application/EDI-X12": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "application/EDIFACT": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "application/atom+xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": "[object Object]"
+                }
+              }
+            }
+          },
+          "description": "\n\n"
+        },
+        "description": "",
+        "parameters": []
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}
