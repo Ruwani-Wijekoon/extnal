@@ -27,7 +27,7 @@
         {
           "type": "item",
           "title": "Create Individual Investor Account with Cash, Portfolio and Exchange Accounts",
-          "uri": "/createIndividualInvestorAccountWithCashPortExchange.json"
+          "uri": "api/createIndividualInvestorCPEAccount.json"
         }
       ]
     },
