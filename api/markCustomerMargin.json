@@ -1,0 +1,500 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Mark Customer Margin",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/mark-customer-margin": {
+      "post": {
+        "summary": "Mark Customer Margin",
+        "operationId": "post-client-services-mark-customer-margin",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/MarginTradingResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/MarginTradingReqBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "MarginTradingResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kv1f93h6t5gp6"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "7hcja82uv8xrd"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "1mgg5o6xrjkwl"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "hmwxzcwvehs9h"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "dmqe1d98bdxks"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "csaa5ij87dy45"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "c4kw1ahb24bju"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "hqvpj5ko5swjp"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52001,
+                  "RSN": "Invalid request data"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52002,
+                  "RSN": "Invalid request data"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52003,
+                  "RSN": "Maximum margin limit cannot be null or empty"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52004,
+                  "RSN": "Maximum margin limit cannot be less than or equal to zero"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52005,
+                  "RSN": "Margin exp date cannot be null or empty"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52006,
+                  "RSN": "Normal margin expiry Date cannot be less than today"
+                }
+              },
+              "Unsuccess Response 7": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52007,
+                  "RSN": "Invalid margin interest group"
+                }
+              },
+              "Unsuccess Response 8": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52008,
+                  "RSN": "Margin call Notify Level and Margin Call Liquidation Level cannot be null or empty"
+                }
+              },
+              "Unsuccess Response 9": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52009,
+                  "RSN": "Maximum day margin limit cannot be null or empty"
+                }
+              },
+              "Unsuccess Response 10": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52010,
+                  "RSN": "Maximum day margin limit cannot be less than or equal to zero"
+                }
+              },
+              "Unsuccess Response 11": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52011,
+                  "RSN": "Day margin exp date cannot be null or empty"
+                }
+              },
+              "Unsuccess Response 12": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52012,
+                  "RSN": "Day margin expiry date cannot be less than today"
+                }
+              },
+              "Unsuccess Response 13": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52013,
+                  "RSN": "Remove margin due/block and pending charge before margin disable"
+                }
+              },
+              "Unsuccess Response 14": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52014,
+                  "RSN": "Remove day margin due/block and net day holdings before day margin disable"
+                }
+              },
+              "Unsuccess Response 15": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52015,
+                  "RSN": "Margin call notify level cannot be greater than IM"
+                }
+              },
+              "Unsuccess Response 16": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52016,
+                  "RSN": "Invalid notification levels"
+                }
+              },
+              "Unsuccess Response 17": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52018,
+                  "RSN": "Not enough funds available to place margin request"
+                }
+              },
+              "Unsuccess Response 18": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52019,
+                  "RSN": "IM Day should be set between 1 - 99. Please reset"
+                }
+              },
+              "Unsuccess Response 19": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52020,
+                  "RSN": "Cash account is not a margin trading enabled account."
+                }
+              },
+              "Unsuccess Response 20": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52021,
+                  "RSN": "Invalid margin factors. Day Margin Factor <= Margin Factor"
+                }
+              },
+              "Unsuccess Response 21": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52022,
+                  "RSN": "IM / IM Day should be set between 1 - 99. Please reset"
+                }
+              },
+              "Unsuccess Response 22": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "STS": 0,
+                  "ERR": 52023,
+                  "RSN": "Error processing mark margin trading"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "MarginTradingReqBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "it2cikiegf3ni"
+                  },
+                  "description": "Message Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "35kmih6q0codg"
+                  },
+                  "description": "Externl Reference Number"
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "u6brpp0wfbexh"
+                  },
+                  "description": "Curruncy"
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "iuc3ve4183h73"
+                  },
+                  "description": "Cash Account"
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "t6v2hf7gplck3"
+                  },
+                  "description": "Security Account Number"
+                },
+                "INT_MRG_OVR_NGT_PCT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "j9i5h63whr085"
+                  },
+                  "description": "Initial Margin Over Night Precentage"
+                },
+                "INT_MRG_DAY_PCT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "b8rsfho6lfe0l"
+                  },
+                  "description": "Initial Margin Day Precentage"
+                },
+                "OVR_NGT_MAR_CON_LIM": {
+                  "type": "boolean",
+                  "x-stoplight": {
+                    "id": "vdhcquy63cgfx"
+                  },
+                  "description": "Over Night Margin Concentration Limit"
+                },
+                "DAY_MAR_CON_LIM": {
+                  "type": "boolean",
+                  "x-stoplight": {
+                    "id": "vn8glik6m57td"
+                  },
+                  "description": "Day Margin Concentration Limit"
+                },
+                "DAY_MAR_CAP_LIM": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "cua9f5p7k2ym9"
+                  },
+                  "description": "Day MArgin Cap Limit"
+                },
+                "OVR_NGT_MAR_CAP_LIM": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "uf8p2qzvi3e5c"
+                  },
+                  "description": "Over Night Margin Cap Limit"
+                },
+                "INT_MAR_CALL_PCT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "0ustpe6mn1dh1"
+                  },
+                  "description": "Initial Margin Call Precentage"
+                },
+                "REM_MAR_CALL_PCT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "eixsjqub23bj9"
+                  },
+                  "description": "Remainder Margin Call Precentage"
+                },
+                "LIQ_MAR_CALL_PCT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "o0jl1py7yvrv6"
+                  },
+                  "description": "Liquidation Margin Call Precentage"
+                },
+                "OVR_NGT_MAR_EXP_DTE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "khepzs5t5e40w"
+                  },
+                  "description": "Over Night Margin Expiry Date"
+                },
+                "DAY_MAR_EXP_DTE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "me7s261526mc5"
+                  },
+                  "description": "Day Margin Expiry Date"
+                },
+                "MAR_INT_GROUP": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "gsgsqa00xulxl"
+                  },
+                  "description": "Margin Interest Group"
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "091223",
+                  "EXT_REF_NO": "99870",
+                  "CURR": "USD",
+                  "CSH_ACC": "C003314084",
+                  "SEC_ACC_NUM": "P000295523",
+                  "INT_MRG_OVR_NGT_PCT": 70,
+                  "INT_MRG_DAY_PCT": 30,
+                  "OVR_NGT_MAR_CON_LIM": true,
+                  "DAY_MAR_CON_LIM": true,
+                  "DAY_MAR_CAP_LIM": 500,
+                  "OVR_NGT_MAR_CAP_LIM": 900,
+                  "INT_MAR_CALL_PCT": 64,
+                  "REM_MAR_CALL_PCT": 58,
+                  "LIQ_MAR_CALL_PCT": 47,
+                  "OVR_NGT_MAR_EXP_DTE": "2025-02-18",
+                  "DAY_MAR_EXP_DTE": "2025-02-18",
+                  "MAR_INT_GROUP": "Sandeera Master group"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

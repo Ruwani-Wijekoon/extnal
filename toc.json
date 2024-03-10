@@ -252,6 +252,11 @@
       "uri": "api/orderDetailsByOrderId.json"
     },
     {
+      "type": "item",
+      "title": "Mark Customer Margin",
+      "uri": "api/markCustomerMargin.json"
+    },
+    {
       "type": "divider",
       "title": "Master Data"
     },
