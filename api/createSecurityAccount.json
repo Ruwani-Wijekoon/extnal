@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Create Cash Account",
+    "title": "Create Security Account",
     "version": "1.0",
     "description": ""
   },
@@ -11,22 +11,18 @@
     }
   ],
   "paths": {
-    "/client-services/cash-account": {
+    "/client-services/security-account/": {
       "post": {
-        "summary": "Create Cash Account",
-        "operationId": "post-client-services-cash-account",
+        "summary": "Create Security Account",
+        "operationId": "post-client-services-security-account",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/CashAccountResponse"
+            "$ref": "#/components/responses/SecurityAccountResponse"
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           }
         },
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CashBean"
-        },
-        "description": "Create cash account",
         "parameters": [
           {
             "schema": {
@@ -44,7 +40,10 @@
             "name": "InstId",
             "required": true
           }
-        ]
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PortfolioBean"
+        }
       }
     }
   },
@@ -84,7 +83,7 @@
           }
         }
       },
-      "CashAccountResponse": {
+      "SecurityAccountResponse": {
         "description": "Example response",
         "content": {
           "application/json": {
@@ -92,68 +91,61 @@
               "oneOf": [
                 {
                   "properties": {
-                    "CSH_ACC": {
+                    "SEC_ACC_NUM": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "bm7ekkinwnb11"
+                        "id": "2lq4ksc5smw3k"
                       },
-                      "description": "Cash Account"
+                      "description": "Security Account Number"
                     },
                     "MSG_ID": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "5n7vb40m8bpm4"
+                        "id": "p2dtffeiprsqk"
                       },
                       "description": "Message Id"
                     },
                     "STS": {
                       "type": "integer",
                       "x-stoplight": {
-                        "id": "bz2o059yy3f49"
+                        "id": "1fb3ag3vh9mgm"
                       },
                       "description": "Status"
                     },
                     "ERR": {
                       "type": "integer",
                       "x-stoplight": {
-                        "id": "zf3czf48c1of0"
+                        "id": "vzpmrte2bprqa"
                       },
-                      "description": "Error Code"
+                      "description": "Error"
                     }
                   }
                 },
                 {
                   "x-stoplight": {
-                    "id": "h0qytdki8cati"
+                    "id": "eqcsbxfum03vl"
                   },
                   "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "qs2b893j072e8"
+                      },
+                      "description": "Message Id"
+                    },
                     "STS": {
                       "type": "integer",
                       "x-stoplight": {
-                        "id": "u5gyzi2j23lnm"
+                        "id": "qwlnx90r0yh7r"
                       },
                       "description": "Status"
                     },
                     "ERR": {
                       "type": "integer",
                       "x-stoplight": {
-                        "id": "mixh2tgaelpoc"
+                        "id": "6mqucv30bvmox"
                       },
                       "description": "Error Code"
-                    },
-                    "RSN": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "35cpncwk94ngo"
-                      },
-                      "description": "Reason"
-                    },
-                    "MSG_ID": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "841hi82nhwfi3"
-                      },
-                      "description": "Message Id"
                     }
                   }
                 }
@@ -163,52 +155,42 @@
             "examples": {
               "Success Response": {
                 "value": {
-                  "CSH_ACC": "C004088038",
-                  "MSG_ID": "94488",
+                  "SEC_ACC_NUM": "S001133109",
+                  "MSG_ID": "94556",
                   "STS": 1,
                   "ERR": 0
                 }
               },
               "Unsuccess Response 1": {
                 "value": {
+                  "MSG_ID": "94455",
                   "STS": 0,
-                  "ERR": 3001,
+                  "ERR": 4001,
                   "RSN": "Invalid Mubasher Account Number"
                 }
               },
               "Unsuccess Response 2": {
                 "value": {
+                  "MSG_ID": "94455",
                   "STS": 0,
-                  "ERR": 3002,
-                  "RSN": "Invalid Broker Cash Account Reference"
+                  "ERR": 4002,
+                  "RSN": "Invalid Cash Account Number"
                 }
               },
               "Unsuccess Response 3": {
                 "value": {
+                  "MSG_ID": "94455",
                   "STS": 0,
-                  "ERR": 3003,
-                  "RSN": "Invalid Currency"
+                  "ERR": 4003,
+                  "RSN": "Error persisting portfolio account bean"
                 }
               },
               "Unsuccess Response 4": {
                 "value": {
+                  "MSG_ID": "94455",
                   "STS": 0,
-                  "ERR": 3004,
-                  "RSN": "This is a master account"
-                }
-              },
-              "Unsuccess Response 5": {
-                "value": {
-                  "STS": 0,
-                  "ERR": 3005,
-                  "RSN": "Cash Account Reference Number Already Assigned."
-                }
-              },
-              "Unsuccess Response 6": {
-                "value": {
-                  "STS": 0,
-                  "ERR": 3006,
-                  "RSN": "Error Creating the CashAccount"
+                  "ERR": 4004,
+                  "RSN": "Error Creating the Portfolio Account"
                 }
               }
             }
@@ -217,7 +199,7 @@
       }
     },
     "requestBodies": {
-      "CashBean": {
+      "PortfolioBean": {
         "content": {
           "application/json": {
             "schema": {
@@ -226,61 +208,44 @@
                 "MSG_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "idpmk9hsmn4v3"
+                    "id": "4nhjj6isk88gn"
                   },
                   "description": "Message Id"
                 },
                 "CUS_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "uiiuw6wk9sgpm"
+                    "id": "hpx8ezwvalajd"
                   },
                   "description": "Customer Id"
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "lqrhertkg26ms"
+                  },
+                  "description": "Cash Account"
                 },
                 "BROKER_REFERENCE": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "483raoww6y13o"
+                    "id": "o1wjcuee5d7iv"
                   }
-                },
-                "CURR": {
-                  "type": "string",
-                  "x-stoplight": {
-                    "id": "7tq8p3f0le503"
-                  },
-                  "description": "Currency"
-                },
-                "SEC_ACC_NUM": {
-                  "type": "string",
-                  "x-stoplight": {
-                    "id": "2n7co152un2c3"
-                  },
-                  "description": "Security Account Number"
-                },
-                "CASH_ACC_TYPE": {
-                  "type": "integer",
-                  "x-stoplight": {
-                    "id": "6mll2aooremo8"
-                  },
-                  "default": 0,
-                  "description": "Cash Account Type"
                 }
               },
               "required": [
                 "MSG_ID",
                 "CUS_ID",
-                "BROKER_REFERENCE",
-                "CURR"
+                "CSH_ACC"
               ]
             },
             "examples": {
               "Example 1": {
                 "value": {
-                  "MSG_ID": "94488",
+                  "MSG_ID": "94556",
                   "CUS_ID": "992209991",
-                  "BROKER_CASH_ACC_REF": "12345",
-                  "CURR": "USD",
-                  "CASH_ACC_TYPE": 1
+                  "BROKER_PTF_REF": "888",
+                  "CSH_ACC": "C004088038"
                 }
               }
             }
