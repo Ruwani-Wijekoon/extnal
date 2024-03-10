@@ -370,11 +370,6 @@
       "title": "Upload Sharia Symbol",
       "uri": "api/uploadShariaSymbol.json"
     },
-         {
-      "type": "item",
-      "title": "Get Account Balance",
-      "uri": "/getAccountBalance.json"
-    },
     {
       "type": "item",
       "title": "Release Notes",
