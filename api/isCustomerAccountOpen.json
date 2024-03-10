@@ -1,0 +1,296 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get whether the customer account is opened",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/is-customer-account-open": {
+      "post": {
+        "summary": "Get whether the customer account is opened",
+        "operationId": "post-client-services-is-customer-account-open",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CustomerAccountOpenResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CustomerAccountOpenRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CustomerAccountOpenResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "pwxvi97f29f0p"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "a0ifj7jxxnle1"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "m95w4h5cz7rsz"
+                      },
+                      "description": "Error"
+                    },
+                    "CUS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "c388gu0tlngjj"
+                      },
+                      "description": "Customer Id"
+                    },
+                    "ACC_DTLS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "z9te3yphptew0"
+                      },
+                      "description": "Account Details",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "s6abfywgcb68z"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "CSH_ACC": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "z8oqmnkduwi10"
+                            },
+                            "description": "Cash Account Number"
+                          },
+                          "SEC_ACC_NUM": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "ljxqxum90eugc"
+                            },
+                            "description": "Security Account Number"
+                          },
+                          "EXG_LST": {
+                            "type": "array",
+                            "x-stoplight": {
+                              "id": "k74tugj7wliur"
+                            },
+                            "description": "Exchange List",
+                            "items": {
+                              "x-stoplight": {
+                                "id": "wlsphqimv73hi"
+                              },
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "pxrzspnqa1dkc"
+                  },
+                  "properties": {
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ymc96mu2acy9s"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "79b0hjoejor5j"
+                      },
+                      "description": "Error Code"
+                    },
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6yhwbcjftw6g7"
+                      },
+                      "description": "Message Id"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "eyn9r1rkzcn7o"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "ACC_DTLS": [
+                    {
+                      "CSH_ACC": "C004088040",
+                      "SEC_ACC_NUM": "S001133110",
+                      "EXG_LST": [
+                        "ADSM"
+                      ]
+                    },
+                    {
+                      "CSH_ACC": "C004088042",
+                      "SEC_ACC_NUM": "S001133112",
+                      "EXG_LST": [
+                        "DFM"
+                      ]
+                    },
+                    {
+                      "CSH_ACC": "C004088040",
+                      "SEC_ACC_NUM": "S001133113",
+                      "EXG_LST": [
+                        "KSE"
+                      ]
+                    }
+                  ],
+                  "STS": 1,
+                  "ERR": 0,
+                  "MSG_ID": "12345"
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "900883",
+                  "STS": 0,
+                  "ERR": 37001,
+                  "RSN": "Account not found"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "900883",
+                  "STS": 0,
+                  "ERR": 37002,
+                  "RSN": "Error in getting account open status"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CustomerAccountOpenRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "brsriyceerwp5"
+                  },
+                  "description": "Message Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "v3kgn89k3h2dn"
+                  },
+                  "description": "External Reference Id"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "EXT_REF_NO"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "900883",
+                  "EXT_REF_NO": "1844443046"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

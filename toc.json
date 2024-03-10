@@ -97,7 +97,7 @@
         {
           "type": "item",
           "title": "Get whether the customer account is opened",
-          "uri": "/getWhetherTheCustomerAccountIsOpened.json"
+          "uri": "api/isCustomerAccountOpen.json"
         }
       ]
     },
