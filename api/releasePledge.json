@@ -1,0 +1,403 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Release Pledge Request",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/release-pledge": {
+      "post": {
+        "summary": "Release Pledge Request",
+        "operationId": "post-client-services-release-pledge",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/RemovePledgeRequestResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PledgeRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RemovePledgeRequestResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "mgkihydlhm3fs"
+                      },
+                      "description": "Message Id"
+                    },
+                    "EXT_REF_NO": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "1hdttrop3godd"
+                      },
+                      "description": "External Reference Number"
+                    },
+                    "SYM": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "pbkh1bzd3j50w"
+                      },
+                      "description": "Symbol"
+                    },
+                    "EXG": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "l2z963dm9gfyz"
+                      },
+                      "description": "Exchange"
+                    },
+                    "SEC_ACC_NUM": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9c5nczu00ya3w"
+                      },
+                      "description": "Security Account Number"
+                    },
+                    "TOT_HOLDING": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "hxzo2x6hqor4u"
+                      },
+                      "description": "Total Holdings"
+                    },
+                    "TOT_PLEDGE_QTY": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "jj2g41nwtgwmw"
+                      },
+                      "description": "Total Pledge Quantity"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "jph1o8nafkmpj"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "dgwaakxgwbgfo"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "abw5grx8n3o4c"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "3mhanlhw6sqhh"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ewic3jtj1s4vh"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "7jd2czgqha0a0"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6mac0iy5mniqf"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "EXT_REF_NO": "2521GT",
+                  "SYM": "AAPL",
+                  "EXG": "NSDQ",
+                  "SEC_ACC_NUM": "P000284322",
+                  "TOT_HOLDING": "23770.5",
+                  "TOT_PLEDGE_QTY": "890",
+                  "TOT_AVAIL_PLEDGE_QTY": "22876.5",
+                  "MSG_ID": "908772",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44001,
+                  "RSN": "External reference number cannot be null or empty"
+                }
+              },
+              "Unsuccess Response  2": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44002,
+                  "RSN": "Both symbol code and isin not found in parameters"
+                }
+              },
+              "Unsuccess Response  3": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44003,
+                  "RSN": "Exchange code cannot be null or empty"
+                }
+              },
+              "Unsuccess Response  4": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44004,
+                  "RSN": "Security account number cannot be null or empty"
+                }
+              },
+              "Unsuccess Response  5": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44005,
+                  "RSN": "Quantity should be a numeric value greater than 0"
+                }
+              },
+              "Unsuccess Response  6": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44006,
+                  "RSN": "Error in getting symbol for given isin"
+                }
+              },
+              "Unsuccess Response  7": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44007,
+                  "RSN": "Security account no is not compatible with external reference number or invalid customer"
+                }
+              },
+              "Unsuccess Response  8": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 45008,
+                  "RSN": "Insufficient Stocks to release"
+                }
+              },
+              "Unsuccess Response  9": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 45009,
+                  "RSN": "Error while creating pending holding record"
+                }
+              },
+              "Unsuccess Response  10": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 45010,
+                  "RSN": "Error while creating pending holding record"
+                }
+              },
+              "Unsuccess Response  11": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44011,
+                  "RSN": "Holding record for given portfolio is not found"
+                }
+              },
+              "Unsuccess Response  12": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44012,
+                  "RSN": "System Error"
+                }
+              },
+              "Unsuccess Response  13": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "STS": 0,
+                  "ERR": 44013,
+                  "RSN": "Error processing add/remove pledge"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "PledgeRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "dgyx6y5xa6som"
+                  },
+                  "description": "Message Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0oqtwiw43xgz6"
+                  },
+                  "description": "External Reference Number"
+                },
+                "SYM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "v7807ptclu2gd"
+                  },
+                  "description": "Symbol"
+                },
+                "EXG": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "rqp6nbnw32itj"
+                  },
+                  "description": "Exchange"
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "aikasj817z7c0"
+                  },
+                  "description": "Security Accouunt Number"
+                },
+                "QTY": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "5o4u983qihf2f"
+                  },
+                  "description": "Quantity"
+                },
+                "ISIN_CODE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ef8hjbhxewgtr"
+                  }
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "EXT_REF_NO",
+                "SYM",
+                "EXG",
+                "SEC_ACC_NUM",
+                "QTY"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "908771",
+                  "EXT_REF_NO": "2521GT",
+                  "SYM": "AAPL",
+                  "EXG": "NSDQ",
+                  "SEC_ACC_NUM": "P000284322",
+                  "QTY": "100"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
