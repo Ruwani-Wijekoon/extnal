@@ -1,0 +1,252 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Set cash transfer/transaction restriction level",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/update-cash-trans-restriction-lvl": {
+      "post": {
+        "summary": "Set cash transfer/transaction restriction level",
+        "operationId": "post-client-services-update-cash-trans-restriction-lvl",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CashTransactionRestrictionLevelResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CashTransRestrictionRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CashTransactionRestrictionLevelResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "js0z84ld9fgnf"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "rb220mcq0sbj6"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "1bm8547lytrjh"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "sbb7mrsmy2m78"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "q6s3csgpfuanr"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "cdvrrg4dw5fqq"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ztbqcz1gh9v2s"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "to2p52k26vucu"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "091222",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "091222",
+                  "STS": 0,
+                  "ERR": 51001,
+                  "RSN": "data validation error"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "091222",
+                  "STS": 0,
+                  "ERR": 51002,
+                  "RSN": "Invalid restriction type"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "091222",
+                  "STS": 0,
+                  "ERR": 51003,
+                  "RSN": "Error in updating cash transaction restriction levels"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "091222",
+                  "STS": 0,
+                  "ERR": 51004,
+                  "RSN": "Error in updating cash transaction restriction levels"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "091222",
+                  "STS": 0,
+                  "ERR": 51005,
+                  "RSN": "Error occurred.Please contact administrator"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CashTransRestrictionRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ab0zxswdpqxct"
+                  },
+                  "description": "Message Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "fe4r9doosho1r"
+                  },
+                  "description": "External Reference Number"
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "zot4um8uzyk39"
+                  },
+                  "description": "Cash Account"
+                },
+                "REST_TYPE": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "swofje4z5yflc"
+                  },
+                  "default": -1,
+                  "description": "Restriction Type"
+                },
+                "REST_LVL": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "119jmdy8j8e2s"
+                  },
+                  "default": -1,
+                  "description": "Restriction Level"
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "091222",
+                  "EXT_REF_NO": "1844443046",
+                  "CSH_ACC": "C003314085",
+                  "REST_TYPE": 0,
+                  "REST_LVL": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
