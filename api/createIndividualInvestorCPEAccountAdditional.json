@@ -1,0 +1,540 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create Individual Investor CPE Additional Account",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/accounts/individual-investor-cpe-additional": {
+      "post": {
+        "summary": "Create Individual Investor CPE Additional Account",
+        "operationId": "post-client-services-accounts-individual-investor-cpe-additional",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/IndividualInvestorCPEAdditionalResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/IndividualInvestorCPEAdditional"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "IndividualInvestorCPEAdditionalResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "j7crdnqtjrsqf"
+                      }
+                    },
+                    "CSH_ACC": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "zq717637u8oj5"
+                      }
+                    },
+                    "SEC_ACC_NUM": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "wjl5b9ulie1gi"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "axt5ha4pmymtw"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "bleeli55wsm43"
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "lyzhgibcy1lzz"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ny6mzv5frp03l"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "7giv86hvqt9af"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ytx4f8e7klgvg"
+                      }
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "gbo1p294ieidv"
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response ": {
+                "value": {
+                  "CSH_ACC": "C004088042",
+                  "SEC_ACC_NUM": "S001133112",
+                  "MSG_ID": "95888",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8002,
+                  "RSN": "Invalid Broker Customer Reference"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8003,
+                  "RSN": "Invalid Country"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8004,
+                  "RSN": "Invalid Nationality"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8005,
+                  "RSN": "Invalid Broker Cash Account Reference"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8006,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 7": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8007,
+                  "RSN": "Investor Exchange"
+                }
+              },
+              "Unsuccess Response 8": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8008,
+                  "RSN": "Invalid Country Code"
+                }
+              },
+              "Unsuccess Response 9": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8009,
+                  "RSN": "Invalid Exchange Account Type"
+                }
+              },
+              "Unsuccess Response 10": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8010,
+                  "RSN": "Invalid Commission Type"
+                }
+              },
+              "Unsuccess Response 11": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8011,
+                  "RSN": "Investor No or Exchange Account Already Exist"
+                }
+              },
+              "Unsuccess Response 12": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8012,
+                  "RSN": "System Error"
+                }
+              },
+              "Unsuccess Response 13": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "STS": 0,
+                  "ERR": 8013,
+                  "RSN": "Error Creating the Customer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "IndividualInvestorCPEAdditional": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0o7s1zh38siv9"
+                  },
+                  "description": "Message Id"
+                },
+                "BIRTH_DATE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "mryzyhlccag2r"
+                  },
+                  "pattern": "dd/mm/yyyy"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "6e0xl412pk11q"
+                  },
+                  "description": "Customer Id"
+                },
+                "MAST_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "fltckomwks7bs"
+                  },
+                  "description": "Master Account Number"
+                },
+                "BROKER_REFERENCE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "xd45h3i2on44r"
+                  }
+                },
+                "COUNTRY": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "zm6p42t91z0fb"
+                  }
+                },
+                "NATIONALITY": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "9eqtgw7jbo9yw"
+                  }
+                },
+                "FAMILY_NAME": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "6rmgtdju8yzoe"
+                  }
+                },
+                "PASS_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ikpkcbayc77km"
+                  },
+                  "description": "Passport Number"
+                },
+                "OTHER_NAME": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ft6oe5r9wbi7w"
+                  }
+                },
+                "TKN": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "5iom9dund9yrn"
+                  },
+                  "description": "Token"
+                },
+                "NATIONAL_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "p96htqj4oorh2"
+                  }
+                },
+                "DRIVING_LICENSE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "cbjfwyf9qbyrs"
+                  }
+                },
+                "HM_PHN_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "k6ovqbsxj37x1"
+                  },
+                  "description": "Home Phone Number"
+                },
+                "OFF_TEL_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "nkvffy5ti1w7x"
+                  },
+                  "description": "Office Telephpne Number"
+                },
+                "FAX_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "y6j1vlamahr86"
+                  }
+                },
+                "MOBILE_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "oomsixu8yan18"
+                  }
+                },
+                "EMAIL": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "l6vo8s94sfkka"
+                  }
+                },
+                "PROFESSION": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "dh31qlhptkw6v"
+                  }
+                },
+                "POB": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0fanfy1ov16j3"
+                  }
+                },
+                "ZIP": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "z2rm3nqkohz8n"
+                  }
+                },
+                "ADDRESS_1": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "9bmmii38ltgp1"
+                  }
+                },
+                "ADDRESS_2": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "h9z0dzr8kgi2c"
+                  }
+                },
+                "CITY": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "810liumiui3mk"
+                  }
+                },
+                "GENDER": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "z5mucp5cxa0lf"
+                  }
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "t1bijbf3mphqv"
+                  },
+                  "description": "Security Account Number"
+                },
+                "FULL_AR_NME": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "6e7ssevulc4mv"
+                  },
+                  "description": "Full Arabic Name"
+                },
+                "FULL_AR_ADD": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "zi032r6ufzxia"
+                  },
+                  "description": "Full Arabic Address"
+                },
+                "PWD": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "llj4e49tzdb8e"
+                  },
+                  "description": "Password"
+                },
+                "PWD_HASH": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "u8qifdeofc6yj"
+                  },
+                  "description": "Hash Password"
+                },
+                "LGN_ALS": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "07zjfq8lyd0dj"
+                  },
+                  "description": "Login Alias"
+                },
+                "SSO_ALS": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "c7cbs2tu1awf1"
+                  },
+                  "description": "SSO Alias"
+                },
+                "CUS_PRF_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "qbnaub5uegu9i"
+                  },
+                  "description": "Customer Profile Id"
+                },
+                "IQAMA_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "lavi22b5rb0p5"
+                  }
+                },
+                "CUS_GRPS": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "fund2skcypi2r"
+                  },
+                  "description": "Customer Groups",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "z8vjujvvvqr9h"
+                    },
+                    "type": "string"
+                  }
+                },
+                "NATIONAL_ID_EXP_DTE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "n2v5ywhpdseeu"
+                  },
+                  "description": "Passport Expiry Date"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "BIRTH_DATE",
+                "CUS_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "95888",
+                  "CUS_ID": "951248752",
+                  "BROKER_REFERENCE": "7770000001",
+                  "COUNTRY": "SL",
+                  "NATIONALITY": "SL",
+                  "BROKER_PTF_REF": "7783237",
+                  "BROKER_CASH_ACC_REF": "82774567",
+                  "EXG_INV_ID": "4632225",
+                  "CURR": "AED",
+                  "EXG_OR_CT_CODE": 0,
+                  "EXG": "DFM",
+                  "EXG_ACC_TPE": 0,
+                  "COMM_TPE": 0,
+                  "GENDER": "1"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

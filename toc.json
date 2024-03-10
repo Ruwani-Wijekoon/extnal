@@ -28,6 +28,11 @@
           "type": "item",
           "title": "Create Individual Investor Account with Cash, Portfolio and Exchange Accounts",
           "uri": "api/createIndividualInvestorCPEAccount.json"
+        },
+        {
+          "type": "item",
+          "title": "Create Individual Investor CPE Additional Account",
+          "uri": "api/createIndividualInvestorCPEAccountAdditional.json"
         }
       ]
     },
