@@ -1,0 +1,807 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get combined portfolio, symbols and sukuk details",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/combined-portfolio-symbols-sukuk-details": {
+      "post": {
+        "summary": "Get combined portfolio, symbols and sukuk details",
+        "operationId": "post-client-services-combined-portfolio-symbols-sukuk-details",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CombinedPortfolioSymbolsSukukDetailsResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authentication",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CombinedPortfolioDetailsRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CombinedPortfolioSymbolsSukukDetailsResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ketpltkvqu1y7"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "60eeo7u483bm6"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "n0qi3deunziu4"
+                      },
+                      "description": "Error Code"
+                    },
+                    "ACC_DTLS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "62ljkkj7v556a"
+                      },
+                      "description": "Account Details",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "7llmdlxb11rax"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "TOT_PF_DTLS": {
+                            "type": "object",
+                            "x-stoplight": {
+                              "id": "lca5s57e9ccke"
+                            },
+                            "description": "Total Portfolio Details",
+                            "properties": {
+                              "SEC_ACC_NUM": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "apun4hzbzgp5u"
+                                },
+                                "description": "Security Account Number"
+                              },
+                              "CURR": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "0x37k2217r9f7"
+                                },
+                                "description": "Currency"
+                              },
+                              "UNRLZD_GL": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "lkfie63j0s39g"
+                                },
+                                "description": "Unrialized Gain Loss"
+                              },
+                              "TOT_PF_VAL": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "toxommab9mzdh"
+                                },
+                                "description": "Total Portfolio Value"
+                              },
+                              "TOT_PF_COST": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "3vfelr94lg7hj"
+                                },
+                                "description": "Total Portfolio Cost"
+                              },
+                              "WTHDRW_CSH_AMNT": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "f66r4zcpjkpmd"
+                                },
+                                "description": "Withdraw Cash Amount"
+                              },
+                              "BY_POW": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "yeneis4f49ohz"
+                                },
+                                "description": "Buying Power"
+                              },
+                              "MKT_VAL": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "afphtmwmaoor6"
+                                },
+                                "description": "Market Value"
+                              }
+                            }
+                          },
+                          "SYM_DTLS_LST": {
+                            "type": "array",
+                            "x-stoplight": {
+                              "id": "0xg9g3berpuvs"
+                            },
+                            "description": "Symbol Detail List",
+                            "items": {
+                              "x-stoplight": {
+                                "id": "xh3qokrn17es2"
+                              },
+                              "type": "object",
+                              "properties": {
+                                "SYM": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "9my8yx8n6sbf0"
+                                  },
+                                  "description": "Symbol"
+                                },
+                                "EXG": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "xglpthghygieu"
+                                  },
+                                  "description": "Exchange"
+                                },
+                                "NET_QTY": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "kph8lts25lnyv"
+                                  },
+                                  "description": "Net Quantity"
+                                },
+                                "BLKD_QTY": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "s730ikezyneoi"
+                                  },
+                                  "description": "Blocked Quantity"
+                                },
+                                "AVG_COST": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "kmdjqh6t8ltxm"
+                                  },
+                                  "description": "Average Cost"
+                                },
+                                "LST_PRC": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "yeubpqxy0bnbo"
+                                  },
+                                  "description": "Last Price"
+                                },
+                                "MKT_VAL": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "mart0mube77o4"
+                                  },
+                                  "description": "Market Value"
+                                },
+                                "UNRLZD_GL": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "85dlshg3s1bz8"
+                                  }
+                                },
+                                "UNRLZD_GL_PCT": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "tpmkorkwv531d"
+                                  },
+                                  "description": "Unrealized Gain Loss Precentage"
+                                }
+                              }
+                            }
+                          },
+                          "SUKUK_DTLS_LST": {
+                            "type": "array",
+                            "x-stoplight": {
+                              "id": "o3raim7ldo7tm"
+                            },
+                            "description": "Sukuk Details List",
+                            "items": {
+                              "x-stoplight": {
+                                "id": "22gz6e1zif6ge"
+                              },
+                              "type": "object",
+                              "properties": {
+                                "SYM": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "au6gyrv6wdsy7"
+                                  },
+                                  "description": "Symbol"
+                                },
+                                "EXG": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "0j9ib8g5y4tum"
+                                  },
+                                  "description": "Exchange"
+                                },
+                                "NET_QTY": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "25trvobdcvvcx"
+                                  },
+                                  "description": "Net Quantity"
+                                },
+                                "BLKD_QTY": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "mkr9ynz7p8sy1"
+                                  },
+                                  "description": "Blocked Quantity"
+                                },
+                                "AVG_COST": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "u37m72v90yagf"
+                                  },
+                                  "description": "Average Cost"
+                                },
+                                "LST_PRC": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "d1cz4hp3ubr84"
+                                  },
+                                  "description": "Last Price"
+                                },
+                                "MKT_VAL": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "fwioqjlg887nz"
+                                  },
+                                  "description": "Market Value"
+                                },
+                                "UNRLZD_GL_PCT": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "tfzqq0u005tgc"
+                                  },
+                                  "description": "Unrealized Gain Loss Precentage"
+                                },
+                                "UNRLZD_GL": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "b6zu7odmbj85i"
+                                  },
+                                  "description": "Unrealized Gain Loss"
+                                },
+                                "COUPON_DAYS": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "j6g8dfq6sypxz"
+                                  },
+                                  "description": "Coupon Days"
+                                },
+                                "COUPON_VAL": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "gj9hqxmg1r3pr"
+                                  },
+                                  "description": "Coupon Values"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "ecjnv5da5hujr"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "qxr6rrw6oucph"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "kvb1346bskcac"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "jnc0ev2330gbq"
+                      },
+                      "description": "Error"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "pv1mdyj3q8bfx"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "ACC_DTLS": [
+                    {
+                      "TOT_PF_DTLS": {
+                        "SEC_ACC_NUM": "P000283705",
+                        "CURR": "USD",
+                        "UNRLZD_GL": -1019950475709.5,
+                        "TOT_PF_VAL": 6000050791336.9,
+                        "TOT_PF_COST": 1020001051048.4,
+                        "WTHDRW_CSH_AMNT": "28028100148.11",
+                        "BY_POW": "28028100148.11",
+                        "MKT_VAL": 50575338.9
+                      },
+                      "SYM_DTLS_LST": [],
+                      "SUKUK_DTLS_LST": [
+                        {
+                          "SYM": "58UT",
+                          "EXG": "BOND",
+                          "NET_QTY": "1.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.01",
+                          "LST_PRC": "75.00",
+                          "MKT_VAL": "75000.00",
+                          "UNRLZD_GL_PCT": "7400.00",
+                          "UNRLZD_GL": "74000.00",
+                          "COUPON_DAYS": "semi annual|2018-01-02 00:00:00,2018-07-02 00:00:00,2019-01-02 00:00:00,2019-07-02 00:00:00,2020-01-02 00:00:00,2020-07-02 00:00:00,2021-01-02 00:00:00,2021-07-02 00:00:00,2022-01-02 00:00:00,2022-07-02 00:00:00,2023-01-02 00:00:00,2023-07-02 00:00:00,2024-01-02 00:00:00,2024-07-02 00:00:00,2025-01-02 00:00:00,2025-07-02 00:00:00,2026-01-02 00:00:00,2026-07-02 00:00:00,2027-01-02 00:00:00,2027-07-02 00:00:00,2028-01-02 00:00:00,2028-07-02 00:00:00,2029-01-02 00:00:00,2029-07-02 00:00:00,2030-01-02 00:00:00,2030-07-02 00:00:00,2031-01-02 00:00:00,2031-07-02 00:00:00,2032-01-02 00:00:00,2032-07-02 00:00:00,2033-01-02 00:00:00,2033-07-02 00:00:00,2034-01-02 00:00:00,2034-07-02 00:00:00,2035-01-02 00:00:00,2035-07-02 00:00:00,2036-01-02 00:00:00,2036-07-02 00:00:00,2037-01-02 00:00:00,2037-07-02 00:00:00",
+                          "COUPON_VAL": "685000.00"
+                        },
+                        {
+                          "SYM": "USU0029TAA89",
+                          "EXG": "BOND",
+                          "NET_QTY": "Unknown",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "0.00",
+                          "UNRLZD_GL_PCT": "Unknown",
+                          "UNRLZD_GL": "0.00",
+                          "COUPON_DAYS": "null|null",
+                          "COUPON_VAL": "Unknown"
+                        },
+                        {
+                          "SYM": "ANF 1",
+                          "EXG": "BOND",
+                          "NET_QTY": "500000021.59",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.20",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "0.00",
+                          "UNRLZD_GL_PCT": "-100.00",
+                          "UNRLZD_GL": "-1000000043199.60",
+                          "COUPON_DAYS": "semi annual|null",
+                          "COUPON_VAL": "5000000215998.00"
+                        },
+                        {
+                          "SYM": "US595112BQ52",
+                          "EXG": "BOND",
+                          "NET_QTY": "10.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.70",
+                          "LST_PRC": "94.28",
+                          "MKT_VAL": "9428.90",
+                          "UNRLZD_GL_PCT": "34.14",
+                          "UNRLZD_GL": "2400.10",
+                          "COUPON_DAYS": "semi annual|2024-07-12 00:00:00,2020-01-12 00:00:00,2020-07-12 00:00:00,2021-01-12 00:00:00,2021-07-12 00:00:00,2022-01-12 00:00:00,2022-07-12 00:00:00,2023-01-12 00:00:00,2023-07-12 00:00:00,2024-01-12 00:00:00,2025-01-12 00:00:00,2025-07-12 00:00:00,2026-01-12 00:00:00,2026-07-12 00:00:00,2027-01-12 00:00:00,2027-07-12 00:00:00,2028-01-12 00:00:00,2028-07-12 00:00:00,2029-01-12 00:00:00,2029-07-12 00:00:00,2030-01-12 00:00:00,2030-07-12 00:00:00",
+                          "COUPON_VAL": "46630.00"
+                        },
+                        {
+                          "SYM": "DP WORLD PLC 6.85 2037",
+                          "EXG": "BOND",
+                          "NET_QTY": "100000000.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.02",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "0.00",
+                          "UNRLZD_GL_PCT": "-100.00",
+                          "UNRLZD_GL": "-20000000000.00",
+                          "COUPON_DAYS": "semi annual|2012-12-29 00:00:00,2014-06-29 00:00:00,2015-06-29 00:00:00,2016-06-29 00:00:00,2017-06-29 00:00:00,2018-06-29 00:00:00,2019-06-29 00:00:00,2020-06-29 00:00:00,2021-06-29 00:00:00,2022-06-29 00:00:00,2013-06-29 00:00:00,2014-12-29 00:00:00,2015-12-29 00:00:00,2016-12-29 00:00:00,2017-12-29 00:00:00,2018-12-29 00:00:00,2019-12-29 00:00:00,2020-12-29 00:00:00,2021-12-29 00:00:00,2022-12-29 00:00:00,2023-06-29 00:00:00,2023-12-29 00:00:00,2024-06-29 00:00:00,2024-12-29 00:00:00,2025-06-29 00:00:00,2025-12-29 00:00:00,2026-06-29 00:00:00,2026-12-29 00:00:00,2027-06-29 00:00:00,2027-12-29 00:00:00,2028-06-29 00:00:00,2028-12-29 00:00:00,2029-06-29 00:00:00,2029-12-29 00:00:00,2030-06-29 00:00:00,2013-12-29 00:00:00",
+                          "COUPON_VAL": "6850000000000.00"
+                        },
+                        {
+                          "SYM": "TESCO PLC 6.15 2037",
+                          "EXG": "BOND",
+                          "NET_QTY": "49991.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.02",
+                          "LST_PRC": "101.00",
+                          "MKT_VAL": "50490910.00",
+                          "UNRLZD_GL_PCT": "4950.00",
+                          "UNRLZD_GL": "49491090.00",
+                          "COUPON_DAYS": "semi annual|2011-01-01 00:00:00,2011-07-01 00:00:00,2012-01-01 00:00:00,2012-07-01 00:00:00,2013-01-01 00:00:00,2013-07-01 00:00:00,2014-01-01 00:00:00,2014-07-01 00:00:00,2015-01-01 00:00:00,2015-07-01 00:00:00,2016-01-01 00:00:00,2016-07-01 00:00:00,2017-01-01 00:00:00,2017-07-01 00:00:00,2018-01-01 00:00:00,2018-07-01 00:00:00,2019-01-01 00:00:00,2019-07-01 00:00:00,2020-01-01 00:00:00,2020-07-01 00:00:00,2021-01-01 00:00:00,2021-07-01 00:00:00,2022-01-01 00:00:00,2022-07-01 00:00:00,2023-01-01 00:00:00,2023-07-01 00:00:00,2024-01-01 00:00:00",
+                          "COUPON_VAL": "124977500.00"
+                        }
+                      ]
+                    },
+                    {
+                      "TOT_PF_DTLS": {
+                        "SEC_ACC_NUM": "P000284380",
+                        "CURR": "USD",
+                        "UNRLZD_GL": 44888616,
+                        "TOT_PF_VAL": 44888616,
+                        "TOT_PF_COST": 0,
+                        "WTHDRW_CSH_AMNT": "28028100148.11",
+                        "BY_POW": "28028100148.11",
+                        "MKT_VAL": 44888616
+                      },
+                      "SYM_DTLS_LST": [
+                        {
+                          "SYM": "AAL",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "2805600.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "15.99",
+                          "MKT_VAL": "44861544.00",
+                          "UNRLZD_GL": "44861544.00",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        },
+                        {
+                          "SYM": "AABC",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "230400.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "0.11",
+                          "MKT_VAL": "27072.00",
+                          "UNRLZD_GL": "27072.00",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        },
+                        {
+                          "SYM": "AAALF",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "769824000.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "Unknown",
+                          "UNRLZD_GL": "Unknown",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        },
+                        {
+                          "SYM": "AACC",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "115200.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "Unknown",
+                          "UNRLZD_GL": "Unknown",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        }
+                      ],
+                      "SUKUK_DTLS_LST": []
+                    },
+                    {
+                      "TOT_PF_DTLS": {
+                        "SEC_ACC_NUM": "P000284262",
+                        "CURR": "USD",
+                        "UNRLZD_GL": 474383112,
+                        "TOT_PF_VAL": 475086831.7,
+                        "TOT_PF_COST": 603719.7,
+                        "WTHDRW_CSH_AMNT": "28028100148.11",
+                        "BY_POW": "28028100148.11",
+                        "MKT_VAL": 474986831.7
+                      },
+                      "SYM_DTLS_LST": [
+                        {
+                          "SYM": "AAPC",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "600.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "Unknown",
+                          "UNRLZD_GL": "Unknown",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        },
+                        {
+                          "SYM": "AAL",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "29631175.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "15.99",
+                          "MKT_VAL": "473802488.25",
+                          "UNRLZD_GL": "473802488.25",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        },
+                        {
+                          "SYM": "AACC",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "1843200.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "Unknown",
+                          "UNRLZD_GL": "Unknown",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        },
+                        {
+                          "SYM": "EYEG",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "1000.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "90.33",
+                          "LST_PRC": "35.77",
+                          "MKT_VAL": "35779.70",
+                          "UNRLZD_GL": "-54558.20",
+                          "UNRLZD_GL_PCT": "-60.39"
+                        },
+                        {
+                          "SYM": "AAPL",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "4000.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "128.09",
+                          "LST_PRC": "178.85",
+                          "MKT_VAL": "715400.00",
+                          "UNRLZD_GL": "203018.20",
+                          "UNRLZD_GL_PCT": "39.62"
+                        },
+                        {
+                          "SYM": "AABC",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "3686500.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "0.11",
+                          "MKT_VAL": "433163.75",
+                          "UNRLZD_GL": "433163.75",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        },
+                        {
+                          "SYM": "AAALF",
+                          "EXG": "NSDQ",
+                          "NET_QTY": "20528640000.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "Unknown",
+                          "UNRLZD_GL": "Unknown",
+                          "UNRLZD_GL_PCT": "Unknown"
+                        }
+                      ],
+                      "SUKUK_DTLS_LST": [
+                        {
+                          "SYM": "ANF 1",
+                          "EXG": "BOND",
+                          "NET_QTY": "0.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.00",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "0.00",
+                          "UNRLZD_GL_PCT": "Unknown",
+                          "UNRLZD_GL": "0.00",
+                          "COUPON_DAYS": "semi annual|null",
+                          "COUPON_VAL": "0.00"
+                        },
+                        {
+                          "SYM": "APPALQA",
+                          "EXG": "BOND",
+                          "NET_QTY": "100.00",
+                          "BLKD_QTY": "0.00",
+                          "AVG_COST": "0.01",
+                          "LST_PRC": "Unknown",
+                          "MKT_VAL": "0.00",
+                          "UNRLZD_GL_PCT": "-100.00",
+                          "UNRLZD_GL": "-1000.00",
+                          "COUPON_DAYS": "monthly|2016-03-01 00:00:00,2016-04-01 00:00:00,2016-05-01 00:00:00,2016-06-01 00:00:00,2016-07-01 00:00:00,2016-08-01 00:00:00,2016-09-01 00:00:00,2016-10-01 00:00:00,2016-11-01 00:00:00,2016-02-01 00:00:00,2016-12-01 00:00:00,2017-01-01 00:00:00,2017-02-01 00:00:00,2017-03-01 00:00:00,2017-04-01 00:00:00,2017-05-01 00:00:00,2017-06-01 00:00:00,2017-07-01 00:00:00,2017-08-01 00:00:00,2017-09-01 00:00:00,2017-10-01 00:00:00,2017-11-01 00:00:00,2017-12-01 00:00:00,2018-01-01 00:00:00,2018-02-01 00:00:00,2018-03-01 00:00:00,2018-04-01 00:00:00,2018-05-01 00:00:00,2018-06-01 00:00:00,2018-07-01 00:00:00,2018-08-01 00:00:00,2018-09-01 00:00:00,2018-10-01 00:00:00,2018-11-01 00:00:00,2018-12-01 00:00:00,2019-01-01 00:00:00,2019-02-01 00:00:00,2019-03-01 00:00:00,2019-04-01 00:00:00,2019-05-01 00:00:00,2019-06-01 00:00:00,2019-07-01 00:00:00,2019-08-01 00:00:00,2019-09-01 00:00:00,2019-10-01 00:00:00,2019-11-01 00:00:00,2019-12-01 00:00:00,2020-01-01 00:00:00,2020-02-01 00:00:00,2020-03-01 00:00:00,2020-04-01 00:00:00,2020-05-01 00:00:00,2020-06-01 00:00:00,2020-07-01 00:00:00,2020-08-01 00:00:00,2020-09-01 00:00:00,2020-10-01 00:00:00,2020-11-01 00:00:00,2020-12-01 00:00:00,2021-01-01 00:00:00,2021-02-01 00:00:00,2021-03-01 00:00:00,2021-04-01 00:00:00,2021-05-01 00:00:00,2021-06-01 00:00:00,2021-07-01 00:00:00,2021-08-01 00:00:00,2021-09-01 00:00:00,2021-10-01 00:00:00,2021-11-01 00:00:00,2021-12-01 00:00:00,2022-01-01 00:00:00,2022-02-01 00:00:00,2022-03-01 00:00:00,2022-04-01 00:00:00,2022-05-01 00:00:00,2022-06-01 00:00:00,2022-07-01 00:00:00,2022-08-01 00:00:00,2022-09-01 00:00:00,2022-10-01 00:00:00,2022-11-01 00:00:00,2022-12-01 00:00:00,2023-01-01 00:00:00,2023-02-01 00:00:00,2023-03-01 00:00:00,2023-04-01 00:00:00,2023-05-01 00:00:00,2023-06-01 00:00:00,2023-07-01 00:00:00,2023-08-01 00:00:00,2023-09-01 00:00:00,2023-10-01 00:00:00,2023-11-01 00:00:00,2023-12-01 00:00:00,2024-01-01 00:00:00",
+                          "COUPON_VAL": "450000.00"
+                        }
+                      ]
+                    }
+                  ],
+                  "MSG_ID": "9087662",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62001,
+                  "RSN": "Invalid Customer Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62002,
+                  "RSN": "Invalid Customer External Ref"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62003,
+                  "RSN": "Multiple accounts found with the same external reference number"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62004,
+                  "RSN": "Error when getting total portfolio, symbols and sukuk details"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62005,
+                  "RSN": "Error when getting total portfolio, symbols and sukuk details"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62006,
+                  "RSN": "All parameters invalid"
+                }
+              },
+              "Unsuccess Response 7": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62007,
+                  "RSN": "Error occurred when getting data"
+                }
+              },
+              "Unsuccess Response 8": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "STS": 0,
+                  "ERR": 62008,
+                  "RSN": "Error in getting portfolio, symbols and sukuk details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CombinedPortfolioDetailsRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "kx9ggg3xy6d9j"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ja89eof5i1ld6"
+                  },
+                  "description": "Customer Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "kl1rqtjjvcsg3"
+                  },
+                  "description": "External Reference Number"
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ph7mvwzxbixpw"
+                  },
+                  "description": "Security Account Number"
+                }
+              },
+              "required": [
+                "MSG_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "9087662",
+                  "CUS_ID": "ASI722967882"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -195,6 +195,11 @@
           "type": "item",
           "title": "Get FX rate",
           "uri": "api/fxRate.json"
+        },
+        {
+          "type": "item",
+          "title": "Get combined portfolio, symbols and sukuk details",
+          "uri": "api/sukukDetails.json"
         }
       ]
     },
