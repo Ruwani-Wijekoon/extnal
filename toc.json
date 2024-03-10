@@ -50,6 +50,11 @@
           "type": "item",
           "title": "Create Portfolio Account",
           "uri": "api/createSecurityAccount.json"
+        },
+        {
+          "type": "item",
+          "title": "Get all portfolio by customer No",
+          "uri": "api/allPortfolios.json"
         }
       ]
     },

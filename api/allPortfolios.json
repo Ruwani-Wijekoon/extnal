@@ -1,0 +1,345 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get all portfolio by customer No",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/all-portfolios": {
+      "post": {
+        "summary": "Get all portfolio by customer No",
+        "operationId": "post-client-services-all-portfolios",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/HoldingAssertResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/HoldingAssertRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "HoldingAssertResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "yrcqknm9nnyba"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "4nwbrrbgikm5s"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "fjaso30owqocu"
+                      },
+                      "description": "Error"
+                    },
+                    "HOLD_LST": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "p39tlzxb4f0d1"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "slhzmuek6hqos"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "EXG": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "12nhp57zrg0lq"
+                            },
+                            "description": "Exchange"
+                          },
+                          "SYM": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "jvdlhouccyi53"
+                            },
+                            "description": "Symbol"
+                          },
+                          "ISIN_CODE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "km1kjjr4e6a0f"
+                            }
+                          },
+                          "AVG_COST": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "dwp20qr4wqe4e"
+                            },
+                            "description": "Average Cost"
+                          },
+                          "TRD_CURR": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "ytyhyapq8ghgw"
+                            },
+                            "description": "Trade Currency"
+                          },
+                          "NET_HLDGS": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "8qawm8j9yg0ea"
+                            },
+                            "description": "Net Holdings"
+                          },
+                          "BUY_PNDGS": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "yy0e3o1exoadh"
+                            },
+                            "description": "Buy Pendings"
+                          },
+                          "SELL_PNDGS": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "mu591t30a5is7"
+                            },
+                            "description": "Sell Pendings"
+                          },
+                          "BLKD_AMOUNT": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "96riw0btjo97f"
+                            },
+                            "description": "Blocked Amount"
+                          },
+                          "MKT_VAL": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "vk12nlgjp28s1"
+                            },
+                            "description": "Market Value"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "9in1ltp2i4w8u"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "7m2z6bn6643l6"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ujwmambqasfw4"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "eb5s8ezswxpzd"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "346o1wme5ivuw"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "1299985",
+                  "STS": 1,
+                  "ERR": 0,
+                  "HOLD_LST": [
+                    {
+                      "EXG": "NSDQ",
+                      "SYM": "AABA",
+                      "ISIN_CODE": "US0213461017",
+                      "CURR": "USD",
+                      "SEC_ACC_NUM": "P000603305",
+                      "AVG_COST": 39.33266015,
+                      "NET_HLDGS": 2000,
+                      "BUY_PNDGS": 0,
+                      "SELL_PNDGS": 0,
+                      "BLKD_QTY": 0,
+                      "MKT_VAL": 39260,
+                      "TRD_CURR": "USD"
+                    }
+                  ]
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "1299985",
+                  "STS": 0,
+                  "ERR": 46001,
+                  "RSN": "Invalid Customer Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "1299985",
+                  "STS": 0,
+                  "ERR": 46002,
+                  "RSN": "Invalid Customer Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "1299985",
+                  "STS": 0,
+                  "ERR": 46003,
+                  "RSN": "Error occurred while getting all holdings data from the database"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "1299985",
+                  "STS": 0,
+                  "ERR": 46004,
+                  "RSN": "Error occurred when retrieving the holdings details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "HoldingAssertRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45wtjhk6q4j2m"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "30ibkxbtboxkc"
+                  },
+                  "description": "Customer Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "vx4q0f37eqgww"
+                  },
+                  "description": "External Reference Number"
+                }
+              },
+              "required": [
+                "MSG_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "1299985",
+                  "CUS_ID": "ASI831674356"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
