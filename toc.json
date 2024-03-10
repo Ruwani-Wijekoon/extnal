@@ -160,6 +160,11 @@
           "type": "item",
           "title": "Get All Cash Balances For a Date",
           "uri": "api/cashBalances.json"
+        },
+        {
+          "type": "item",
+          "title": "Add Pledge Request",
+          "uri": "api/addPledge.json"
         }
       ]
     },
