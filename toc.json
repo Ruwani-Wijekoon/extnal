@@ -112,7 +112,7 @@
         {
           "type": "item",
           "title": "Deposit Request",
-          "uri": "/depositRequest.json"
+          "uri": "api/depositRequest.json"
         },
         {
           "type": "item",

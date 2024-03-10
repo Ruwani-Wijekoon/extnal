@@ -1,0 +1,323 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Deposit Request",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/deposit": {
+      "post": {
+        "summary": "Deposit Request",
+        "operationId": "post-client-services-deposit",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CashDepositResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/DepositRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CashDepositResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "CSH_LG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9hrcu4tkeexsw"
+                      },
+                      "description": "Cash Log Id"
+                    },
+                    "BAL": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "nopeelvfoo7v3"
+                      },
+                      "description": "Balance"
+                    },
+                    "TRANS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "u8o1gdfmvxqf4"
+                      },
+                      "description": "Transaction Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "basse045c4shu"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "2ysqtfooqmc9m"
+                      },
+                      "description": "Error Code"
+                    },
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6cfnz66tk1g93"
+                      },
+                      "description": "Message Id"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "ykp3efoiqvllq"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6tm2q40lzkw5z"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "s4e2pfclhxhjj"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "bwppmw4xkf6ob"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "7je3mpuyhytm6"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "CSH_LG_ID": "1707796427366",
+                  "BAL": "1000.0",
+                  "TRANS_ID": "1707796427362",
+                  "MSG_ID": "96001",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 10006,
+                  "RSN": "System Error"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 10001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 10002,
+                  "RSN": "Invalid Cash Account Number"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 10003,
+                  "RSN": "Invalid Broker Cash Account Reference"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 10004,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 10005,
+                  "RSN": "Invalid Deposit Amount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "DepositRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "951ri4oakeebt"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "hzd0vsk6bz3n5"
+                  },
+                  "description": "Customer Id"
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tkepjms2lgk6l"
+                  },
+                  "description": "Cash Account"
+                },
+                "BROKER_CASH_ACC_REF": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "vlln66t8wzizf"
+                  },
+                  "description": "Broker Cash Account Reference"
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "2nupqv2fxyxml"
+                  },
+                  "description": "Currency"
+                },
+                "AMOUNT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "30i1qd3j2vql6"
+                  },
+                  "default": 0
+                },
+                "NARR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "znzq2habnqsyp"
+                  },
+                  "description": "Narration"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CUS_ID",
+                "CSH_ACC",
+                "BROKER_CASH_ACC_REF",
+                "CURR",
+                "AMOUNT"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "99945",
+                  "CUS_ID": "951248752",
+                  "CSH_ACC": "C004088040",
+                  "BROKER_CASH_ACC_REF": "193489991",
+                  "CURR": "USD",
+                  "AMOUNT": 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
