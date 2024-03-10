@@ -1,0 +1,213 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create bank account for customer",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/create-bank-account": {
+      "post": {
+        "summary": "Create bank account for customer",
+        "operationId": "post-client-services-create-bank-account",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateBankAccountResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/BankAccountRequest"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateBankAccountResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "BNK_ACC_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "aezvkaeh0yp2c"
+                  },
+                  "description": "Bank Account Id"
+                },
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "6wcbes32c60mz"
+                  },
+                  "description": "Status"
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "cp8jxn2hl4spu"
+                  },
+                  "description": "Error"
+                },
+                "RSN": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "lpjdqpfzmvaxx"
+                  },
+                  "description": "Reason"
+                },
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7o8tswiabtzmj"
+                  },
+                  "description": "Message Id"
+                }
+              }
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "6960030",
+                  "BNK_ACC_ID": "11648.0",
+                  "STS": 1,
+                  "RSN": "Customer bank account created successfully",
+                  "ERR": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "BankAccountRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "hhd2ulllxmns4"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tbux9eyfrhmoy"
+                  },
+                  "description": "Customer Id"
+                },
+                "BANK_NM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "qaqh709ggpmqs"
+                  },
+                  "description": "Bank Name"
+                },
+                "ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "yh9hvd2zwcofa"
+                  },
+                  "description": "Account Number"
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "bjjf19wl3awtd"
+                  },
+                  "description": "Currency"
+                },
+                "IBAN_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "w9gbk0u7o62lk"
+                  },
+                  "description": "IBAN Number"
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "49445",
+                  "CUS_ID": "951248752",
+                  "BNK_NM": "HSBC BANK",
+                  "ACC_NUM": "123456",
+                  "CURR": "USD",
+                  "IBAN_NUM": "1234"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

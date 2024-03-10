@@ -71,7 +71,7 @@
         {
           "type": "item",
           "title": "Create Bank Account For Customer",
-          "uri": "/createBankAccountForCustomer.json"
+          "uri": "api/createBankAccount.json"
         },
         {
           "type": "item",
