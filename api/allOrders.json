@@ -1,0 +1,580 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get all order data for a date",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/all-orders": {
+      "post": {
+        "summary": "Get all order data for a date",
+        "operationId": "post-client-services-all-orders",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OrdersResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CashBalancesInfoRequest"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OrdersResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "nm2v3xopmw7rk"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "krovdbvha3ruc"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "v2dijduflx64x"
+                      },
+                      "description": "Error Code"
+                    },
+                    "ORDS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "p7kwswtbazh9j"
+                      },
+                      "description": "Orders",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "lvejw9753i3a8"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "CUS_ID": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "96jn1523hctxk"
+                            },
+                            "description": "CustomerId"
+                          },
+                          "CSH_ACC": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "dststna0scthf"
+                            },
+                            "description": "Cash Account"
+                          },
+                          "TOT_BAL": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "s0dscc16bsaos"
+                            },
+                            "description": "Total Balance"
+                          },
+                          "AS_OF_DTE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "9dlsqjjgua40k"
+                            }
+                          },
+                          "EXT_REF_NO": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "asti7jw3tktbr"
+                            },
+                            "description": "External Reference Number"
+                          },
+                          "CURR": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "wuvwhxsv6uexz"
+                            },
+                            "description": "Currency"
+                          },
+                          "BLKD_AMOUNT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "gogzsoqmxznqw"
+                            },
+                            "description": "Blocked Amount"
+                          },
+                          "AVL_AMOUNT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "gksaknhalhk3v"
+                            },
+                            "description": "Available Amount"
+                          },
+                          "UNSTLD_CASH": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "9foy38fr5bzsz"
+                            },
+                            "description": "Unsettled Cash"
+                          },
+                          "PRIM_LMT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "afg7tctmk3jcr"
+                            },
+                            "description": "Primary Limit"
+                          },
+                          "PRIM_LMT_EXP_DTE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "i3eh7emaxrgj4"
+                            },
+                            "description": "Primary Limit Expiry Date"
+                          },
+                          "SEC_LMT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "kviizv2kj1kb5"
+                            },
+                            "description": "Secondary Limit"
+                          },
+                          "SEC_LMT_EXP_DTE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "3j6c89ul96du9"
+                            },
+                            "description": "Secondary Limit Expiry Date"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "jed42z2u2lr2m"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "unc280vuezp1s"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ft41xvwg347fx"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "uwpeirpfx5vj7"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rlacszb4yvyt8"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "ORDS": [
+                    {
+                      "CUS_ID": "ASI878953958",
+                      "SEC_ACC_NUM": "P000294701",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 34,
+                      "SYM": "GOOG",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "2",
+                      "SIDE": 2,
+                      "ORD_QTY": 300,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "1707216675194",
+                      "EXEC_ID": "1707216676409",
+                      "COMM": 928,
+                      "CRTD_DATE": "02/06/2024 10:51:16",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 146.06,
+                      "TRD_ACC_NUM": "34545",
+                      "EXP_TME": "02/06/2024 23:59:59",
+                      "EXG_COMM": 0.5,
+                      "RMT_CL_ORD_ID": 2269108,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2269108,
+                      "ISS_STL_RTE": 0.11111,
+                      "AS_OF_DTE": "02/06/2024",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "02/06/2024 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "MADUSHAN CHANDULA",
+                      "CHANNEL": "DT 6",
+                      "ORD_TYP": "Limit",
+                      "ORD_VAL": 43818,
+                      "NET_SETTLE": 4765.6,
+                      "COST_COMM": 928,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": -928,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P000294701-USD",
+                      "ISIN_CODE": "US02079K1079",
+                      "AVG_PRCE": 146.06,
+                      "EXT_SEC_NUM": ""
+                    },
+                    {
+                      "CUS_ID": "ASI878953958",
+                      "SEC_ACC_NUM": "P000294701",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 34,
+                      "SYM": "GOOG",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "2",
+                      "SIDE": 1,
+                      "ORD_QTY": 500,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "1707216612358",
+                      "EXEC_ID": "1707216613569",
+                      "COMM": 1512.7,
+                      "CRTD_DATE": "02/06/2024 10:50:13",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 146.11,
+                      "TRD_ACC_NUM": "34545",
+                      "EXP_TME": "02/06/2024 23:59:59",
+                      "EXG_COMM": 0.5,
+                      "RMT_CL_ORD_ID": 2269107,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2269107,
+                      "ISS_STL_RTE": 0.75301,
+                      "AS_OF_DTE": "02/06/2024",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "02/06/2024 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "MADUSHAN CHANDULA",
+                      "CHANNEL": "DT 6",
+                      "ORD_TYP": "Limit",
+                      "ORD_VAL": 73055,
+                      "NET_SETTLE": 56150.4,
+                      "COST_COMM": 1512.7,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": -1512.7,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P000294701-USD",
+                      "ISIN_CODE": "US02079K1079",
+                      "AVG_PRCE": 146.11,
+                      "EXT_SEC_NUM": ""
+                    },
+                    {
+                      "CUS_ID": "ASI878953958",
+                      "SEC_ACC_NUM": "P000294701",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "8",
+                      "ORD_CHNL": 34,
+                      "SYM": "GOOG",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "2",
+                      "SIDE": 2,
+                      "ORD_QTY": 100,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "",
+                      "EXEC_ID": "",
+                      "COMM": 0,
+                      "CRTD_DATE": "02/06/2024 10:48:05",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 100,
+                      "TRD_ACC_NUM": "34545",
+                      "EXP_TME": "02/06/2024 23:59:59",
+                      "EXG_COMM": 0,
+                      "RMT_CL_ORD_ID": 2269102,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2269102,
+                      "ISS_STL_RTE": 0,
+                      "AS_OF_DTE": "02/06/2024",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "02/06/2024 00:00:00",
+                      "ORD_RJCT_RSN": "Sell Order Quantity is greater than available holdings and short selling not allowed for the symbol",
+                      "DLR_NME": "MADUSHAN CHANDULA",
+                      "CHANNEL": "DT 6",
+                      "ORD_TYP": "Limit",
+                      "ORD_VAL": 10000,
+                      "NET_SETTLE": 0,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P000294701-USD",
+                      "ISIN_CODE": "US02079K1079",
+                      "AVG_PRCE": 0,
+                      "EXT_SEC_NUM": ""
+                    },
+                    {
+                      "CUS_ID": "ASI878953958",
+                      "SEC_ACC_NUM": "P000294701",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 34,
+                      "SYM": "MSFT",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "2",
+                      "SIDE": 1,
+                      "ORD_QTY": 200,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "1707216315707",
+                      "EXEC_ID": "1707216316906",
+                      "COMM": 410,
+                      "CRTD_DATE": "02/06/2024 10:45:16",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 100,
+                      "TRD_ACC_NUM": "34545",
+                      "EXP_TME": "02/06/2024 23:59:59",
+                      "EXG_COMM": 0.1,
+                      "RMT_CL_ORD_ID": 2269097,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2269097,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "02/06/2024",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "02/06/2024 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "MADUSHAN CHANDULA",
+                      "CHANNEL": "DT 6",
+                      "ORD_TYP": "Limit",
+                      "ORD_VAL": 20000,
+                      "NET_SETTLE": 20410,
+                      "COST_COMM": 410,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": -410,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P000294701-USD",
+                      "ISIN_CODE": "US5949181045",
+                      "AVG_PRCE": 100,
+                      "EXT_SEC_NUM": ""
+                    },
+                    {
+                      "CUS_ID": "ASI878953958",
+                      "SEC_ACC_NUM": "P000294701",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 34,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "2",
+                      "SIDE": 1,
+                      "ORD_QTY": 100,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "1707216164040",
+                      "EXEC_ID": "1707216165236",
+                      "COMM": 210,
+                      "CRTD_DATE": "02/06/2024 10:42:44",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 100,
+                      "TRD_ACC_NUM": "34545",
+                      "EXP_TME": "02/06/2024 23:59:59",
+                      "EXG_COMM": 0.1,
+                      "RMT_CL_ORD_ID": 2269095,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2269095,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "02/06/2024",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "02/06/2024 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "MADUSHAN CHANDULA",
+                      "CHANNEL": "DT 6",
+                      "ORD_TYP": "Limit",
+                      "ORD_VAL": 10000,
+                      "NET_SETTLE": 10710,
+                      "COST_COMM": 210,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": -210,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P000294701-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 100,
+                      "EXT_SEC_NUM": ""
+                    }
+                  ],
+                  "STS": 1,
+                  "ERR": 0,
+                  "MSG_ID": "900029"
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "90008",
+                  "STS": 0,
+                  "ERR": 32001,
+                  "RSN": "Error in getting all order data"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "90008",
+                  "STS": 0,
+                  "ERR": 32002,
+                  "RSN": "Invalid Date"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "90008",
+                  "STS": 0,
+                  "ERR": 32003,
+                  "RSN": "Error in getting all order data for a date"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CashBalancesInfoRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "6ay6x1107qpa0"
+                  },
+                  "description": "Message Id"
+                },
+                "DTE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0bzc9l5em8avq"
+                  },
+                  "example": "dd/mm/yyyy",
+                  "description": "Date"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "DTE"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "960032",
+                  "DTE": "26/01/2024"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

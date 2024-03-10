@@ -209,7 +209,7 @@
     {
       "type": "item",
       "title": "Get All Order Data For a Date",
-      "uri": "/getAllOrderDataForGivenDate.json"
+      "uri": "api/allOrders.json"
     },
     {
       "type": "divider",
