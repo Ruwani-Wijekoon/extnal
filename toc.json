@@ -128,6 +128,11 @@
           "type": "item",
           "title": "Get Authentication Status",
           "uri": "api/getAuthStatus.json"
+        },
+        {
+          "type": "item",
+          "title": "Update Cash Account External Reference Number",
+          "uri": "api/updateCashAccountExternalRefNo.json"
         }
       ]
     },

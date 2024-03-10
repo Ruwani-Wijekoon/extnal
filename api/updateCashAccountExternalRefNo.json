@@ -1,0 +1,240 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update Cash Account External Reference Number",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/update-cash-account-ex-ref": {
+      "post": {
+        "summary": "Update Cash Account External Reference Number",
+        "operationId": "post-client-services-update-cash-account-ex-ref",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UpdateCashAccountExtRefResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UpdateCashAccountExtRefRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateCashAccountExtRefResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6t5dqaz43vpeo"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "obdfkpqqpiugy"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "z7646y9oqz7od"
+                      }
+                    },
+                    "CSH_ACC": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "lii3ooogkbqrk"
+                      }
+                    },
+                    "CSH_ACC_EXT_NUM": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "sqt6fa2qtmeis"
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "22kshzifaym1v"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "dr8auvgs3mhek"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "5wgvjec6x0hue"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ficr0zhl1wzuj"
+                      }
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "53jywr4k8jlv1"
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "1235",
+                  "CSH_ACC": "C004088040",
+                  "CSH_ACC_EXT_NUM": "1234",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "1235",
+                  "STS": 0,
+                  "ERR": 39001,
+                  "RSN": "Invalid Cash Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "1235",
+                  "STS": 0,
+                  "ERR": 39002,
+                  "RSN": "Invalid Cash Account External Reference Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "1235",
+                  "STS": 0,
+                  "ERR": 39004,
+                  "RSN": "Error in updating cash account external reference number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "UpdateCashAccountExtRefRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "aev5h5zznge2h"
+                  }
+                },
+                "CASH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "inhy74swa7op7"
+                  }
+                },
+                "CSH_ACC_EXT_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "4jlxnwuwzw57t"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "114445",
+                  "CSH_ACC": "C004088040",
+                  "CSH_ACC_EXT_NUM": "1234"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
