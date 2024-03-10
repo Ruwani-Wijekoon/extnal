@@ -257,6 +257,11 @@
       "uri": "api/markCustomerMargin.json"
     },
     {
+      "type": "item",
+      "title": "Update Customer Margin",
+      "uri": "api/updateCustomerMargin.json"
+    },
+    {
       "type": "divider",
       "title": "Master Data"
     },
