@@ -1,0 +1,287 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Deposit Request With Cash Account No",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/deposit-with-cash-account": {
+      "post": {
+        "summary": "Deposit Request With Cash Account No",
+        "operationId": "post-client-services-deposit-with-cash-account",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/DepositWithCashAccountResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/DepositWithCashAccountBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "DepositWithCashAccountResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "tzdvqbsq2lrts"
+                      },
+                      "description": "Message Id"
+                    },
+                    "ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "cieoo54wu56ne"
+                      },
+                      "description": "Id"
+                    },
+                    "BAL": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "pliedk35z0qzb"
+                      },
+                      "description": "Balance"
+                    },
+                    "TRANS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ug6we7pvizqhk"
+                      },
+                      "description": "Transaction Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "62l0cin3bqy1x"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "sccfpscv1zrun"
+                      },
+                      "description": "Error"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "1m3m2olc4jts9"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "g92fvciafx2x6"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "f97jp3fg80pqp"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "29ux3h6mk5p9r"
+                      },
+                      "description": "Error code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "dzdvyg7ut1kwg"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "90076",
+                  "ID": "1707885195077",
+                  "BAL": "2700.0",
+                  "TRANS_ID": "1707885195063",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "90076",
+                  "STS": 0,
+                  "ERR": 38001,
+                  "RSN": "Invalid Cash Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "90076",
+                  "STS": 0,
+                  "ERR": 38002,
+                  "RSN": "Invalid Deposit Amount"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "90076",
+                  "STS": 0,
+                  "ERR": 38003,
+                  "RSN": "Customer Account Number not found for given Cash Account"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "90076",
+                  "STS": 0,
+                  "ERR": 38004,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "90076",
+                  "STS": 0,
+                  "ERR": 38005,
+                  "RSN": "Error Occurred in deposit cash"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "DepositWithCashAccountBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "rguubwr5uqd0s"
+                  },
+                  "description": "Message Id"
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "wa95bl7j108r6"
+                  },
+                  "description": "Cash Account"
+                },
+                "AMOUNT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "zzcatn1johgmi"
+                  }
+                },
+                "NARR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "w81p1sdgltg3a"
+                  },
+                  "description": "Narration"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CSH_ACC",
+                "AMOUNT"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "90076",
+                  "CSH_ACC": "C003314077",
+                  "AMOUNT": 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

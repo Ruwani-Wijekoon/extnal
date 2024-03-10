@@ -122,7 +122,7 @@
         {
           "type": "item",
           "title": "Deposit Request With Cash Account Number",
-          "uri": "/depositRequestWithCashAccountNumber.json"
+          "uri": "api/depositWithCashAccount.json"
         },
         {
           "type": "item",
