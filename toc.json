@@ -262,6 +262,11 @@
       "uri": "api/updateCustomerMargin.json"
     },
     {
+      "type": "item",
+      "title": "Creating Symbol Marginability Groups",
+      "uri": "api/createSymbolMarginabilityGroup.json"
+    },
+    {
       "type": "divider",
       "title": "Master Data"
     },

@@ -1,0 +1,330 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Creating Symbol Marginability Groups",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/create-symbol-marginability-group": {
+      "post": {
+        "summary": "Creating Symbol Marginability Groups",
+        "operationId": "post-client-services-create-symbol-marginability-group",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateSymbolMarginabilityResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/SymbolMarginabilityGroupRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateSymbolMarginabilityResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "r485vd3f287h2"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ujlpc89jdzvrz"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "38k10u9pq47xw"
+                      },
+                      "description": "Error"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "hnswm41h6r6nl"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "9087652",
+                  "STS": 1,
+                  "RSN": "Successfully added all symbol marginabilities for the groupedb_new",
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "9087652",
+                  "STS": 0,
+                  "RSN": "Invalid Symbol Group Name",
+                  "ERR": 54001
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "9087652",
+                  "STS": 0,
+                  "RSN": "Invalid Symbol Group Name: Non Existing Symbol Group Name",
+                  "ERR": 54002
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "9087652",
+                  "STS": 0,
+                  "RSN": "Invalid Symbol Marginabilities",
+                  "ERR": 54003
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "9087652",
+                  "STS": 0,
+                  "RSN": "None of the symbol marginabilities added for the group",
+                  "ERR": 54004
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "9087652",
+                  "STS": 0,
+                  "RSN": "Error in parameters",
+                  "ERR": 54005
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "9087652",
+                  "STS": 0,
+                  "RSN": "Error occurred when creating symbol marginabilities for the group",
+                  "ERR": 54006
+                }
+              },
+              "Success Response 2": {
+                "value": {
+                  "MSG_ID": "9087654",
+                  "STS": 1,
+                  "RSN": "Successfully added the symbol marginabilities for the group: edb_new. Failed cases: [{\"symbol\":\"Unk\",\"exchange\":\"NSDQ\",\"failedReason\":\"Invalid Exchange,Symbol combination\"}]",
+                  "ERR": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "SymbolMarginabilityGroupRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "simt0jb8nfckk"
+                  },
+                  "description": "Message Id"
+                },
+                "SYM_GRP_NME": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "lachb839iu29k"
+                  },
+                  "description": "Symbol Group Name"
+                },
+                "MARGS": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "wpez9pdv9wfke"
+                  },
+                  "description": "Marginabilities",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "gs2qp2w4hnwc6"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "SYM": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "yjokkv2dh910q"
+                        },
+                        "default": "Unknown",
+                        "description": "Symbol"
+                      },
+                      "EXG": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "658d8r5b1qikh"
+                        },
+                        "description": "Exchange"
+                      },
+                      "OVR_NGT_MAR_PCT": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "q0j6z8htrtp5k"
+                        },
+                        "description": "Over Night Margin Precentage"
+                      },
+                      "DAY_MAR_PCT": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "x5j8kkixxgxdl"
+                        },
+                        "description": "Day Margin Precentage"
+                      },
+                      "DAY_MAR_CALL_PCT": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "1xw8k7ojibfcj"
+                        },
+                        "description": "Day Margin Call Precentage"
+                      },
+                      "DAY_MAR_REM_PCT": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "q19n0fjh67ds0"
+                        },
+                        "description": "Day Margin Remainder Precentage"
+                      },
+                      "DAY_LIQ_PCT": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "om7u7nuzbffff"
+                        },
+                        "description": "Day Liquidation Precentage"
+                      },
+                      "OVR_NGT_MAR_CON_LIM": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "y5ygb9kk6anwo"
+                        },
+                        "description": "Over Night Margin Concentration Limit"
+                      },
+                      "DAY_MAR_CON_LIM": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "yuqmv59ug2eem"
+                        },
+                        "description": "Day Margin Concentration Limit"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "SYM_GRP_NME",
+                "MARGS"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "098212",
+                  "SYM_GRP_NME": "Daman Long IB",
+                  "MARGS": [
+                    {
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "OVR_NGT_MAR_PCT": 5,
+                      "DAY_MAR_PCT": 5,
+                      "DAY_MAR_CALL_PCT": 5,
+                      "DAY_MAR_REM_PCT": 6,
+                      "DAY_LIQ_PCT": 7,
+                      "OVR_NGT_MAR_CON_LIM": 5,
+                      "DAY_MAR_CON_LIM": 5
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
