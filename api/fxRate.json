@@ -1,0 +1,297 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get FX rate",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/fx-rate": {
+      "post": {
+        "summary": "Get FX rate",
+        "operationId": "post-client-services-fx-rate",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/FXRateResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/FxRateBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FXRateResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "msz6fmov64tub"
+                      },
+                      "description": "Message Id"
+                    },
+                    "FX_RTE": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ogazwchvfll8a"
+                      },
+                      "description": "FX Rate"
+                    },
+                    "TO_CURR": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "0ficmy69bwcp8"
+                      },
+                      "description": "To Currency"
+                    },
+                    "AMOUNT": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "iqjoo1lof0wvx"
+                      }
+                    },
+                    "TRANS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "48pnus62n8jcf"
+                      },
+                      "description": "Transaction Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "csm3xzibvztbu"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "39wv788yg82lu"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "uv94dh2xfo53a"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "tdotfgo2f60ty"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "xo19mfd3zdxf7"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "33dhjsqa0siip"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "w8fg7xjbox5fz"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "FX_RTE": "1.328",
+                  "TO_CURR": "AED",
+                  "AMOUNT": "1.328",
+                  "TRANS_ID": "1234",
+                  "MSG_ID": "9087657",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "9087657",
+                  "STS": 0,
+                  "ERR": 58001,
+                  "RSN": "Invalid [parameter]"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "9087657",
+                  "STS": 0,
+                  "ERR": 58002,
+                  "RSN": "Error getting FX rate"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "9087657",
+                  "STS": 0,
+                  "ERR": 58003,
+                  "RSN": "Error when validating request"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "9087657",
+                  "STS": 0,
+                  "ERR": 58004,
+                  "RSN": "Error in getting FX rate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "FxRateBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "a4ckp6dfpy1tg"
+                  },
+                  "description": "Message Id"
+                },
+                "FROM_CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "xutgx9u95unm7"
+                  },
+                  "description": "From Currecy"
+                },
+                "TO_CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "5nyqymguvsslq"
+                  },
+                  "description": "To Currency"
+                },
+                "AMOUNT": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "i5rg2mthzeb6j"
+                  }
+                },
+                "TRANS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "13t7b3g0ko0oj"
+                  },
+                  "description": "Transaction Id"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "FROM_CURR",
+                "TO_CURR",
+                "AMOUNT",
+                "TRANS_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "9087657",
+                  "FROM_CURR": "USD",
+                  "TO_CURR": "AED",
+                  "AMOUNT": "100",
+                  "TRANS_ID": "1234"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -185,6 +185,11 @@
           "type": "item",
           "title": "Get balance all currency by customer No",
           "uri": "api/allCurrencyBalance.json"
+        },
+        {
+          "type": "item",
+          "title": "Get FX rate",
+          "uri": "api/fxRate.json"
         }
       ]
     },

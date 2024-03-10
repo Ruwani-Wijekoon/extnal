@@ -204,33 +204,33 @@
                 "MSG_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "simt0jb8nfckk"
+                    "id": "simt0jb8nfcakk"
                   },
                   "description": "Message Id"
                 },
                 "SYM_GRP_NME": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "lachb839iu29k"
+                    "id": "lachb839iua29k"
                   },
                   "description": "Symbol Group Name"
                 },
                 "MARGS": {
                   "type": "array",
                   "x-stoplight": {
-                    "id": "wpez9pdv9wfke"
+                    "id": "wpez9pdv9wafke"
                   },
                   "description": "Marginabilities",
                   "items": {
                     "x-stoplight": {
-                      "id": "gs2qp2w4hnwc6"
+                      "id": "gs2qp2w4ahnwc6"
                     },
                     "type": "object",
                     "properties": {
                       "SYM": {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "yjokkv2dh910q"
+                          "id": "yjokkva2dh910q"
                         },
                         "default": "Unknown",
                         "description": "Symbol"
@@ -238,56 +238,56 @@
                       "EXG": {
                         "type": "string",
                         "x-stoplight": {
-                          "id": "658d8r5b1qikh"
+                          "id": "658d8ra5b1qikh"
                         },
                         "description": "Exchange"
                       },
                       "OVR_NGT_MAR_PCT": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "q0j6z8htrtp5k"
+                          "id": "q0j6za8htrtp5k"
                         },
                         "description": "Over Night Margin Precentage"
                       },
                       "DAY_MAR_PCT": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "x5j8kkixxgxdl"
+                          "id": "x5j8kakixxgxdl"
                         },
                         "description": "Day Margin Precentage"
                       },
                       "DAY_MAR_CALL_PCT": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "1xw8k7ojibfcj"
+                          "id": "1xw8k7aojibfcj"
                         },
                         "description": "Day Margin Call Precentage"
                       },
                       "DAY_MAR_REM_PCT": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "q19n0fjh67ds0"
+                          "id": "q19n0fajh67ds0"
                         },
                         "description": "Day Margin Remainder Precentage"
                       },
                       "DAY_LIQ_PCT": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "om7u7nuzbffff"
+                          "id": "om7u7nauzbffff"
                         },
                         "description": "Day Liquidation Precentage"
                       },
                       "OVR_NGT_MAR_CON_LIM": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "y5ygb9kk6anwo"
+                          "id": "y5ygb9kak6anwo"
                         },
                         "description": "Over Night Margin Concentration Limit"
                       },
                       "DAY_MAR_CON_LIM": {
                         "type": "number",
                         "x-stoplight": {
-                          "id": "yuqmv59ug2eem"
+                          "id": "yuqmv59aug2eem"
                         },
                         "description": "Day Margin Concentration Limit"
                       }
