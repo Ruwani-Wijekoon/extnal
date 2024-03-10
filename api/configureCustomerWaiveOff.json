@@ -1,0 +1,286 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Configure Customer Waive Off Subscription Fee",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/configure-customer-waive-off-subscription-fee": {
+      "post": {
+        "summary": "Configure Customer Waive Off Subscription Fee",
+        "operationId": "post-client-services-configure-customer-waive-off-subscription-fee",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SubscriptionWaiveOffFeeConfigResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/SubscriptionWaiveOffFeeConfigBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "SubscriptionWaiveOffFeeConfigResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "mr3eotyqp255j"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "xy0a89eu61i4c"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "v7d6vr87q8vq1"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "mnumq5agiieox"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kqbne7iq0s7oh"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "uq9xq46gu0e3o"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ub1rd0auk3cel"
+                      }
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kyvvz1vivmr6j"
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response ": {
+                "value": {
+                  "MSG_ID": "908767",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "908767",
+                  "STS": 0,
+                  "RSN": "Invalid customer number or external reference number",
+                  "ERR": 40001
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "908767",
+                  "STS": 0,
+                  "RSN": "Invalid subscription waive off status",
+                  "ERR": 40002
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "908767",
+                  "STS": 0,
+                  "RSN": "Invalid subscription waive off validity period",
+                  "ERR": 40003
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "908767",
+                  "STS": 0,
+                  "RSN": "Error in updating. Invalid customer number or external reference number",
+                  "ERR": 40004
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "908767",
+                  "STS": 0,
+                  "RSN": "Error Occured",
+                  "ERR": 40005
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "SubscriptionWaiveOffFeeConfigBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ru5p1gfw0666l"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "6nphbjmmib4x6"
+                  },
+                  "description": "Customer Num"
+                },
+                "CUS_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "4azju0nugogt5"
+                  },
+                  "description": "Customer External Referency Number"
+                },
+                "WV_OFF_ENBL_STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "92dtjwox2i7a5"
+                  },
+                  "description": "Waive Off Enable Status"
+                },
+                "VLD_PRD": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "ais4vie11lqxv"
+                  },
+                  "description": "Valid Period"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CUS_NUM",
+                "CUS_REF_NO",
+                "WV_OFF_ENBL_STS",
+                "VLD_PRD"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "12445",
+                  "CUS_NUM": "951248752",
+                  "WV_OFF_ENBL_STS": 1,
+                  "VLD_PRD": 2
+                }
+              },
+              "Example 2": {
+                "value": {
+                  "MSG_ID": "908768",
+                  "CUS_NUM": "ASI331003872",
+                  "CUS_REF_NO": "1844443046",
+                  "WV_OFF_LVL": 1,
+                  "EXG_WIS_SB_CNF": [
+                    {
+                      "EXG": "NSDQ",
+                      "WV_OFF_ENBL_STS": 1,
+                      "VLD_PRD": 30,
+                      "FD_LVL": "1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

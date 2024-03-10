@@ -193,6 +193,11 @@
       "uri": "api/symbolWiseRestrictions.json"
     },
     {
+      "type": "item",
+      "title": "Configure Customer Waive Off Subscription Fee",
+      "uri": "api/configureCustomerWaiveOff.json"
+    },
+    {
       "type": "divider",
       "title": "Trade Management"
     },
