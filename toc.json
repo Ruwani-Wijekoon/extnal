@@ -170,6 +170,11 @@
           "type": "item",
           "title": "Release Pledge Request",
           "uri": "api/releasePledge.json"
+        },
+        {
+          "type": "item",
+          "title": "Get balance all currency by customer No",
+          "uri": "api/allCurrencyBalance.json"
         }
       ]
     },

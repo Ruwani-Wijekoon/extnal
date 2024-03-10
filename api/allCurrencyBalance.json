@@ -1,0 +1,262 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get balance all currency by customer No",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/all-currency-balance": {
+      "post": {
+        "summary": "Get balance all currency by customer No",
+        "operationId": "post-client-services-all-currency-balance",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CurrencyBalanceResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CurrencyBalanceRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CurrencyBalanceResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "xpaihzxu2qce0"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "awi52h9ycmx0l"
+                  },
+                  "description": "Customer Id"
+                },
+                "CURR_BAL": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "rs6d0f23xcl1m"
+                  },
+                  "description": "Currency Balances",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "xns21dhphy8it"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "BAL": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "wha23xflal7eb"
+                        },
+                        "description": "Balance"
+                      },
+                      "CURR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "n0tkkdpa4mqmz"
+                        },
+                        "description": "Currency"
+                      }
+                    }
+                  }
+                },
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "s6gvl2ejd3awl"
+                  },
+                  "description": "Status"
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "xt13rru075639"
+                  },
+                  "description": "Error"
+                }
+              }
+            },
+            "examples": {
+              "Success Response 1": {
+                "value": {
+                  "CUS_ID": 951248752,
+                  "CURR_BAL": [
+                    {
+                      "BAL": "2895.00000",
+                      "CURR": "USD"
+                    },
+                    {
+                      "BAL": "2000.00000",
+                      "CURR": "AED"
+                    }
+                  ],
+                  "MSG_ID": "7138670",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "908774",
+                  "STS": 0,
+                  "ERR": 49001,
+                  "RSN": "Invalid customer number and Customer Ext reference number parameters"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "908774",
+                  "STS": 0,
+                  "ERR": 46002,
+                  "RSN": "Invalid customer number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "908774",
+                  "STS": 0,
+                  "ERR": 46003,
+                  "RSN": "Invalid Customer External Ref"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "908774",
+                  "STS": 0,
+                  "ERR": 46004,
+                  "RSN": "Error occurred while retrieving Currency balances from the database"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "908774",
+                  "STS": 0,
+                  "ERR": 49005,
+                  "RSN": "Error occurred when retrieving the currency balance details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CurrencyBalanceRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "9ca3vg4ff10gp"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "xcl9orvj6haio"
+                  },
+                  "description": "Customer Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "092ii51l70614"
+                  },
+                  "description": "External Reference Number"
+                }
+              },
+              "required": [
+                "MSG_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "94445335",
+                  "CUS_ID": "ASI331003872"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

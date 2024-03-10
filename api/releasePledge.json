@@ -328,49 +328,49 @@
                 "MSG_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "dgyx6y5xa6som"
+                    "id": "dgyx6y5xa6soma"
                   },
                   "description": "Message Id"
                 },
                 "EXT_REF_NO": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "0oqtwiw43xgz6"
+                    "id": "0oqtwiw43xgz6a"
                   },
                   "description": "External Reference Number"
                 },
                 "SYM": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "v7807ptclu2gd"
+                    "id": "v7807ptclu2gad"
                   },
                   "description": "Symbol"
                 },
                 "EXG": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "rqp6nbnw32itj"
+                    "id": "rqp6nbnw32itaj"
                   },
                   "description": "Exchange"
                 },
                 "SEC_ACC_NUM": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "aikasj817z7c0"
+                    "id": "aikasj817z7ac0"
                   },
                   "description": "Security Accouunt Number"
                 },
                 "QTY": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "5o4u983qihf2f"
+                    "id": "5o4u983qihfa2f"
                   },
                   "description": "Quantity"
                 },
                 "ISIN_CODE": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "ef8hjbhxewgtr"
+                    "id": "ef8hjbhxeawgtr"
                   }
                 }
               },
