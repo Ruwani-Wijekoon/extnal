@@ -20,7 +20,7 @@
             "$ref": "./responses/InvestorCorporateAccountResponse.json#/InvestorCorporateAccountResponse"
           },
           "401": {
-            "$ref": "abc.json/#/Unauthorized"
+            "$ref": "./abc.json#/Unauthorized"
           }
         },
         "description": "Create coporate investor account",
