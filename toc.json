@@ -138,7 +138,7 @@
         {
           "type": "item",
           "title": "API Approved Withdrawal",
-          "uri": "/getCashWithdrawalInformation.json"
+          "uri": "api/withdrawalDetailsRequest.json"
         },
         {
           "type": "item",
