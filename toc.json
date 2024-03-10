@@ -133,7 +133,7 @@
         {
           "type": "item",
           "title": "Withdrawal Request",
-          "uri": "/withdrawRequest.json"
+          "uri": "api/withdrawRequest.json"
         },
         {
           "type": "item",
