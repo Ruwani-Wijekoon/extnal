@@ -1,0 +1,325 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get portfolio wise holdings",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/portfolio-wise-holdings": {
+      "post": {
+        "summary": "Get portfolio wise holdings",
+        "operationId": "post-client-services-portfolio-wise-holdings",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PortfolioWiseHoldingsResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PortfolioWiseHoldingRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PortfolioWiseHoldingsResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "fyqfj90l0hym0"
+                      },
+                      "description": "Staus"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "9s88kl0g8ucjg"
+                      },
+                      "description": "Erro Code"
+                    },
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "xi9c2uresxvrv"
+                      },
+                      "description": "Message Id"
+                    },
+                    "HOLD_LST": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "vx6no4hshhfdy"
+                      },
+                      "description": "Holding Lists",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "qbi43h5uqkyik"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "EXG": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "f2vx4gtt4gqwn"
+                            },
+                            "description": "Exchange"
+                          },
+                          "SYM": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "6ux0mw75dlwvk"
+                            },
+                            "description": "Symbol"
+                          },
+                          "ISIN_CODE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "f8w3atzu8kamz"
+                            }
+                          },
+                          "AVG_COST": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "t1cx4vxtunz1k"
+                            },
+                            "description": "Average Cost"
+                          },
+                          "NET_HLDGS": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "47z4131fxrl9a"
+                            },
+                            "description": "Net Holdings"
+                          },
+                          "BUY_PNDGS": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "4vhxsdlzkuaep"
+                            },
+                            "description": "Buy Pendings"
+                          },
+                          "SELL_PNDGS": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "d5s45ys2j5wrq"
+                            },
+                            "description": "Sell Pendings"
+                          },
+                          "BLKD_QTY": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "nk28cf0uef2na"
+                            },
+                            "description": "Blocked Quantity"
+                          },
+                          "MKT_VAL": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "toxjlkq92a125"
+                            },
+                            "description": "Market Value"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "qj095jlwxv8il"
+                  },
+                  "properties": {
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "nasexnciog9xc"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "vkqzdft4tmwf7"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "nxscgzfxp9dps"
+                      },
+                      "description": "Reason"
+                    },
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "72ne41jqggjcs"
+                      },
+                      "description": "Message Id"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "HOLD_LST": [
+                    {
+                      "EXG": "NSDQ",
+                      "SYM": "AAL",
+                      "ISIN_CODE": "US02376R1023",
+                      "AVG_COST": "0.00000000",
+                      "NET_HLDGS": "400.00000000",
+                      "BUY_PNDGS": "0.00000000",
+                      "SELL_PNDGS": "0.00000000",
+                      "BLKD_QTY": "0.00000000",
+                      "MKT_VAL": "6396.000000000000000000000000"
+                    },
+                    {
+                      "EXG": "NSDQ",
+                      "SYM": "AAPL",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_COST": "186.00000000",
+                      "NET_HLDGS": "100.00000000",
+                      "BUY_PNDGS": "0.00000000",
+                      "SELL_PNDGS": "0.00000000",
+                      "BLKD_QTY": "0.00000000",
+                      "MKT_VAL": "17885.000000000000000000000000"
+                    }
+                  ],
+                  "MSG_ID": "900881",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "STS": 0,
+                  "ERR": 36002,
+                  "MSG_ID": "900881",
+                  "RSN": "Invalid parameter at get portfolio_wise_holdings Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "PortfolioWiseHoldingRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "bx3zsqo45hhhj"
+                  },
+                  "description": "Message Id"
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "gaxumn1flabgu"
+                  },
+                  "description": "Security Account Number"
+                },
+                "EXG": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "e8o13brlufhu5"
+                  },
+                  "description": "Exchange"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "SEC_ACC_NUM"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "900879",
+                  "SEC_ACC_NUM": "P000295516",
+                  "EXG": "NSDQ"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

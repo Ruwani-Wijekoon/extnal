@@ -204,7 +204,7 @@
     {
       "type": "item",
       "title": "Get Portfolio Wise Holdings",
-      "uri": "/getPortfoliowiseHoldings.json"
+      "uri": "api/portfolioWiseHoldings.json"
     },
     {
       "type": "item",
