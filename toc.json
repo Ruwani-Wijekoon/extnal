@@ -127,7 +127,7 @@
         {
           "type": "item",
           "title": "Bulk Deposit With External Reference Number",
-          "uri": "/bulkDepositWithExternalReferenceNumber.json"
+          "uri": "api/depositByExtRefNoRequest.json"
         }
       ]
     },
