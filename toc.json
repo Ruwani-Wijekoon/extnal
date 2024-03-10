@@ -92,7 +92,7 @@
         {
           "type": "item",
           "title": "Enable Trading Account",
-          "uri": "/enableTradingAccount.json"
+          "uri": "api/enableTradingAccount.json"
         },
         {
           "type": "item",
