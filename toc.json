@@ -210,12 +210,12 @@
     {
       "type": "item",
       "title": "Set cash transfer/transaction restriction level",
-      "uri": "/manageCustomerTrading.json"
+      "uri": "api/updateCashTransactionLevel.json"
     },
     {
       "type": "item",
       "title": "Add/Remove Symbol wise Buy/Sell Restrictions",
-      "uri": "api/updateCashTransactionLevel.json"
+      "uri": "api/symbolWiseRestrictions.json"
     },
     {
       "type": "item",
