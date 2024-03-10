@@ -147,7 +147,12 @@
         {
           "type": "item",
           "title": "Stock Deposit Request",
-          "uri": "api/stockDepositRequest.json"
+          "uri": "api/stockDeposit.json"
+        },
+        {
+          "type": "item",
+          "title": "Stock Withdrawal Request",
+          "uri": "api/stockWithdrawal.json"
         },
         {
           "type": "item",
