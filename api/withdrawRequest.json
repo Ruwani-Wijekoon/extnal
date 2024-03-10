@@ -247,49 +247,49 @@
                 "MSG_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "951ri4oakeebt"
+                    "id": "951ri4oakeebta"
                   },
                   "description": "Message Id"
                 },
                 "CUS_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "hzd0vsk6bz3n5"
+                    "id": "hzd0vsk6bz3n5a"
                   },
                   "description": "Customer Id"
                 },
                 "CSH_ACC": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "tkepjms2lgk6l"
+                    "id": "tkepjms2lgk6la"
                   },
                   "description": "Cash Account"
                 },
                 "BROKER_CASH_ACC_REF": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "vlln66t8wzizf"
+                    "id": "vlln66t8wzizfa"
                   },
                   "description": "Broker Cash Account Reference"
                 },
                 "CURR": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "2nupqv2fxyxml"
+                    "id": "2nupqv2fxyxmla"
                   },
                   "description": "Currency"
                 },
                 "AMOUNT": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "30i1qd3j2vql6"
+                    "id": "30i1qd3j2vql6a"
                   },
                   "default": 0
                 },
                 "NARR": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "znzq2habnqsyp"
+                    "id": "znzq2habnqsypa"
                   },
                   "description": "Narration"
                 }
