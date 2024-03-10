@@ -190,7 +190,7 @@
     {
       "type": "item",
       "title": "Add/Remove Symbol wise Buy/Sell Restrictions",
-      "uri": "/addRemoveSymbolwiseBuySellRestrictions.json"
+      "uri": "api/symbolWiseRestrictions.json"
     },
     {
       "type": "divider",

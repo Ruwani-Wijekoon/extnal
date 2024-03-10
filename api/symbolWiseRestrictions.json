@@ -1,0 +1,292 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Add/Remove symbol wise buy/sell restrictions",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/symbol-wise-restrictions": {
+      "post": {
+        "summary": "Add/Remove symbol wise buy/sell restrictions",
+        "operationId": "post-client-services-symbol-wise-restrictions",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SymbolWiseRestrictionResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/SymbolRestrictionBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "SymbolWiseRestrictionResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "czj97uvd7l6ym"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "dweeyxm5bwdxm"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "nxoqgyu38v3wf"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "y2fxl8o0lf2aj"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "2vfy7cy9wwm3d"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "5pbs60jwhgb97"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "d5gc8nk1i6xad"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "sp1zr8wyf64fg"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "STS": 0,
+                  "ERR": 35001,
+                  "RSN": "Invalid Input Parameters"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "STS": 0,
+                  "ERR": 35002,
+                  "RSN": "Invalid Portfolio Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "STS": 0,
+                  "ERR": 35003,
+                  "RSN": "Invalid Symbol"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "STS": 0,
+                  "ERR": 35004,
+                  "RSN": "Invalid Exchange"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "STS": 0,
+                  "ERR": 35008,
+                  "RSN": "Error Setting Symbol Wise Restrictions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "SymbolRestrictionBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "96q45rvslnoz1"
+                  },
+                  "description": "Message Id"
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ckrjo85k06nal"
+                  },
+                  "description": "Security Account Number"
+                },
+                "SYM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "yqmc8sxek5iep"
+                  },
+                  "description": "Symbol"
+                },
+                "EXG": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ctd1y65ilfnxf"
+                  },
+                  "description": "Exchange"
+                },
+                "SIDE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "w8nb141stjyhh"
+                  },
+                  "description": "Side"
+                },
+                "REST_TYPE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "4804rmtwsjb6a"
+                  },
+                  "description": "Restriction Type"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "SEC_ACC_NUM",
+                "SYM",
+                "EXG"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "SEC_ACC_NUM": "P000295516",
+                  "REST_TYPE": "sell",
+                  "SIDE": "ADD",
+                  "SYM": "AAPL",
+                  "EXG": "NSDQ"
+                }
+              },
+              "Example 2": {
+                "value": {
+                  "MSG_ID": "9008768",
+                  "SEC_ACC_NUM": "P000295516",
+                  "REST_TYPE": "sell",
+                  "SIDE": "REMOVE",
+                  "SYM": "AAPL",
+                  "EXG": "NSDQ"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
