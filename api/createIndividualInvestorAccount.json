@@ -617,13 +617,5 @@
         "x-internal": false
       }
     }
-  },
-  "components": {
-    "schemas": {}
-  },
-  "security": [
-    {
-      "BearerAuth": []
-    }
-  ]
+  }
 }
