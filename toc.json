@@ -38,7 +38,7 @@
         {
           "type": "item",
           "title": "Create Cash Account",
-          "uri": "/createCashAccount.json"
+          "uri": "/api/createCashAccount.json"
         }
       ]
     },

@@ -1,0 +1,292 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create Individual Investor Account",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/cash-account": {
+      "post": {
+        "summary": "Create Cash Account",
+        "operationId": "post-client-services-cash-account",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CashAccountResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CashBean"
+        },
+        "description": "Create cash account",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CashAccountResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "CSH_ACC": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "bm7ekkinwnb11"
+                      },
+                      "description": "Cash Account"
+                    },
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5n7vb40m8bpm4"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "bz2o059yy3f49"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "zf3czf48c1of0"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "h0qytdki8cati"
+                  },
+                  "properties": {
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "u5gyzi2j23lnm"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "mixh2tgaelpoc"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "35cpncwk94ngo"
+                      },
+                      "description": "Reason"
+                    },
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "841hi82nhwfi3"
+                      },
+                      "description": "Message Id"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "CSH_ACC": "C004088038",
+                  "MSG_ID": "94488",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "STS": 0,
+                  "ERR": 3001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "STS": 0,
+                  "ERR": 3002,
+                  "RSN": "Invalid Broker Cash Account Reference"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "STS": 0,
+                  "ERR": 3003,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "STS": 0,
+                  "ERR": 3004,
+                  "RSN": "This is a master account"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "STS": 0,
+                  "ERR": 3005,
+                  "RSN": "Cash Account Reference Number Already Assigned."
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "STS": 0,
+                  "ERR": 3006,
+                  "RSN": "Error Creating the CashAccount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CashBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "idpmk9hsmn4v3"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "uiiuw6wk9sgpm"
+                  },
+                  "description": "Customer Id"
+                },
+                "BROKER_REFERENCE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "483raoww6y13o"
+                  }
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7tq8p3f0le503"
+                  },
+                  "description": "Currency"
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "2n7co152un2c3"
+                  },
+                  "description": "Security Account Number"
+                },
+                "CASH_ACC_TYPE": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "6mll2aooremo8"
+                  },
+                  "default": 0,
+                  "description": "Cash Account Type"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CUS_ID",
+                "BROKER_REFERENCE",
+                "CURR"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "94488",
+                  "CUS_ID": "992209991",
+                  "BROKER_CASH_ACC_REF": "12345",
+                  "CURR": "USD",
+                  "CASH_ACC_TYPE": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
