@@ -1,0 +1,351 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create Exchange Account",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/exchange-account/": {
+      "post": {
+        "summary": "Create Exchange Account",
+        "operationId": "post-client-services-exchange-account",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ExchangeAccountResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ExchangeBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ExchangeAccountResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "m92ddzm1xzdrr"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "q6iqma436olfs"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "bnaz69opu7su7"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "u8j6zpihdve3n"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "m71d1yuw6dvyw"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "lw9nvvn6eu7rt"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "nqo0ycishyal8"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "skjgy2f1v0emx"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5002,
+                  "RSN": "Invalid Portfolio Account"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5003,
+                  "RSN": "Invalid Exchange"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5004,
+                  "RSN": "Invalid Country Code"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5005,
+                  "RSN": "Invalid Exchange Account Type"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5006,
+                  "RSN": "Invalid Commission Type"
+                }
+              },
+              "Unsuccess Response 7": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5007,
+                  "RSN": "Investor No or Exchange Account Already Exist"
+                }
+              },
+              "Unsuccess Response 8": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5008,
+                  "RSN": "Error persisting exchange account bean"
+                }
+              },
+              "Unsuccess Response 9": {
+                "value": {
+                  "MSG_ID": "94456",
+                  "STS": 0,
+                  "ERR": 5009,
+                  "RSN": "Error Creating the ExchangeAccount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "ExchangeBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "jdngugo8yi8xf"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "rgiay4apav9x0"
+                  },
+                  "description": "Customer Id"
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "gj9w5pr29a69d"
+                  },
+                  "description": "Security Account Number"
+                },
+                "EXG": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "40v2z2avafiyx"
+                  },
+                  "description": "Exchange"
+                },
+                "EXG_ACC_TPE": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "50xexmhbx9vif"
+                  },
+                  "default": 0,
+                  "description": "Exchange Account Type"
+                },
+                "COMM_TPE": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "wtrgjlaw7mts2"
+                  },
+                  "default": 0,
+                  "description": "Commission Type"
+                },
+                "EXG_OR_CT_CODE": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "mpwhum11panh8"
+                  },
+                  "default": 0,
+                  "description": "Exchange Or Country Code "
+                },
+                "EXG_INV_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "pnmvgmsktg21i"
+                  },
+                  "description": "Exchange Investor Id"
+                },
+                "COMM_GRP_ID": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "sxw1urnlvslz6"
+                  },
+                  "default": 0,
+                  "description": "Commission Group Id"
+                },
+                "CASH_ACC_TYPE": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "8ggcvzq8a33iu"
+                  },
+                  "default": 0,
+                  "description": "Cash Account Type"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CUS_ID",
+                "SEC_ACC_NUM",
+                "EXG",
+                "EXG_ACC_TPE",
+                "COMM_TPE",
+                "EXG_OR_CT_CODE"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "94890",
+                  "CUS_ID": "992209991",
+                  "SEC_ACC_NUM": "S001133109",
+                  "EXCHANGE_OR_COUNTRY_CODE": 0,
+                  "EXG": "ADSM",
+                  "EXG_ACC_TPE": 0,
+                  "COMM_TPE": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

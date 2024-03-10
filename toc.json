@@ -60,7 +60,7 @@
         {
           "type": "item",
           "title": "Create Exchange Account",
-          "uri": "/createExchangeAccount.json"
+          "uri": "api/createExchangeAccount.json"
         }
       ]
     },
