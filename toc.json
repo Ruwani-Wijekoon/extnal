@@ -222,6 +222,11 @@
     },
     {
       "type": "item",
+      "title": "Update ASBB Token",
+      "uri": "api/updateAssbToken.json"
+    },
+    {
+      "type": "item",
       "title": "Upload Sharia Symbol",
       "uri": "/uploadShariaSymbols.json"
     },
