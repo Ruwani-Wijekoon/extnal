@@ -75,6 +75,11 @@
           "type": "item",
           "title": "Get Portfolio Details",
           "uri": "api/portfolioDetails.json"
+        },
+        {
+          "type": "item",
+          "title": "Portfolio Cash Account Details",
+          "uri": "api/portfolioCashDetails.json"
         }
       ]
     },

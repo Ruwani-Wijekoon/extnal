@@ -1,0 +1,366 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Portfolio Cash Account Details",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/portfolio-cash-account-details": {
+      "post": {
+        "summary": "Portfolio Cash Account Details",
+        "operationId": "post-client-services-portfolio-cash-account-details",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PortfolioCashDetailResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PortfolioDetailRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PortfolioCashDetailResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ir08jd19n94qb"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ewind16900xp7"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "hzwdekv9v8nhw"
+                      }
+                    },
+                    "MKT_VAL": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "72351hxpp6k2a"
+                      }
+                    },
+                    "TOT_CSH_BAL": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "6l6qdaj94qivn"
+                      }
+                    },
+                    "AVL_CSH_BAL": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "w12v84s2v7bd0"
+                      }
+                    },
+                    "TOT_GL_AMT": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "skupajfaxynof"
+                      }
+                    },
+                    "TOT_GL_PCT": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "wuq5ewfuc3scg"
+                      }
+                    },
+                    "CSH_ACC_DTLS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "bo83ifgtgr747"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "e7ppouaepmwji"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "CSH_ACC": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "6jghif75eqkio"
+                            }
+                          },
+                          "TOT_BAL": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "eayy0hyz9eq2v"
+                            }
+                          },
+                          "AVL_BAL": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "128gb3w5l1746"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "czjinnmw5v5tj"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "o4il7x7joxt5n"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "vwzhydwadzytp"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "30pt2faddkpgh"
+                      }
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kt7j8b7wty6jq"
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "CSH_ACC_DTLS": [
+                    {
+                      "CSH_ACC": "C004087777",
+                      "TOT_BAL": 0,
+                      "AVL_BAL": 0
+                    },
+                    {
+                      "CSH_ACC": "C004087780",
+                      "TOT_BAL": 0,
+                      "AVL_BAL": 0
+                    },
+                    {
+                      "CSH_ACC": "C004087773",
+                      "TOT_BAL": 5100,
+                      "AVL_BAL": 4900
+                    },
+                    {
+                      "CSH_ACC": "C004087822",
+                      "TOT_BAL": 420,
+                      "AVL_BAL": 420
+                    },
+                    {
+                      "CSH_ACC": "C004087781",
+                      "TOT_BAL": 0,
+                      "AVL_BAL": 0
+                    }
+                  ],
+                  "MKT_VAL": 0,
+                  "TOT_CSH_BAL": 5520,
+                  "AVL_CSH_BAL": 5320,
+                  "TOT_GL_AMT": 0,
+                  "TOT_GL_PCT": 0,
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64001,
+                  "RSN": "Customer External Reference Number can not be null or empty"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64002,
+                  "RSN": "Invalid Customer Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64003,
+                  "RSN": "Invalid Customer External Ref"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64004,
+                  "RSN": "Multiple accounts found with the same external reference number"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64005,
+                  "RSN": "Invalid currency"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64006,
+                  "RSN": "Invalid currency"
+                }
+              },
+              "Unsuccess Response 7": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64007,
+                  "RSN": "Error in parameters"
+                }
+              },
+              "Unsuccess Response 8": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 64008,
+                  "RSN": "Error in getting portfolio-cash account details in requested currency"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "PortfolioDetailRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "qbkz75hulb5wd"
+                  }
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "a9cwhkewtfswi"
+                  }
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "9br4scw4v9jmy"
+                  }
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "i5ezrwpondxl3"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "076743",
+                  "EXT_REF_NO": "77112503694",
+                  "CURR": "USD"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
