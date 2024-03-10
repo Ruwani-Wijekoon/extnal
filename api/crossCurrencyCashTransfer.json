@@ -1,0 +1,301 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Cross Currency Cash Transfer",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/cross-currency-cash-transfer": {
+      "post": {
+        "summary": "Cross Currency Cash Transfer",
+        "operationId": "post-client-services-cross-currency-cash-transfer",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CrossCurrencyCashTransferResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CashTransferBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CrossCurrencyCashTransferResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "73idlnjsborj9"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "bevmjk7vqicyg"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "q6xyaxrtbyf3b"
+                      }
+                    },
+                    "BAL": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "36ykoah5cd2d2"
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "48762jl46i01t"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "wn1rc4ybazr42"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "3qnt8978o0jqp"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "zzqoa8ak542lt"
+                      }
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "gdgwjbnwo71m9"
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "BAL": "200.00",
+                  "MSG_ID": "0778979",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66001,
+                  "RSN": "Invalid Customer Number or External Reference Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66002,
+                  "RSN": "Invalid fromCurrency"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66003,
+                  "RSN": "Invalid toCurrency"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66004,
+                  "RSN": "Invalid amount"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66005,
+                  "RSN": "From-currency and To-currency cannot be the same"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66006,
+                  "RSN": "Cash accounts for both currencies do not exist for the customer"
+                }
+              },
+              "Unsuccess Response 7": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66007,
+                  "RSN": "Cash accounts for from currency do not exist for the customer"
+                }
+              },
+              "Unsuccess Response 8": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66008,
+                  "RSN": "Cash accounts for to currency do not exist for the customer"
+                }
+              },
+              "Unsuccess Response 9": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "STS": 0,
+                  "ERR": 66010,
+                  "RSN": "Error when calling cash transfer request"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CashTransferBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "3bbk8qm2ansf5"
+                  }
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "kg3ckrvbfb28b"
+                  }
+                },
+                "FROM_CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "s8ezhq4ns15kc"
+                  }
+                },
+                "TO_CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "07fcymfdczg8n"
+                  }
+                },
+                "AMOUNT": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "qtm837nhabgo1"
+                  }
+                },
+                "INST_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "c54d1bru1oca4"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "0778977",
+                  "CUS_ID": "238076698",
+                  "FROM_CURR": "USD",
+                  "TO_CURR": "AED",
+                  "AMOUNT": 100
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

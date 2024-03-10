@@ -260,6 +260,11 @@
           "type": "item",
           "title": "Reset Transaction Password",
           "uri": "api/resetTransactionPassword.json"
+        },
+        {
+          "type": "item",
+          "title": "Cross Currency Cash Transfer",
+          "uri": "api/crossCurrencyCashTransfer.json"
         }
       ]
     },
