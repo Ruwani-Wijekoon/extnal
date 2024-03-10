@@ -12,7 +12,7 @@
         {
           "type": "item",
           "title": "Create Individual Investor Account",
-          "uri": "/createIndividualInvestorAccount.json"
+          "uri": "/api/createIndividualInvestorAccount.json"
         },
         {
           "type": "item",
