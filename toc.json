@@ -198,6 +198,11 @@
     },
     {
       "type": "item",
+      "title": "Customer Trading Restrictions",
+      "uri": "api/manageTrading.json"
+    },
+    {
+      "type": "item",
       "title": "Get Portfolio Wise Holdings",
       "uri": "/getPortfoliowiseHoldings.json"
     },
