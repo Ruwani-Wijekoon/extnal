@@ -86,8 +86,8 @@
       "items": [
         {
           "type": "item",
-          "title": "Get Account Balance",
-          "uri": "/getAccountBalance.json"
+          "title": "Get Account Balance using External Reference",
+          "uri": "api/accountInquiry.json"
         },
         {
           "type": "item",

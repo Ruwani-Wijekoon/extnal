@@ -1,0 +1,340 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Account Balance using External Reference",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/account-inquiry": {
+      "post": {
+        "summary": "Get Account Balance using External Reference",
+        "operationId": "post-client-services-account-inquiry",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AccountInquiryResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/AccountInquiryRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AccountInquiryResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "eyij0cavrqlk7"
+                      },
+                      "description": "Message Id"
+                    },
+                    "CUS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "d7cxj3gidkui1"
+                      },
+                      "description": "Customer Id"
+                    },
+                    "ACC_DTLS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "zf9iqeygmyo6d"
+                      },
+                      "description": "Account Details",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "r3sjt2kahr8i1"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "CSH_ACC": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "5pic55t9winxm"
+                            },
+                            "description": "Cash Account Number"
+                          },
+                          "CURR": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "xfjmvnrvhw61c"
+                            },
+                            "description": "Currency"
+                          },
+                          "CSH_AVI_FOR_WITH": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "rvq1xzz8l9g54"
+                            },
+                            "description": "Cash Available For Withdraw"
+                          },
+                          "BLKD_AMOUNT": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "9k75kf5hizcgt"
+                            },
+                            "description": "Blocked Amount"
+                          },
+                          "MAN_BLKD_AMOUNT": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "mgafu6orr620m"
+                            },
+                            "description": "Manual Blocked Amount"
+                          },
+                          "UNSTLD_CASH": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "210kcbqejyyyo"
+                            },
+                            "description": "Unsettled Cash"
+                          },
+                          "PRIM_LMT": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "peqep7a1g7cns"
+                            },
+                            "description": "Primary Limit"
+                          },
+                          "SEC_LMT": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "v4zf1v6ffr843"
+                            },
+                            "description": "Secondary Limit"
+                          }
+                        }
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "5wf4h0jnlur0v"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "9nb47fwmbhco0"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "lxvy4b6mg6n9o"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "888wim844m298"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "qt0rh08cd8ig2"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "n0j9mfuek11tx"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5w7zefad7dmmp"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "908770",
+                  "ACC_DTLS": [
+                    {
+                      "CSH_ACC": "C004088040",
+                      "CURR": "USD",
+                      "CSH_AVI_FOR_WITH": "2850.00000",
+                      "BLKD_AMOUNT": "0.00000",
+                      "MAN_BLKD_AMOUNT": "-45.00000",
+                      "UNSTLD_CASH": "0.00000",
+                      "PRIM_LMT": "0.00000",
+                      "SEC_LMT": "0.00000"
+                    },
+                    {
+                      "CSH_ACC": "C004088042",
+                      "CURR": "AED",
+                      "CSH_AVI_FOR_WITH": "2000.00000",
+                      "BLKD_AMOUNT": "0.00000",
+                      "MAN_BLKD_AMOUNT": "0.00000",
+                      "UNSTLD_CASH": "0.00000",
+                      "PRIM_LMT": "0.00000",
+                      "SEC_LMT": "0.00000"
+                    }
+                  ],
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "908770",
+                  "STS": 0,
+                  "ERR": 43001,
+                  "RSN": "Invalid external reference number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "908770",
+                  "STS": 0,
+                  "ERR": 43002,
+                  "RSN": "Duplicate accounts for same external reference"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "908770",
+                  "STS": 0,
+                  "ERR": 43003,
+                  "RSN": "Error in getting account balance details"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "908770",
+                  "STS": 0,
+                  "ERR": 43004,
+                  "RSN": "Invalid external Reference number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "AccountInquiryRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0qu8f9tjzglh8"
+                  },
+                  "description": "External Reference Number"
+                },
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "sgpagigfdl2n5"
+                  },
+                  "description": "Message Id"
+                }
+              },
+              "required": [
+                "EXT_REF_NO",
+                "MSG_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "908770",
+                  "EXT_REF_NO": "1844443046"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
