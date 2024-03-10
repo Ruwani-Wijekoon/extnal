@@ -1,6 +1,7 @@
 {
-    "description": "Unauthorized response",
-    "content": {
+    "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
           "application/json": {
             "schema": {
               "type": "object",
@@ -31,4 +32,5 @@
             }
           }
         }
+    }
 }
