@@ -1,0 +1,51 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create Corporate Investor Account",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/accounts/corporate-investor": {
+      "post": {
+        "summary": "Create Corporate Investor Account",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "$ref": "../responses/InvestorCorporateAccountResponse,json"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "description": "Create coporate investor account",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CorporateInvestorBean"
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "instId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ]
+      }
+    }
+  }
+}

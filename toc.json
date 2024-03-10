@@ -16,6 +16,11 @@
         },
         {
           "type": "item",
+          "title": "Create Coporate Investor Account",
+          "uri": "/api/createCoporateInvestorAccount.json"
+        },
+        {
+          "type": "item",
           "title": "Update Individual Investor Account",
           "uri": "/updateIndividualInvestorAccount.json"
         },

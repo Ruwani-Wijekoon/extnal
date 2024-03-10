@@ -1,0 +1,243 @@
+{
+"InvestorCorporateAccountResponse": {
+    "description": "",
+    "content": {
+      "application/json": {
+        "schema": {
+          "oneOf": [
+            {
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "f10khz52h8z0a"
+                  },
+                  "description": "Status"
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "0ys7v07hzxi7h"
+                  },
+                  "description": "Error Code"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "p7u2deusgd6sz"
+                  },
+                  "description": "Customer Id"
+                },
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "3oi7l6mh8mnyp"
+                  },
+                  "description": "Message Id"
+                },
+                "ACC_DTLS": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "gc2vxh49uieet"
+                  },
+                  "description": "Account Details",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "ptqob7lkp452c"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "CSH_ACC": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "m0hgwrxoa1yn1"
+                        },
+                        "description": "Cash Account Number"
+                      },
+                      "SEC_ACC_LST": {
+                        "type": "array",
+                        "x-stoplight": {
+                          "id": "gjdhra4bxrn2t"
+                        },
+                        "description": "Security Account List",
+                        "items": {
+                          "x-stoplight": {
+                            "id": "0n2ovzamuu5no"
+                          },
+                          "type": "object",
+                          "properties": {
+                            "SEC_ACC_NUM": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "pu4vhwfbyfdk3"
+                              },
+                              "description": "Security Account Number"
+                            },
+                            "EXG_LST": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "n6fhnueohrlxn"
+                              },
+                              "description": "Exchange List",
+                              "items": {
+                                "x-stoplight": {
+                                  "id": "r2z6u5tr7ysc2"
+                                },
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "x-stoplight": {
+                "id": "3tu83m0uipmg4"
+              },
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "v6ed7ao04sse0"
+                  },
+                  "description": "Status"
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "t7euofor8o3yi"
+                  },
+                  "description": "Error Code"
+                },
+                "RSN": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "i23h20w84j4n7"
+                  },
+                  "description": "Reason"
+                },
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "zxw0tk6bugz2n"
+                  },
+                  "description": "Message Id"
+                }
+              }
+            }
+          ],
+          "type": "object"
+        },
+        "examples": {
+          "Success Response ": {
+            "value": {
+              "CUS_ID": 561889,
+              "ACC_DTLS": [
+                {
+                  "CSH_ACC": "C004088036",
+                  "SEC_ACC_LST": [
+                    {
+                      "SEC_ACC_NUM": "P001133102",
+                      "CURR": "AED",
+                      "EXG_LST": [
+                        "DFM"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "CSH_ACC": "C004088037",
+                  "SEC_ACC_LST": [
+                    {
+                      "SEC_ACC_NUM": "P001133103",
+                      "CURR": "USD",
+                      "EXG_LST": [
+                        "NSDQ"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "STS": 1,
+              "ERR": 0
+            }
+          },
+          "Unsuccessful Response1": {
+            "value": {
+              "STS": 0,
+              "ERR": 2001,
+              "RSN": "Invalid Master Account Number"
+            }
+          },
+          "Unsuccessful Response2": {
+            "value": {
+              "STS": 0,
+              "ERR": 2002,
+              "RSN": "Invalid Broker Customer Reference"
+            }
+          },
+          "Unsuccessful Response 3": {
+            "value": {
+              "STS": 0,
+              "ERR": 2003,
+              "RSN": "Invalid Country"
+            }
+          },
+          "Unsuccessful Response 4": {
+            "value": {
+              "STS": 0,
+              "ERR": 2004,
+              "RSN": "Customer Login Name Already Exists."
+            }
+          },
+          "Unsuccessful Response 5": {
+            "value": {
+              "STS": 0,
+              "ERR": 2005,
+              "RSN": "Invalid Institution and broker reference combination"
+            }
+          },
+          "Unsuccessful Response 6": {
+            "value": {
+              "STS": 0,
+              "ERR": 2006,
+              "RSN": "Customer Login Name Already Exists."
+            }
+          },
+          "Unsuccessful Response 7": {
+            "value": {
+              "STS": 0,
+              "ERR": 2007,
+              "RSN": "Invalid Institution and broker reference combination"
+            }
+          },
+          "Unsuccessful Response 8": {
+            "value": {
+              "STS": 0,
+              "ERR": 2008,
+              "RSN": "Invalid customer group"
+            }
+          },
+          "Unsuccessful Response 9": {
+            "value": {
+              "STS": 0,
+              "ERR": 2009,
+              "RSN": "Error Creating the customer"
+            }
+          },
+          "Unsuccessful Response 10": {
+            "value": {
+              "STS": 0,
+              "ERR": 2010,
+              "RSN": "Error Creating the customer"
+            }
+          }
+        }
+      }
+    }
+  }
+}
