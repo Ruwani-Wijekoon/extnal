@@ -1,0 +1,274 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Add Manual Cash Block",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-service/add-manual-cash-block": {
+      "post": {
+        "summary": "Add Manual Cash Block",
+        "operationId": "post-client-service-add-manual-cash-block",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AddManualResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/AddManualCashBlock"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AddManualResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "hvxn07q3c6u0a"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "t89nh7uu8alpo"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "e8tv0l3zzshii"
+                      },
+                      "description": "Error"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "3vgyntkcg0qtm"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rvf49evrobcol"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "n46ycoxyykavq"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "nobbjfpgl0snk"
+                      },
+                      "description": "Error"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rv2ogg5xdfbsl"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "96008",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "96008",
+                  "STS": 0,
+                  "ERR": 22001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "96008",
+                  "STS": 0,
+                  "ERR": 22002,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "96008",
+                  "STS": 0,
+                  "ERR": 22003,
+                  "RSN": "Invalid block Amount"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "96008",
+                  "STS": 0,
+                  "ERR": 22004,
+                  "RSN": "Error Adding the manual cash block"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "AddManualCashBlock": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "n04dd39pieyy6"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "x98rhzmlu8rsp"
+                  },
+                  "description": "Customer Id"
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "zs0jllr2sth7j"
+                  },
+                  "description": "Currency"
+                },
+                "AMOUNT": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "otyyn8995evoa"
+                  },
+                  "default": 0
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "uvzsltxenozxc"
+                  },
+                  "description": "Cash Account Number"
+                },
+                "BROKER_CASH_ACC_REF": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "j58ag4wh8yv7p"
+                  },
+                  "description": "Broker Cash Account Reference"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CUS_ID",
+                "CURR",
+                "AMOUNT"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "96008",
+                  "CUS_ID": "ASI331003872",
+                  "CSH_ACC": "C003314085",
+                  "BROKER_CASH_ACC_REF": "12345",
+                  "CURR": "AED",
+                  "AMOUNT": 100
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -175,7 +175,7 @@
     {
       "type": "item",
       "title": "Manual Cash Block",
-      "uri": "/manualCashBlock.json"
+      "uri": "api/addManualCashBlock.json"
     },
     {
       "type": "item",
