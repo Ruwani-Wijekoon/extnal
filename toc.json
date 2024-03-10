@@ -240,6 +240,11 @@
           "type": "item",
           "title": "Get Caller Details",
           "uri": "api/callerDetail.json"
+        },
+        {
+          "type": "item",
+          "title": "Reset Password",
+          "uri": "api/resetPassword.json"
         }
       ]
     },
