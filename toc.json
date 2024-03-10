@@ -164,8 +164,8 @@
     },
     {
       "type": "item",
-      "title": "Available Cash Balance Inquiry",
-      "uri": "/availableCashBalanceToWithdraw.json"
+      "title": "Available cash balance inquiry",
+      "uri": "api/withdrawableCashRequest.json"
     },
     {
       "type": "item",

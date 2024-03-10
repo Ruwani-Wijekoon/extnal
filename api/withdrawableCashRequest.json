@@ -1,0 +1,236 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Available cash balance inquiry",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-service/withdrawable-cash": {
+      "post": {
+        "summary": "Available cash balance inquiry",
+        "operationId": "post-client-service-withdrawable-cash",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/WithdrawableCashResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/WithdrawableCashBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "WithdrawableCashResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "tu2qiqsb3izmv"
+                      },
+                      "description": "Message Id"
+                    },
+                    "BAL": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "etd1yhuru886x"
+                      },
+                      "description": "Balance"
+                    },
+                    "CURR": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ax80ni0l5pwok"
+                      },
+                      "description": "Currency"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "5i7eu7akl1oyh"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "xgock6plsaivy"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "r68x7qcc808va"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "drosaa196ico1"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "qbrseihittucl"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "c6ekr066siphq"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5uybz91gyzg9m"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response ": {
+                "value": {
+                  "BAL": "900.00",
+                  "CURR": "AED",
+                  "MSG_ID": "96004",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 18001,
+                  "RSN": "Invalid cash account number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 18002,
+                  "RSN": "Error occurred.Please contact administrator"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "WithdrawableCashBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7g67pso21pfcw"
+                  },
+                  "description": "Message Id"
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "em3n0co1z5alc"
+                  },
+                  "description": "Cash Account"
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "96004",
+                  "CSH_ACC": "C003314085"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
