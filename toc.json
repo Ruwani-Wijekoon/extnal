@@ -255,6 +255,11 @@
           "type": "item",
           "title": "Reset Password",
           "uri": "api/resetPassword.json"
+        },
+        {
+          "type": "item",
+          "title": "Reset Transaction Password",
+          "uri": "api/resetTransactionPassword.json"
         }
       ]
     },
