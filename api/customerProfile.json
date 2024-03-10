@@ -1,0 +1,327 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get customer profile by customer No",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/customer-profile": {
+      "post": {
+        "summary": "Get customer profile by customer No",
+        "operationId": "post-client-services-customer-profile",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CustomerProfileResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CustomerProfileRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CustomerProfileResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kk2672gllxv4t"
+                      },
+                      "description": "Message Id"
+                    },
+                    "CUS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "a7mi7u7kecb71"
+                      },
+                      "description": "Customer Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "ci8wiy8qh8ru8"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "3s0stpvs2nqx5"
+                      },
+                      "description": "Error Code"
+                    },
+                    "PROFILE": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "gngh94w2fbbk7"
+                      },
+                      "description": "Profile",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "1esi3gx63bg27"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "CSH_ACC": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "0albv49a033yz"
+                            },
+                            "description": "Cash Account"
+                          },
+                          "SEC_ACC_NUM": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "n1dyeamsytlnx"
+                            },
+                            "description": "Security Account Number"
+                          },
+                          "EXG_LST": {
+                            "type": "array",
+                            "x-stoplight": {
+                              "id": "xepyytmsweb3z"
+                            },
+                            "description": "Exchange List",
+                            "items": {
+                              "x-stoplight": {
+                                "id": "n8ja6601uenlz"
+                              },
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "0r29seprvy3t5"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "cvixai3li3696"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "zqttjvp872mf6"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "2ekx6h9qg7q12"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "zhif3jts40qc1"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "CUS_ID": "951248752",
+                  "PROFILE": [
+                    {
+                      "CSH_ACC": "C004088040",
+                      "SEC_ACC_NUM": "S001133110USD",
+                      "EXG_LST": [
+                        "ADSM"
+                      ]
+                    },
+                    {
+                      "CSH_ACC": "C004088040",
+                      "SEC_ACC_NUM": "S001133113USD",
+                      "EXG_LST": [
+                        "KSE"
+                      ]
+                    },
+                    {
+                      "CSH_ACC": "C004088042",
+                      "SEC_ACC_NUM": "S001133112AED",
+                      "EXG_LST": [
+                        "DFM"
+                      ]
+                    }
+                  ],
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "94445335",
+                  "STS": 0,
+                  "ERR": 48001,
+                  "RSN": "Invalid customer number and Customer Ext reference number parameters"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "94445335",
+                  "STS": 0,
+                  "ERR": 48002,
+                  "RSN": "Invalid Customer Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "94445335",
+                  "STS": 0,
+                  "ERR": 48003,
+                  "RSN": "Invalid Customer External Ref"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "94445335",
+                  "STS": 0,
+                  "ERR": 48004,
+                  "RSN": "Invalid Customer Number, Institution Id"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "94445335",
+                  "STS": 0,
+                  "ERR": 48005,
+                  "RSN": "Error in getting customer profile data"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CustomerProfileRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "9ca3vg4ff10gp"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "xcl9orvj6haio"
+                  },
+                  "description": "Customer Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "092ii51l70614"
+                  },
+                  "description": "External Reference Id"
+                }
+              },
+              "required": [
+                "MSG_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "908773",
+                  "CUS_ID": "ASI331003872"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

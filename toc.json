@@ -98,6 +98,11 @@
           "type": "item",
           "title": "Get whether the customer account is opened",
           "uri": "api/isCustomerAccountOpen.json"
+        },
+        {
+          "type": "item",
+          "title": "Get customer profile by customer No",
+          "uri": "api/customerProfile.json"
         }
       ]
     },
