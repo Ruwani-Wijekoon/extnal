@@ -22,7 +22,7 @@
         {
           "type": "item",
           "title": "Update Individual Investor Account",
-          "uri": "api/updateGTNIndividualInvestorAccount.json"
+          "uri": "/api/updateGTNIndividualInvestor.json"
         },
         {
           "type": "item",
