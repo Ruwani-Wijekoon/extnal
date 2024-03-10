@@ -151,11 +151,6 @@
         },
         {
           "type": "item",
-          "title": "Stock Withdrawal Request",
-          "uri": "api/stockWithdrawal.json"
-        },
-        {
-          "type": "item",
           "title": "Deposit New Request",
           "uri": "api/depositNewRequest.json"
         },
@@ -189,6 +184,16 @@
           "type": "item",
           "title": "Bulk Withdrawal With External Reference Number",
           "uri": "api/withdrawByExtRefNoRequest.json"
+        },
+        {
+          "type": "item",
+          "title": "Stock Withdrawal Request",
+          "uri": "api/stockWithdrawal.json"
+        },
+        {
+          "type": "item",
+          "title": "Reverse Cash Withdrawal Request",
+          "uri": "api/reverseCashWithdrawal.json"
         }
       ]
     },

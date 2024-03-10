@@ -1,0 +1,258 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Reverse Cash Withdrawal Request",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-service/reverse-cash-withdrawal": {
+      "post": {
+        "summary": "Reverse Cash Withdrawal Request",
+        "operationId": "post-client-service-reverse-cash-withdrawal",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ReverseCashWithdrawalResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/WithdrawRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ReverseCashWithdrawalResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6zaqui0hb8w2g"
+                      }
+                    },
+                    "CUS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "xpob0eblfbwe5"
+                      }
+                    },
+                    "CSH_ACC": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "q2qy3asdd4m03"
+                      }
+                    },
+                    "BROKER_CASH_ACC_REF": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6eazukscvtzki"
+                      }
+                    },
+                    "CURR": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "77oj9lecai7vf"
+                      }
+                    },
+                    "AMOUNT": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "n0ppt83pjbq1y"
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "cqopvr0ntp74w"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "x49uf015rurwx"
+                      }
+                    },
+                    "STS": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "g07g7b5f49jbz"
+                      }
+                    },
+                    "ERR": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "dn6xdks8apua3"
+                      }
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "7xxkg84blwtgf"
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "94470",
+                  "CUS_ID": "951248752",
+                  "CSH_ACC": "C004088040",
+                  "BROKER_CASH_ACC_REF": "193489991",
+                  "CURR": "USD",
+                  "AMOUNT": 50
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 19001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 19002,
+                  "RSN": "Invalid Cash Account Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 19003,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "STS": 0,
+                  "ERR": 19004,
+                  "RSN": "Invalid Amount to reverse withdrawal"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "WithdrawRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "3zq2zwjiuopvs"
+                  }
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "m2y1kgyzkillj"
+                  }
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "oalxd8bvg7vc5"
+                  }
+                },
+                "BROKER_CASH_ACC_REF": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "j2riglrxt73s0"
+                  }
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "duh9bxb1p3jhx"
+                  }
+                },
+                "AMOUNT": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "ihp2h8f80ks1m"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "94470",
+                  "CUS_ID": "951248752",
+                  "CSH_ACC": "C004088040",
+                  "BROKER_CASH_ACC_REF": "193489991",
+                  "CURR": "USD",
+                  "AMOUNT": 50
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
