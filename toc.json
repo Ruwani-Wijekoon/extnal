@@ -218,7 +218,7 @@
     {
       "type": "item",
       "title": "FX Currency Rate Upload",
-      "uri": "/fxRateUpload.json"
+      "uri": "api/uploadFxRate.json"
     },
     {
       "type": "item",

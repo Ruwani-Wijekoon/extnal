@@ -1,0 +1,250 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Upload FX Currency Rate",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-service/upload-fx-rate": {
+      "post": {
+        "summary": "Upload FX Currency Rate",
+        "operationId": "post-client-service-upload-fx-rate",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UploadFXResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UploadFXRateRequest"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UploadFXResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "gdvxgj250ptj5"
+                  },
+                  "description": "Message Id"
+                },
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "muf25fbiehzzx"
+                  },
+                  "description": "Status"
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "vjaxmmcze8h32"
+                  },
+                  "description": "Error Code"
+                },
+                "RSN": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "qzflcpky6clv4"
+                  },
+                  "description": "Reason"
+                }
+              }
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "96012",
+                  "STS": 1,
+                  "RSN": "successfully uploaded",
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "96012",
+                  "STS": 0,
+                  "RSN": "Invalid Institution",
+                  "ERR": 25001
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "96012",
+                  "STS": 0,
+                  "RSN": "Invalid FX currency rate list",
+                  "ERR": 25002
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "96012",
+                  "STS": 0,
+                  "RSN": "Failed to upload some rates:",
+                  "ERR": 25003
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "96012",
+                  "STS": 0,
+                  "RSN": "Error Uploading FX rates",
+                  "ERR": 25004
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "UploadFXRateRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "53qxzimjv4ygk"
+                  },
+                  "description": "Message Id"
+                },
+                "FX_CURR_RTE_LST": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "xfifc53zpkd80"
+                  },
+                  "description": "FX Currency Rate List",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "csnpu6vcra2ob"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "FROM_CURR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "xzgc3wpmv3omz"
+                        },
+                        "description": "From Currency"
+                      },
+                      "TO_CURR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "uh5j6zbj8nkg3"
+                        },
+                        "description": "To Currency"
+                      },
+                      "MID_RTE": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "7jlmkewuht82t"
+                        }
+                      },
+                      "SPREAD": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "yvbixqud9wcvq"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "FX_CURR_RTE_LST"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "96012",
+                  "FX_CURR_RTE_LST": [
+                    {
+                      "FROM_CURR": "USD",
+                      "TO_CURR": "LKR",
+                      "MID_RTE": 1.111,
+                      "SPREAD": 0.0011
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
