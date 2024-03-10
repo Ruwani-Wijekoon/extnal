@@ -42,7 +42,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/DepositRequestBean"
+          "$ref": "#/components/requestBodies/WithdrawRequestBean"
         }
       }
     }
@@ -238,7 +238,7 @@
       }
     },
     "requestBodies": {
-      "DepositRequestBean": {
+      "WithdrawRequestBean": {
         "content": {
           "application/json": {
             "schema": {
