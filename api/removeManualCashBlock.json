@@ -1,0 +1,305 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Add Manual Cash Block",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-service/remove-manual-cash-block": {
+      "post": {
+        "summary": "Remove Manual Cash Block",
+        "operationId": "post-client-service-remove-manual-cash-block",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/RemoveManualCashBlockResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/RemoveManualCashBlockRequest"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RemoveManualCashBlockResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "CSH_ACC": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "m7ebgz2jj3ltl"
+                      },
+                      "description": "Cash Log Id"
+                    },
+                    "BAL": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "6cwdcsch5e9cp"
+                      },
+                      "description": "Balance"
+                    },
+                    "STS": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "vc2gfq176uyij"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "hxrs9xv7hycyt"
+                      },
+                      "description": "Error Code"
+                    },
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "amppfqzctrf49"
+                      },
+                      "description": "Message Id"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "4ql0wm65l6uzh"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "muz18pfyzyep8"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9mmhw5yr7tdwk"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "zhdlbni4yx56s"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "lhyg76qqb40rd"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "CSH_ACC": "C004088040",
+                  "BAL": "-45.0",
+                  "MSG_ID": "96010",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "96009",
+                  "STS": 0,
+                  "ERR": 23001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "96009",
+                  "STS": 0,
+                  "ERR": 23002,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "96009",
+                  "STS": 0,
+                  "ERR": 23003,
+                  "RSN": "Invalid block Amount"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "96009",
+                  "STS": 0,
+                  "ERR": 23003,
+                  "RSN": "Invalid block Amount"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "96009",
+                  "STS": 0,
+                  "ERR": 23004,
+                  "RSN": "Error in remove manual cash block"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "RemoveManualCashBlockRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "hfot5zhsyym5n"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ldmupyaqsspib"
+                  },
+                  "description": "Customer Id"
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ou2c4u6p7m7jh"
+                  },
+                  "description": "Currency"
+                },
+                "AMOUNT": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "jx5tuzz22bfu8"
+                  }
+                },
+                "CSH_ACC": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "2nqmzkg5wgwu6"
+                  },
+                  "description": "Cash Account"
+                },
+                "BROKER_CASH_ACC_REF": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "b2q94tmluropz"
+                  },
+                  "description": "Broker Cash Account Reference"
+                },
+                "WITHDRAW": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "5fkq5ykscnzbv"
+                  },
+                  "description": "Withdeaw"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CUS_ID",
+                "CURR",
+                "AMOUNT"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "96009",
+                  "CUS_ID": "ASI331003872",
+                  "CSH_ACC": "C003314085",
+                  "BROKER_CASH_ACC_REF": "12345",
+                  "CURR": "AED",
+                  "AMOUNT": 100,
+                  "WITHDRAW": "1"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -180,7 +180,7 @@
     {
       "type": "item",
       "title": "Manual Cash Block Removal",
-      "uri": "/manualCashBlockRemoval.json"
+      "uri": "api/removeManualCashBlock.json"
     },
     {
       "type": "item",
