@@ -76,7 +76,7 @@
         {
           "type": "item",
           "title": "Update Bank Account For Customer",
-          "uri": "/updateBankAccountForCustomer.json"
+          "uri": "api/updateBankAccountForCustomer.json"
         }
       ]
     },

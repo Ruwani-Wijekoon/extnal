@@ -1,0 +1,204 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update bank account for customer",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/update-bank-account": {
+      "post": {
+        "summary": "Update bank account for customer",
+        "operationId": "post-client-services-update-bank-account",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UpdateBankAccountResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UpdateBankAccountRequest"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateBankAccountResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "nhb3h51rv045l"
+                  },
+                  "description": "Message Id"
+                },
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "og4qiff3wb4yb"
+                  },
+                  "description": "Status"
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "5573ggvvjn189"
+                  },
+                  "description": "Error Code"
+                }
+              }
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "960031",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "UpdateBankAccountRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "u4tioqdqh2yy1"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "5emqa7w7cp0r1"
+                  },
+                  "description": "Customer Id"
+                },
+                "BNK_NM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "v77e1zw0j2cfu"
+                  },
+                  "description": "Bank Name"
+                },
+                "BNK_ACC_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "4ubdg930bh7cd"
+                  },
+                  "description": "Bank Account Id"
+                },
+                "ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "42e85iysms2wv"
+                  },
+                  "description": "Account Name"
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "qe2mdq7lu99ed"
+                  },
+                  "description": "Currency"
+                },
+                "IBAN_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tbx0m9vvbh2hj"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "49446",
+                  "CUS_ID": "951248752",
+                  "BNK_NM": "HSBC BANK",
+                  "BNK_ACC_ID": 9301463,
+                  "ACC_NUM": "12345678",
+                  "CURR": "USD",
+                  "IBAN_NUM": "1234"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
