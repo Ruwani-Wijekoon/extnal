@@ -233,7 +233,7 @@
     {
       "type": "item",
       "title": "Upload Sharia Symbol",
-      "uri": "/uploadShariaSymbols.json"
+      "uri": "api/uploadShariaSymbol.json"
     },
          {
       "type": "item",

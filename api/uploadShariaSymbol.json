@@ -1,0 +1,271 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Upload Sharia Symbol",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/upload-sharia-symbol": {
+      "post": {
+        "summary": "Upload Sharia Symbol",
+        "operationId": "post-client-services-upload-sharia-symbol",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ShariaSymbolUploadResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/SymbolUploadBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ShariaSymbolUploadResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "cbixjfi4ho5tj"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "yxfc4ji3lbv18"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "uingi8n8plxjh"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "f7pi0nujm4zo0"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "cghp8gc1trrjh"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "cwvfpijo8vyq1"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "y59ncn1tp7zfn"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "h0jo01oauqypc"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response 1": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "STS": 0,
+                  "ERR": 41001,
+                  "RSN": "Exchange code cannot be null or empty"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "STS": 0,
+                  "ERR": 41002,
+                  "RSN": "Both symbol code and isin not found in parameters"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "STS": 0,
+                  "ERR": 41003,
+                  "RSN": "Symbol already uploaded as a sharia symbol"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "STS": 0,
+                  "ERR": 41004,
+                  "RSN": "Symbol not exists in OMS"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "STS": 0,
+                  "ERR": 41005,
+                  "RSN": "Invalid output from pkg call"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "STS": 0,
+                  "ERR": 41006,
+                  "RSN": "Error occurred in the pkg call for persisting Sharia symbol"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "SymbolUploadBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "xuvzaz6ct3jmd"
+                  },
+                  "description": "Message Id"
+                },
+                "SYM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "j0990oq97lp5h"
+                  },
+                  "description": "Symbol"
+                },
+                "EXG": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7zkuo2r4mhz0d"
+                  },
+                  "description": "Exchange"
+                },
+                "ISIN_CODE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "m9l348g2qhbv2"
+                  }
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "SYM",
+                "EXG"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "908769",
+                  "SYM": "AAPL",
+                  "EXG": "NSDQ"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
