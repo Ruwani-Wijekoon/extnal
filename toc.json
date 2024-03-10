@@ -232,6 +232,11 @@
       "uri": "api/allOrders.json"
     },
     {
+      "type": "item",
+      "title": "Get orders information by Customer No",
+      "uri": "api/orderDetails.json"
+    },
+    {
       "type": "divider",
       "title": "Master Data"
     },

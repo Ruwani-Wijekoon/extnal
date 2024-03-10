@@ -1,0 +1,1483 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get orders information by Customer No",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/order-details": {
+      "post": {
+        "summary": "Get orders information by Customer No",
+        "operationId": "post-client-services-order-details",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OrderDataResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/OrderDetailsRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OrderDataResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ftlcus1vzd18g"
+                  },
+                  "description": "Message Id"
+                },
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "1ohnj612q7p0s"
+                  },
+                  "description": "Status"
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "k3askxrvw1elz"
+                  },
+                  "description": "Error Code"
+                },
+                "ORDS": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "sgga20e8s9h3m"
+                  },
+                  "description": "Orders",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "k7934phr0zugi"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "CUS_ID": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "zna8vqug7c279"
+                        },
+                        "description": "Customer Id"
+                      },
+                      "SEC_ACC_NUM": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "26e00qhlovnkc"
+                        },
+                        "description": "Security Account Number"
+                      },
+                      "CUSTODIAN": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "6yfb5in6nrh5p"
+                        }
+                      },
+                      "ORD_STS": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "j86mgvku1rwmc"
+                        },
+                        "description": "Order Status"
+                      },
+                      "ORD_CHNL": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "0oqiasvmv8407"
+                        },
+                        "description": "Order Channel"
+                      },
+                      "SYM": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "7bfs0hsaahrok"
+                        },
+                        "description": "Symbol"
+                      },
+                      "EXG": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "64dmwfzbke572"
+                        },
+                        "description": "Exchange"
+                      },
+                      "ORD_TYPE": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "21ux3e9uysqse"
+                        },
+                        "description": "Order Type"
+                      },
+                      "SIDE": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "pb6b5br1xtunv"
+                        }
+                      },
+                      "ORD_QTY": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "zonh76h3vy7an"
+                        },
+                        "description": "Order Quantity"
+                      },
+                      "TME_IN_FORCE": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "l1hixevkzistt"
+                        }
+                      },
+                      "MIN_QTY": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "a0v2m7utwva63"
+                        },
+                        "description": "Minimum Quantity"
+                      },
+                      "MAX_FLOOR": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "iswneunb8q22p"
+                        }
+                      },
+                      "ORD_ID": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "6zv78fouixsjy"
+                        },
+                        "description": "Order Id"
+                      },
+                      "EXEC_ID": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "ywesokdbql39y"
+                        },
+                        "description": "Execution Id"
+                      },
+                      "COMM": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "noybeaut27556"
+                        },
+                        "description": "Commission"
+                      },
+                      "CRTD_DATE": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "eatu4ai8bwqfh"
+                        },
+                        "description": "Created Date"
+                      },
+                      "FIX_MSG_TYP": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "72dgtepc2z1sd"
+                        },
+                        "description": "Fix Message Type"
+                      },
+                      "PRICE": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "xc9wt4hy2o261"
+                        }
+                      },
+                      "TRD_ACC_NUM": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "ibxbdxno0e1qo"
+                        },
+                        "description": "Trade Account Number"
+                      },
+                      "EXP_TME": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "rhbesh0b2daq4"
+                        },
+                        "description": "Expiry Time"
+                      },
+                      "EXG_COMM": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "95nrfnutosf2o"
+                        },
+                        "description": "Exchange Commission"
+                      },
+                      "RMT_CL_ORD_ID": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "2t6ht7d2fpono"
+                        },
+                        "description": "Remote CL Order Id"
+                      },
+                      "RMT_ORG_CL_ORD_ID": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "qrncbu11p0vvx"
+                        },
+                        "description": "Remote Original CL Order Id"
+                      },
+                      "RMT_ORD_NUM": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "xti5pa961eoxf"
+                        },
+                        "description": "Remote Order Number"
+                      },
+                      "ISS_STL_RTE": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "ojuzu3djfc326"
+                        },
+                        "description": "Issue Settle Rate"
+                      },
+                      "AS_OF_DTE": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "81bkej83c89ps"
+                        }
+                      },
+                      "EXT_REF_NO": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "xnbgw8o0fvf2f"
+                        },
+                        "description": "External Reference Number"
+                      },
+                      "CURR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "g5f5y4mgnec03"
+                        },
+                        "description": "Currency"
+                      },
+                      "STP_PRC": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "q770gkqtp5kvr"
+                        },
+                        "description": "Stop Price"
+                      },
+                      "LST_UPD_DTE": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "n0roj6unhbxh4"
+                        },
+                        "description": "Last Updated Date"
+                      },
+                      "ORD_RJCT_RSN": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "l3edwtokchidh"
+                        },
+                        "description": "Order Reject Reason"
+                      },
+                      " DLR_NME": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "ixe5t59wprm9y"
+                        },
+                        "description": "Dealer Name"
+                      },
+                      "CHANNEL": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "71f163kegzumw"
+                        }
+                      },
+                      "ORD_VAL": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "ataa21ik8ck4x"
+                        },
+                        "description": "Order Value"
+                      },
+                      "NET_SETTLE": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "siz839vy4r6wo"
+                        }
+                      },
+                      "COST_COMM": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "366b887e26na1"
+                        },
+                        "description": "Cost Commission"
+                      },
+                      "ORD_FESS": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "e7hko6qgu3ywl"
+                        },
+                        "description": "Order Fess"
+                      },
+                      "BRK_COMM": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "6bkuttim5rch8"
+                        },
+                        "description": "Broker Commission"
+                      },
+                      "VAT_AMOUNT": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "njxiz4rq187ev"
+                        }
+                      },
+                      "EXT_CSH_ACC_NUM": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "vohfeot0j2c61"
+                        },
+                        "description": "External Cash Account Number"
+                      },
+                      "PTF_NME": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "3qd2l679magcf"
+                        },
+                        "description": "Portfolio Name"
+                      },
+                      "ISIN_CODE": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "m5jz327b05t2w"
+                        }
+                      },
+                      "AVG_PRCE": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "cn360ikwcc9kz"
+                        },
+                        "description": "Average Price"
+                      },
+                      "EXT_SEC_NUM": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "3s094aqk6lgc2"
+                        },
+                        "description": "External Security Number"
+                      },
+                      "TRD_CURR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "ybya45zzx6dgc"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Succsess Response ": {
+                "value": {
+                  "MSG_ID": "1234",
+                  "ORDS": [
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 2,
+                      "ORD_QTY": 0.4125,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000134",
+                      "EXEC_ID": "23U142000134",
+                      "COMM": 2.5241,
+                      "CRTD_DATE": "09/14/2023 12:26:13",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 174.7,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.52,
+                      "RMT_CL_ORD_ID": 10873360,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 72.0672,
+                      "NET_SETTLE": 69.5431,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0.02,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 174.7,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.15,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U152000030",
+                      "EXEC_ID": "23U152000030",
+                      "COMM": 2.5015,
+                      "CRTD_DATE": "09/15/2023 08:51:03",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 170,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/15/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873411,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/15/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/15/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 25.5,
+                      "NET_SETTLE": 28.0015,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 170,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.2144,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U152000037",
+                      "EXEC_ID": "23U152000037",
+                      "COMM": 2.5021,
+                      "CRTD_DATE": "09/15/2023 08:58:16",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 170,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/15/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873418,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/15/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/15/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 36.448,
+                      "NET_SETTLE": 38.9501,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 170,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.4857,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000038",
+                      "EXEC_ID": "23U142000038",
+                      "COMM": 2.5049,
+                      "CRTD_DATE": "09/14/2023 06:42:10",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873097,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 87.3652,
+                      "NET_SETTLE": 89.8701,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.4142,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000082",
+                      "EXEC_ID": "23U142000082",
+                      "COMM": 2.5041,
+                      "CRTD_DATE": "09/14/2023 10:18:07",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873294,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 74.489,
+                      "NET_SETTLE": 76.9932,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.5481,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000085",
+                      "EXEC_ID": "23U142000085",
+                      "COMM": 2.5055,
+                      "CRTD_DATE": "09/14/2023 10:24:17",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873297,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 98.5867,
+                      "NET_SETTLE": 101.0921,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "8",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.7413,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000118",
+                      "EXEC_ID": "",
+                      "COMM": 0,
+                      "CRTD_DATE": "09/14/2023 12:12:58",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 0,
+                      "RMT_CL_ORD_ID": 10873341,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 0,
+                      "ISS_STL_RTE": 0,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "Fractional Trading not allow for fully disclosed accounts ",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 0,
+                      "NET_SETTLE": 0,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 0,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.2104,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000089",
+                      "EXEC_ID": "23U142000089",
+                      "COMM": 2.5021,
+                      "CRTD_DATE": "09/14/2023 10:26:38",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873301,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 37.8336,
+                      "NET_SETTLE": 40.3357,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "8",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.5256,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000090",
+                      "EXEC_ID": "",
+                      "COMM": 0,
+                      "CRTD_DATE": "09/14/2023 11:13:08",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 0,
+                      "RMT_CL_ORD_ID": 10873309,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 0,
+                      "ISS_STL_RTE": 0,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "Fractional Trading not allow for fully disclosed accounts ",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 0,
+                      "NET_SETTLE": 0,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 0,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.7346,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000093",
+                      "EXEC_ID": "23U142000093",
+                      "COMM": 2.5074,
+                      "CRTD_DATE": "09/14/2023 11:14:50",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873312,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 132.1216,
+                      "NET_SETTLE": 134.6289,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "8",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 2,
+                      "ORD_QTY": 0.4125,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000135",
+                      "EXEC_ID": "",
+                      "COMM": 0,
+                      "CRTD_DATE": "09/14/2023 12:26:50",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 174.7,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 0,
+                      "RMT_CL_ORD_ID": 10873361,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 0,
+                      "ISS_STL_RTE": 0,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "Fractional Trading not allow for fully disclosed accounts ",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 0,
+                      "NET_SETTLE": 0,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 0,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.411,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000097",
+                      "EXEC_ID": "23U142000097",
+                      "COMM": 2.5041,
+                      "CRTD_DATE": "09/14/2023 11:17:10",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873316,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 73.9225,
+                      "NET_SETTLE": 76.4266,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.8754,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000110",
+                      "EXEC_ID": "23U142000110",
+                      "COMM": 2.5088,
+                      "CRTD_DATE": "09/14/2023 11:47:49",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873331,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 157.453,
+                      "NET_SETTLE": 159.9618,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.7413,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U142000117",
+                      "EXEC_ID": "23U142000117",
+                      "COMM": 2.5074,
+                      "CRTD_DATE": "09/14/2023 12:12:27",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 179.86,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/14/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873340,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/14/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/14/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "GROOT",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 133.323,
+                      "NET_SETTLE": 135.8304,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 179.86,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "8",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 2,
+                      "ORD_QTY": 0.14,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U152000076",
+                      "EXEC_ID": "",
+                      "COMM": 2.5214,
+                      "CRTD_DATE": "09/15/2023 09:30:48",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 172,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/15/2023 23:59:59",
+                      "EXG_COMM": 0,
+                      "RMT_CL_ORD_ID": 10873463,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 0,
+                      "ISS_STL_RTE": 0,
+                      "AS_OF_DTE": "09/15/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/15/2023 00:00:00",
+                      "ORD_RJCT_RSN": "Insufficient stocks!(Owned=-1.01255 Unsettled=0.0 Sell Pending=0.0 Day Margin Holdings=0.0 Pledged=0.0 Covered call block=0.0 Covered call pending block=0.0 Manual block=0.0 )",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 24.08,
+                      "NET_SETTLE": 0,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 0,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.0141,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U152000067",
+                      "EXEC_ID": "23U152000067",
+                      "COMM": 2.5001,
+                      "CRTD_DATE": "09/15/2023 09:22:58",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 171,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/15/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873450,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/15/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/15/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 2.4111,
+                      "NET_SETTLE": 4.9112,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 171,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.345,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U152000073",
+                      "EXEC_ID": "23U152000073",
+                      "COMM": 2.5034,
+                      "CRTD_DATE": "09/15/2023 09:27:27",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 171,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/15/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873457,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/15/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/15/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 58.995,
+                      "NET_SETTLE": 61.4984,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 171,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 1,
+                      "ORD_QTY": 0.345,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U152000090",
+                      "EXEC_ID": "23U152000090",
+                      "COMM": 2.5034,
+                      "CRTD_DATE": "09/15/2023 11:49:15",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 171,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/15/2023 23:59:59",
+                      "EXG_COMM": 2.5,
+                      "RMT_CL_ORD_ID": 10873482,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/15/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/15/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 58.995,
+                      "NET_SETTLE": 61.4984,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 171,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    },
+                    {
+                      "CUS_ID": "530364911",
+                      "SEC_ACC_NUM": "P001131264",
+                      "CUSTODIAN": "",
+                      "ORD_STS": "2",
+                      "ORD_CHNL": 0,
+                      "SYM": "AAPL",
+                      "EXG": "NSDQ",
+                      "ORD_TYPE": "Limit",
+                      "SIDE": 2,
+                      "ORD_QTY": 0.3544,
+                      "TME_IN_FORCE": 0,
+                      "MIN_QTY": 0,
+                      "MAX_FLOOR": 0,
+                      "ORD_ID": "23U152000079",
+                      "EXEC_ID": "23U152000079",
+                      "COMM": 2.5235,
+                      "CRTD_DATE": "09/15/2023 09:53:05",
+                      "FIX_MSG_TYP": "D",
+                      "PRICE": 172,
+                      "TRD_ACC_NUM": "11111",
+                      "EXP_TME": "09/15/2023 23:59:59",
+                      "EXG_COMM": 2.52,
+                      "RMT_CL_ORD_ID": 10873467,
+                      "RMT_ORG_CL_ORD_ID": -1,
+                      "RMT_ORD_NUM": 2,
+                      "ISS_STL_RTE": 1,
+                      "AS_OF_DTE": "09/15/2023 00:00:00",
+                      "EXT_REF_NO": "",
+                      "CURR": "USD",
+                      "STP_PRC": 0,
+                      "LST_UPD_DTE": "09/15/2023 00:00:00",
+                      "ORD_RJCT_RSN": "",
+                      "DLR_NME": "THUVA JYRAN",
+                      "CHANNEL": "Manual",
+                      "ORD_VAL": 60.9568,
+                      "NET_SETTLE": 58.4333,
+                      "COST_COMM": 0,
+                      "ORD_FESS": 0.02,
+                      "BRK_COMM": 0,
+                      "VAT_AMOUNT": 0,
+                      "EXT_CSH_ACC_NUM": "",
+                      "PTF_NME": "P001131264-USD",
+                      "ISIN_CODE": "US0378331005",
+                      "AVG_PRCE": 172,
+                      "EXT_SEC_NUM": "",
+                      "TRD_CURR": "USD"
+                    }
+                  ],
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "908778",
+                  "STS": 0,
+                  "ERR": 50001,
+                  "RSN": "Invalid customer number and Customer Ext reference number parameters"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "908778",
+                  "STS": 0,
+                  "ERR": 50002,
+                  "RSN": "Invalid Customer Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "908778",
+                  "STS": 0,
+                  "ERR": 50003,
+                  "RSN": "Invalid date parameter format"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "908778",
+                  "STS": 0,
+                  "ERR": 50004,
+                  "RSN": "Invalid date range"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "908778",
+                  "STS": 0,
+                  "ERR": 50006,
+                  "RSN": "Invalid parameters"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "908778",
+                  "STS": 0,
+                  "ERR": 50007,
+                  "RSN": "Error occurred when retrieving the order details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "OrderDetailsRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "wydbuwp6hccjd"
+                  },
+                  "description": "Message Id"
+                },
+                "FROM_DTE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "5r8chm91klmbr"
+                  },
+                  "pattern": "yyyy-mm-dd",
+                  "description": "From Date"
+                },
+                "TO_DTE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "i2dsxim294acp"
+                  },
+                  "pattern": "yyyy-mm-dd",
+                  "description": "To Date"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "444qxw6zmyjw1"
+                  },
+                  "description": "Customer Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "hxy1wl2dprspk"
+                  },
+                  "description": "External Reference Number"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "FROM_DTE",
+                "TO_DTE"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "908778",
+                  "CUS_ID": "ASI878953958",
+                  "FROM_DTE": "2024-02-05",
+                  "TO_DTE": "2024-02-14"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
