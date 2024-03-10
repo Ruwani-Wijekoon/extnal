@@ -51,38 +51,7 @@
   "components": {
     "responses": {
       "Unauthorized": {
-        "description": "Unauthorized response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "STS": {
-                  "type": "integer",
-                  "x-stoplight": {
-                    "id": "nvjfbsg606qrp"
-                  },
-                  "default": 401,
-                  "description": "Status"
-                },
-                "error": {
-                  "type": "string",
-                  "x-stoplight": {
-                    "id": "tetl3lgl5git1"
-                  },
-                  "default": "Unauthorized",
-                  "description": "Error Code"
-                },
-                "path": {
-                  "type": "string",
-                  "x-stoplight": {
-                    "id": "45rd4yx2ujzfk"
-                  }
-                }
-              }
-            }
-          }
-        }
+        "$$ref": "abc.json"
       }
     }
   }
