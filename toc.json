@@ -70,6 +70,11 @@
           "type": "item",
           "title": "Get all portfolio by customer No",
           "uri": "api/allPortfolios.json"
+        },
+        {
+          "type": "item",
+          "title": "Get Portfolio Details",
+          "uri": "api/portfolioDetails.json"
         }
       ]
     },
