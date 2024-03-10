@@ -108,6 +108,11 @@
           "type": "item",
           "title": "Get customer profile by customer No",
           "uri": "api/customerProfile.json"
+        },
+        {
+          "type": "item",
+          "title": "Get Authentication Status",
+          "uri": "api/getAuthStatus.json"
         }
       ]
     },

@@ -1,0 +1,278 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Authentication Status",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/auth-status": {
+      "post": {
+        "summary": "Get Authentication Status",
+        "operationId": "post-client-services-auth-status",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AuthStatusResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/AuthStatusRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AuthStatusResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "98yjlyrs9g7ze"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "00l2ozc3ac0ym"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "y2mrywqgecfrs"
+                      },
+                      "description": "Error Code"
+                    },
+                    "STS_CODE": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "wprhobwo0sg71"
+                      },
+                      "description": "Status Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "9zmvw8u5jkygw"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "iaee16zc4ukoo"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "8sa4em095gtnl"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "82su4e40xqe2n"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "jenm9w3ka7smk"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS_CODE": "Active",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS": 0,
+                  "ERR": 61001,
+                  "RSN": "Invalid customer number and Customer Ext reference number parameters"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS": 0,
+                  "ERR": 61002,
+                  "RSN": "Invalid Customer Number"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS": 0,
+                  "ERR": 61003,
+                  "RSN": "Invalid Customer External Ref"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS": 0,
+                  "ERR": 61004,
+                  "RSN": "Multiple accounts found with the same external reference number"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS": 0,
+                  "ERR": 61005,
+                  "RSN": "Error occurred while getting auth status"
+                }
+              },
+              "Unsuccess Response 6": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS": 0,
+                  "ERR": 61006,
+                  "RSN": "Error in parameters"
+                }
+              },
+              "Unsuccess Response 7": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "STS": 0,
+                  "ERR": 61007,
+                  "RSN": "Error in getting Authentication status"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "AuthStatusRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "s9m94nsrvoqwq"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "k7s2zybrqat4x"
+                  },
+                  "description": "Customer Id"
+                },
+                "EXT_REF_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "bypppyufok9vr"
+                  },
+                  "description": "External Reference Number"
+                }
+              },
+              "required": [
+                "MSG_ID"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "9087658",
+                  "CUS_ID": "ASI331003872"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
