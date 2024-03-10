@@ -1,0 +1,184 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Stock Deposit Request",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/stock-deposit": {
+      "post": {
+        "summary": "Stock Deposit Request",
+        "operationId": "post-client-services-stock-deposit",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/StockTransactionResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/StockTransactionBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "StockTransactionResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "irdjpgw95b0z6"
+                  }
+                },
+                "PND_STOCK_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "d4ubr0en247ar"
+                  }
+                },
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "dpb8x803ik1r5"
+                  }
+                },
+                "ERR": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "w8x5hg8ux5djb"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "12345",
+                  "PND_STOCK_ID": "1708335918263",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "StockTransactionBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "38vwqulmzimct"
+                  }
+                },
+                "SEC_ACC_NUM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7f141kp1auvhl"
+                  }
+                },
+                "EXG": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "gh2oyb9l0sdjc"
+                  }
+                },
+                "SYM": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "kci3qyd5lexb5"
+                  }
+                },
+                "QTY": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "99kxw1s6jto25"
+                  }
+                },
+                "AVG_PRCE": {
+                  "type": "number",
+                  "x-stoplight": {
+                    "id": "4ybdb8qysdy4y"
+                  }
+                },
+                "NARR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "cjmyhhogfv14g"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "99950",
+                  "SEC_ACC_NUM": "P001130887",
+                  "EXG": "NSDQ",
+                  "SYM": "AAPL",
+                  "QTY": 10,
+                  "AVG_PRCE": 10,
+                  "NARR": "narration"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

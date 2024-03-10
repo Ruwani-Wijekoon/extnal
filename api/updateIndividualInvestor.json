@@ -205,21 +205,21 @@
                 "MSG_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "0o7s1zh38siv9"
+                    "id": "0o7s1zh38asiv9"
                   },
                   "description": "Message Id"
                 },
                 "BIRTH_DATE": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "mryzyhlccag2r"
+                    "id": "mryzyhlccaag2r"
                   },
                   "pattern": "dd/mm/yyyy"
                 },
                 "CUS_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "6e0xl412pk11q"
+                    "id": "6e0xl412pak11q"
                   },
                   "description": "Customer Id"
                 },

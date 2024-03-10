@@ -146,6 +146,11 @@
         },
         {
           "type": "item",
+          "title": "Stock Deposit Request",
+          "uri": "api/stockDepositRequest.json"
+        },
+        {
+          "type": "item",
           "title": "Deposit New Request",
           "uri": "api/depositNewRequest.json"
         },
