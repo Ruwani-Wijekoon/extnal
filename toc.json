@@ -235,6 +235,11 @@
           "type": "item",
           "title": "Get combined portfolio, symbols and sukuk details",
           "uri": "api/sukukDetails.json"
+        },
+        {
+          "type": "item",
+          "title": "Get Caller Details",
+          "uri": "api/callerDetail.json"
         }
       ]
     },

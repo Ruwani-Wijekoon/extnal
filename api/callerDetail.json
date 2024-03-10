@@ -1,0 +1,350 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Caller Details",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/caller-details": {
+      "post": {
+        "summary": "Get Caller Details",
+        "operationId": "post-client-services-caller-details",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CallerDetailResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CallerDetailRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CallerDetailResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "4p25prvps5o2g"
+                      }
+                    },
+                    "FULL_NME": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "nuauwlexujy2e"
+                      }
+                    },
+                    "MOBILE_NO": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "pwvt32n4ddfx9"
+                      }
+                    },
+                    "CID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kcxwxce3w3ce6"
+                      }
+                    },
+                    "CUS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rx964pthrhyqf"
+                      }
+                    },
+                    "BIRTH_DATE": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "g6b827ntrwaim"
+                      }
+                    },
+                    "NATIONALITY": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "zvs2ybnfmtvx0"
+                      }
+                    },
+                    "ACC_STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "34xycdwxxx5cu"
+                      }
+                    },
+                    "CSH_ACC_DTLS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "8efpnbpgcmqw7"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "ofalv2wm1kp4a"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "CSH_ACC": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "7hcoglirl4pvq"
+                            }
+                          },
+                          "CURR": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "w3eudt1lrphwq"
+                            }
+                          },
+                          "BAL": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "r2ai6qywkq728"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "esvym3ausni04"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "69gl1eb5tnfe6"
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "ihl8b61qj3qhr"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "vevqma0dehqyz"
+                      }
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "xhyjpqsm9nvkx"
+                      }
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "qkgltxwyda8h6"
+                      }
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "vm88cry7m38k0"
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "0915687",
+                  "FULL_NME": "VENUSHA",
+                  "MOBILE_NO": "+94775588662",
+                  "CID": "",
+                  "CUS_ID": 761604981,
+                  "BIRTH_DATE": "2000-10-06",
+                  "NATIONALITY": "AE",
+                  "ACC_STS": 0,
+                  "CSH_ACC_DTLS": [
+                    {
+                      "CSH_ACC": "C001086632",
+                      "CURR": "5000000.00000",
+                      "BAL": 0
+                    },
+                    {
+                      "CSH_ACC": "C001086633",
+                      "CURR": "35620453.75000",
+                      "BAL": 0
+                    },
+                    {
+                      "CSH_ACC": "C001086650",
+                      "CURR": "0.00000",
+                      "BAL": 0
+                    },
+                    {
+                      "CSH_ACC": "C001086652",
+                      "CURR": "0.00000",
+                      "BAL": 0
+                    },
+                    {
+                      "CSH_ACC": "C001086653",
+                      "CURR": "0.00000",
+                      "BAL": 0
+                    }
+                  ],
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "0915687",
+                  "STS": 0,
+                  "ERR": 56001,
+                  "RSN": "Invalid mobile number and civilId. Please use valid mobile number or civilId"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "0915687",
+                  "STS": 0,
+                  "ERR": 56002,
+                  "RSN": "Multiple accounts found for same mobile number or civilID"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "0915687",
+                  "STS": 0,
+                  "ERR": 56003,
+                  "RSN": "Invalid mobile number and civilId combination. Please use valid mobile number or civilId combination"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "0915687",
+                  "STS": 0,
+                  "ERR": 56004,
+                  "RSN": "Invalid mobile number and civilId. Please use valid mobile number or civilId"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "0915687",
+                  "STS": 0,
+                  "ERR": 56005,
+                  "RSN": "Error in getting details about caller"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CallerDetailRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "5n8uqxoatcrhd"
+                  }
+                },
+                "MOBILE_NO": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "rwceblekidf75"
+                  }
+                },
+                "CID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0a33cvjgktujj"
+                  },
+                  "description": "Civil Id"
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "0915687",
+                  "MOBILE_NO": "+94775588662"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
