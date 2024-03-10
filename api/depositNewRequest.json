@@ -1,0 +1,296 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Deposit Cash New",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-service/deposit-new": {
+      "post": {
+        "summary": "Deposit Cash New",
+        "operationId": "post-client-service-deposit-new",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/DepositNewResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/DepositNewRequest"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "DepositNewResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "8r89b85dgv4x2"
+                      },
+                      "description": "Message Id"
+                    },
+                    "CSH_LG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "2uqg6ffr2ppgw"
+                      },
+                      "description": "Cash Log Id"
+                    },
+                    "BAL": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "15jdchoxhw4xw"
+                      },
+                      "description": "Balance"
+                    },
+                    "TRANS_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "b6205nbfzusnf"
+                      },
+                      "description": "Transaction Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "79dfyn94z3a9b"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "igayoo6ba57sk"
+                      },
+                      "description": "Error Code"
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "rfshdk8sohw91"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5ny3u4x852t55"
+                      },
+                      "description": "Message Id"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "37admx72d6qam"
+                      },
+                      "description": "Error Code"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "qb7edck6l1glm"
+                      },
+                      "description": "Status"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "hljxnr1h8hlfv"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "96007",
+                  "CSH_LG_ID": "1707798058203",
+                  "BAL": "1000.0",
+                  "TRANS_ID": "1707798058201",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "96007",
+                  "STS": 0,
+                  "ERR": 21001,
+                  "RSN": "Invalid Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "96007",
+                  "STS": 0,
+                  "ERR": 21002,
+                  "RSN": "Invalid Currency"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "96007",
+                  "STS": 0,
+                  "ERR": 21003,
+                  "RSN": "Invalid Deposit Amount"
+                }
+              },
+              "Unsuccess Response 4": {
+                "value": {
+                  "MSG_ID": "96007",
+                  "STS": 0,
+                  "ERR": 21004,
+                  "RSN": "Cash Account not found for given Mubasher Account Number"
+                }
+              },
+              "Unsuccess Response 5": {
+                "value": {
+                  "MSG_ID": "96007",
+                  "STS": 0,
+                  "ERR": 21005,
+                  "RSN": "Error in cash deposit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "DepositNewRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "ngp9hbz3ufdpn"
+                  },
+                  "description": "Message Id"
+                },
+                "CUS_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tb2qvleaeur2p"
+                  },
+                  "description": "Customer Id"
+                },
+                "CURR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "r87rg4j1086o9"
+                  },
+                  "description": "Currency"
+                },
+                "AMOUNT": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "9qg9tn28njpyd"
+                  }
+                },
+                "NARR": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "7ffumcl8xd6gu"
+                  },
+                  "description": "Narration"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "CUS_ID",
+                "CURR",
+                "AMOUNT"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "96007",
+                  "CUS_ID": "ASI331003872",
+                  "CURR": "USD",
+                  "AMOUNT": 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
