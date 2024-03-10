@@ -1,0 +1,356 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get all cash balances for a date",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/cash-balances": {
+      "post": {
+        "summary": "Get all cash balances for a date",
+        "operationId": "post-client-services-cash-balances",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CashBalanceResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CashBalancesInfoRequest"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CashBalanceResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "xjn2xjrudws49"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "imm530fb40ptl"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "5xeackw8h9ky6"
+                      },
+                      "description": "Error Code"
+                    },
+                    "CASH_BALS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "zii827affx7m7"
+                      },
+                      "description": "Cash Balances",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "sopv1ryvsc57l"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "CUS_ID": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "96jn1523hctxk"
+                            },
+                            "description": "Customer Id"
+                          },
+                          "CSH_ACC": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "dststna0scthf"
+                            },
+                            "description": "Cash Account Number"
+                          },
+                          "TOT_BAL": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "s0dscc16bsaos"
+                            },
+                            "description": "Total Balance"
+                          },
+                          "AS_OF_DTE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "9dlsqjjgua40k"
+                            },
+                            "description": "As Of Date"
+                          },
+                          "EXT_REF_NO": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "asti7jw3tktbr"
+                            },
+                            "description": "External Reference Number"
+                          },
+                          "CURR": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "wuvwhxsv6uexz"
+                            },
+                            "description": "Currency"
+                          },
+                          "BLKD_AMOUNT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "gogzsoqmxznqw"
+                            },
+                            "description": "Blocked Amount"
+                          },
+                          "AVL_AMOUNT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "gksaknhalhk3v"
+                            },
+                            "description": "Available Amount"
+                          },
+                          "UNSTLD_CASH": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "9foy38fr5bzsz"
+                            },
+                            "description": "Unsettled Cash"
+                          },
+                          "PRIM_LMT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "afg7tctmk3jcr"
+                            },
+                            "description": "Primary Limit"
+                          },
+                          "PRIM_LMT_EXP_DTE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "i3eh7emaxrgj4"
+                            },
+                            "description": "Primary Limit Expiry Date"
+                          },
+                          "SEC_LMT": {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "kviizv2kj1kb5"
+                            },
+                            "description": "Secondary Limit"
+                          },
+                          "SEC_LMT_EXP_DTE": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "3j6c89ul96du9"
+                            },
+                            "description": "Secondary Limit Expiry Date"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "0yxpni35bmf5c"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "bq5bf6ub4jqdj"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "6jppqs1buado6"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "64hsldo3s7a3g"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "s1wjzr48q7cdk"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "MSG_ID": "90087",
+                  "STS": 1,
+                  "ERR": 0,
+                  "CASH_BALS": [
+                    {
+                      "CUS_ID": "910309254",
+                      "CSH_ACC": "C001084913",
+                      "TOT_BAL": 0,
+                      "AS_OF_DTE": "02/19/2024",
+                      "EXT_REF_NO": "RExternal_Ref6",
+                      "CURR": "BHD",
+                      "BLKD_AMOUNT": 0,
+                      "AVL_AMOUNT": 0,
+                      "UNSTLD_CASH": 0,
+                      "PRIM_LMT": 0,
+                      "PRIM_LMT_EXP_DTE": "",
+                      "SEC_LMT": 0,
+                      "SEC_LMT_EXP_DTE": ""
+                    }
+                  ]
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "90008",
+                  "STS": 0,
+                  "ERR": 31001,
+                  "RSN": "Invalid Date"
+                }
+              },
+              "Unsuccess Response 2": {
+                "value": {
+                  "MSG_ID": "90008",
+                  "STS": 0,
+                  "ERR": 31002,
+                  "RSN": "Error in getting cash balances"
+                }
+              },
+              "Unsuccess Response 3": {
+                "value": {
+                  "MSG_ID": "90008",
+                  "STS": 0,
+                  "ERR": 31003,
+                  "RSN": "Error in getting all cash balances for a date"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CashBalancesInfoRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "6ay6x1107qpa0"
+                  },
+                  "description": "Message Id"
+                },
+                "DTE": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0bzc9l5em8avq"
+                  },
+                  "example": "dd/mm/yyyy",
+                  "description": "Date"
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "DTE"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "960032",
+                  "DTE": "26/01/2024"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

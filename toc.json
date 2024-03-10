@@ -159,7 +159,7 @@
         {
           "type": "item",
           "title": "Get All Cash Balances For a Date",
-          "uri": "/getAllCashBalancesForGivenDate.json"
+          "uri": "api/cashBalances.json"
         }
       ]
     },
