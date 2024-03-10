@@ -237,6 +237,11 @@
       "uri": "api/orderDetails.json"
     },
     {
+      "type": "item",
+      "title": "Get Order Information by OrderId",
+      "uri": "api/orderDetailsByOrderId.json"
+    },
+    {
       "type": "divider",
       "title": "Master Data"
     },

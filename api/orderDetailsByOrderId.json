@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get orders information by Customer No",
+    "title": "Get Order Information by OrderId",
     "version": "1.0",
     "description": ""
   },
@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/client-services/order-details": {
+    "/client-services/all-orders-by-order-id": {
       "post": {
-        "summary": "Get orders information by Customer No",
-        "operationId": "post-client-services-order-details",
+        "summary": "Get Order Information by OrderId",
+        "operationId": "post-client-services-all-orders-by-order-id",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OrderDataResponse"
+            "$ref": "#/components/responses/OrderDataByOrderIdResponse"
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -42,7 +42,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/OrderDetailsRequestBean"
+          "$ref": "#/components/requestBodies/OrderInfoByOrderIdRequestBean"
         }
       }
     }
@@ -83,7 +83,7 @@
           }
         }
       },
-      "OrderDataResponse": {
+      "OrderDataByOrderIdResponse": {
         "description": "Example response",
         "content": {
           "application/json": {
@@ -141,7 +141,8 @@
                         "type": "string",
                         "x-stoplight": {
                           "id": "6yfb5in6nrh5p"
-                        }
+                        },
+                        "description": "Custodian"
                       },
                       "ORD_STS": {
                         "type": "string",
@@ -304,7 +305,8 @@
                         "type": "string",
                         "x-stoplight": {
                           "id": "81bkej83c89ps"
-                        }
+                        },
+                        "description": "As Of Date"
                       },
                       "EXT_REF_NO": {
                         "type": "string",
@@ -352,7 +354,8 @@
                         "type": "string",
                         "x-stoplight": {
                           "id": "71f163kegzumw"
-                        }
+                        },
+                        "description": "Channel"
                       },
                       "ORD_VAL": {
                         "type": "number",
@@ -386,7 +389,7 @@
                         "x-stoplight": {
                           "id": "6bkuttim5rch8"
                         },
-                        "description": "Broker Commission"
+                        "description": "Bank Commission"
                       },
                       "VAT_AMOUNT": {
                         "type": "number",
@@ -432,7 +435,8 @@
                         "type": "string",
                         "x-stoplight": {
                           "id": "ybya45zzx6dgc"
-                        }
+                        },
+                        "description": "Trade Currency"
                       }
                     }
                   }
@@ -449,7 +453,7 @@
                       "SEC_ACC_NUM": "P001131264",
                       "CUSTODIAN": "",
                       "ORD_STS": "2",
-                      "ORD_CHNL": 0,
+                      "ORD_CHNL": 4,
                       "SYM": "AAPL",
                       "EXG": "NSDQ",
                       "ORD_TYPE": "Limit",
@@ -467,9 +471,9 @@
                       "TRD_ACC_NUM": "11111",
                       "EXP_TME": "09/14/2023 23:59:59",
                       "EXG_COMM": 2.52,
-                      "RMT_CL_ORD_ID": 10873360,
+                      "RMT_CL_ORD_ID": 0,
                       "RMT_ORG_CL_ORD_ID": -1,
-                      "RMT_ORD_NUM": 2,
+                      "RMT_ORD_NUM": 10873360,
                       "ISS_STL_RTE": 1,
                       "AS_OF_DTE": "09/14/2023 00:00:00",
                       "EXT_REF_NO": "",
@@ -479,9 +483,9 @@
                       "ORD_RJCT_RSN": "",
                       "DLR_NME": "GROOT",
                       "CHANNEL": "Manual",
-                      "ORD_VAL": 72.0672,
+                      "ORD_VAL": 72.06724,
                       "NET_SETTLE": 69.5431,
-                      "COST_COMM": 0,
+                      "COST_COMM": 2.5241,
                       "ORD_FESS": 0.02,
                       "BRK_COMM": 0,
                       "VAT_AMOUNT": 0,
@@ -489,54 +493,6 @@
                       "PTF_NME": "P001131264-USD",
                       "ISIN_CODE": "US0378331005",
                       "AVG_PRCE": 174.7,
-                      "EXT_SEC_NUM": "",
-                      "TRD_CURR": "USD"
-                    },
-                    {
-                      "CUS_ID": "530364911",
-                      "SEC_ACC_NUM": "P001131264",
-                      "CUSTODIAN": "",
-                      "ORD_STS": "2",
-                      "ORD_CHNL": 0,
-                      "SYM": "AAPL",
-                      "EXG": "NSDQ",
-                      "ORD_TYPE": "Limit",
-                      "SIDE": 1,
-                      "ORD_QTY": 0.15,
-                      "TME_IN_FORCE": 0,
-                      "MIN_QTY": 0,
-                      "MAX_FLOOR": 0,
-                      "ORD_ID": "23U152000030",
-                      "EXEC_ID": "23U152000030",
-                      "COMM": 2.5015,
-                      "CRTD_DATE": "09/15/2023 08:51:03",
-                      "FIX_MSG_TYP": "D",
-                      "PRICE": 170,
-                      "TRD_ACC_NUM": "11111",
-                      "EXP_TME": "09/15/2023 23:59:59",
-                      "EXG_COMM": 2.5,
-                      "RMT_CL_ORD_ID": 10873411,
-                      "RMT_ORG_CL_ORD_ID": -1,
-                      "RMT_ORD_NUM": 2,
-                      "ISS_STL_RTE": 1,
-                      "AS_OF_DTE": "09/15/2023 00:00:00",
-                      "EXT_REF_NO": "",
-                      "CURR": "USD",
-                      "STP_PRC": 0,
-                      "LST_UPD_DTE": "09/15/2023 00:00:00",
-                      "ORD_RJCT_RSN": "",
-                      "DLR_NME": "THUVA JYRAN",
-                      "CHANNEL": "Manual",
-                      "ORD_VAL": 25.5,
-                      "NET_SETTLE": 28.0015,
-                      "COST_COMM": 0,
-                      "ORD_FESS": 0,
-                      "BRK_COMM": 0,
-                      "VAT_AMOUNT": 0,
-                      "EXT_CSH_ACC_NUM": "",
-                      "PTF_NME": "P001131264-USD",
-                      "ISIN_CODE": "US0378331005",
-                      "AVG_PRCE": 170,
                       "EXT_SEC_NUM": "",
                       "TRD_CURR": "USD"
                     }
@@ -549,48 +505,48 @@
                 "value": {
                   "MSG_ID": "908778",
                   "STS": 0,
-                  "ERR": 50001,
-                  "RSN": "Invalid customer number and Customer Ext reference number parameters"
+                  "ERR": 48001,
+                  "RSN": "Invalid customer number parameters"
                 }
               },
               "Unsuccess Response 2": {
                 "value": {
                   "MSG_ID": "908778",
                   "STS": 0,
-                  "ERR": 50002,
-                  "RSN": "Invalid Customer Number"
+                  "ERR": 48002,
+                  "RSN": "Invalid Order Id"
                 }
               },
               "Unsuccess Response 3": {
                 "value": {
                   "MSG_ID": "908778",
                   "STS": 0,
-                  "ERR": 50003,
-                  "RSN": "Invalid date parameter format"
+                  "ERR": 48003,
+                  "RSN": "Invalid Customer Number"
                 }
               },
               "Unsuccess Response 4": {
                 "value": {
                   "MSG_ID": "908778",
                   "STS": 0,
-                  "ERR": 50004,
-                  "RSN": "Invalid date range"
+                  "ERR": 47004,
+                  "RSN": "Error in getting all order data"
                 }
               },
               "Unsuccess Response 5": {
                 "value": {
                   "MSG_ID": "908778",
                   "STS": 0,
-                  "ERR": 50006,
-                  "RSN": "Invalid parameters"
+                  "ERR": 48005,
+                  "RSN": "Unmatched customer no, order id and institution id"
                 }
               },
               "Unsuccess Response 6": {
                 "value": {
                   "MSG_ID": "908778",
                   "STS": 0,
-                  "ERR": 50007,
-                  "RSN": "Error occurred when retrieving the order details"
+                  "ERR": 48006,
+                  "RSN": "Error in parameters"
                 }
               }
             }
@@ -599,7 +555,7 @@
       }
     },
     "requestBodies": {
-      "OrderDetailsRequestBean": {
+      "OrderInfoByOrderIdRequestBean": {
         "content": {
           "application/json": {
             "schema": {
@@ -608,54 +564,44 @@
                 "MSG_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "wydbuwp6hccjd"
+                    "id": "8kkgplvigvz8v"
                   },
                   "description": "Message Id"
-                },
-                "FROM_DTE": {
-                  "type": "string",
-                  "x-stoplight": {
-                    "id": "5r8chm91klmbr"
-                  },
-                  "pattern": "yyyy-mm-dd",
-                  "description": "From Date"
-                },
-                "TO_DTE": {
-                  "type": "string",
-                  "x-stoplight": {
-                    "id": "i2dsxim294acp"
-                  },
-                  "pattern": "yyyy-mm-dd",
-                  "description": "To Date"
                 },
                 "CUS_ID": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "444qxw6zmyjw1"
+                    "id": "vtntob0hpoaet"
                   },
                   "description": "Customer Id"
+                },
+                "ORD_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "6hmiuptd7dr7z"
+                  },
+                  "description": "Order Id"
                 },
                 "EXT_REF_NO": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "hxy1wl2dprspk"
+                    "id": "1avns176iuo7k"
                   },
                   "description": "External Reference Number"
                 }
               },
               "required": [
                 "MSG_ID",
-                "FROM_DTE",
-                "TO_DTE"
+                "CUS_ID",
+                "ORD_ID"
               ]
             },
             "examples": {
               "Example 1": {
                 "value": {
-                  "MSG_ID": "908778",
+                  "MSG_ID": "94445333",
                   "CUS_ID": "ASI878953958",
-                  "FROM_DTE": "2024-02-05",
-                  "TO_DTE": "2024-02-14"
+                  "ORD_ID": "24G062000070"
                 }
               }
             }
