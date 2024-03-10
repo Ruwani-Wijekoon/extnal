@@ -25,7 +25,7 @@
         },
         "description": "Create coporate investor account",
         "requestBody": {
-          "$ref": "#/components/requestBodies/CorporateInvestorBean"
+          "$ref": "CoprateInvestorBean.json#/CorporateInvestorBean"
         },
         "parameters": [
           {
