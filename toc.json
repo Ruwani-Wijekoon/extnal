@@ -148,7 +148,7 @@
         {
           "type": "item",
           "title": "Bulk Withdrawal With External Reference Number",
-          "uri": "/bulkWithdrawalWithExternalReferenceNumber.json"
+          "uri": "api/withdrawByExtRefNoRequest.json"
         }
       ]
     },

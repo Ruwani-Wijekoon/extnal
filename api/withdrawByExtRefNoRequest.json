@@ -1,0 +1,349 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bulk Withdrawal with external reference number",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8722"
+    }
+  ],
+  "paths": {
+    "/client-services/bulk-withdraw-by-ext-ref": {
+      "post": {
+        "summary": "Bulk Withdrawal with external reference number",
+        "operationId": "post-client-services-bulk-withdraw-by-ext-ref",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/BulkTransactionByExtRefResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "InstId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/TransactionRequestBean"
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "STS": {
+                  "type": "integer",
+                  "x-stoplight": {
+                    "id": "nvjfbsg606qrp"
+                  },
+                  "default": 401,
+                  "description": "Status"
+                },
+                "error": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "tetl3lgl5git1"
+                  },
+                  "default": "Unauthorized",
+                  "description": "Error Code"
+                },
+                "path": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "45rd4yx2ujzfk"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "BulkTransactionByExtRefResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "py7e8ymjh77mx"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "zgxkwlts2o9nz"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "bx738orebz30m"
+                      },
+                      "description": "Error"
+                    },
+                    "TRANSACTIONS": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "isoamslz5itwv"
+                      },
+                      "description": "Transactions",
+                      "items": {
+                        "x-stoplight": {
+                          "id": "61cyhz37bmfq5"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "TRANS_REF_NO": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "qs3gzjvcwacwf"
+                            },
+                            "description": "Transaction Reference Number"
+                          },
+                          "TRANS_STS": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "cwvfji2fckj8e"
+                            },
+                            "description": "Transaction Status"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "x-stoplight": {
+                    "id": "a7fb9qidpwaaj"
+                  },
+                  "properties": {
+                    "MSG_ID": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "8rowib2000ksu"
+                      },
+                      "description": "Message Id"
+                    },
+                    "STS": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "2h4h6gq44k7ro"
+                      },
+                      "description": "Status"
+                    },
+                    "ERR": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "339uwav5hz3ew"
+                      },
+                      "description": "Error Code"
+                    },
+                    "RSN": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "69aoy9lslll94"
+                      },
+                      "description": "Reason"
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            },
+            "examples": {
+              "Success Response": {
+                "value": {
+                  "TRANSACTIONS": [
+                    {
+                      "TRANS_REF_NO": "10945712",
+                      "TRANS_STS": "1"
+                    },
+                    {
+                      "TRANS_REF_NO": "10945542",
+                      "TRANS_STS": "0",
+                      "TRANS_RSN": "No cash accounts with type  exists for the customer"
+                    },
+                    {
+                      "TRANS_REF_NO": "1094512300",
+                      "TRANS_STS": "1"
+                    }
+                  ],
+                  "MSG_ID": "9008765",
+                  "STS": 1,
+                  "ERR": 0
+                }
+              },
+              "Unsuccess Response 1": {
+                "value": {
+                  "MSG_ID": "9008765",
+                  "STS": 0,
+                  "ERR": 33001,
+                  "RSN": "Error in making bulk deposit by external reference number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "TransactionRequestBean": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "MSG_ID": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "9qgxixoz7uu5c"
+                  },
+                  "description": "Message Id"
+                },
+                "TRANSACTIONS": {
+                  "type": "array",
+                  "x-stoplight": {
+                    "id": "9uzvnb77blhjh"
+                  },
+                  "description": "Transactions",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "ps84izz21usin"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "EXT_REF_NO": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "qy9f9eax5thr9"
+                        },
+                        "description": "External Reference Number"
+                      },
+                      "CSH_ACC": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "6kdzaqsldgu7a"
+                        },
+                        "description": "Cash Account"
+                      },
+                      "CURR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "8joak02mwyphs"
+                        },
+                        "description": "Currency"
+                      },
+                      "AMOUNT": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "4rzvgzxtgnzwu"
+                        }
+                      },
+                      "TRANS_REF_NO": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "c1j04274k84w2"
+                        },
+                        "description": "Transaction Reference Number"
+                      },
+                      "CONV_CURR_FLAG": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "qrka9u9iixlx1"
+                        },
+                        "description": "Convert Currency Flag"
+                      },
+                      "TO_CURR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "z93eryzwznn48"
+                        },
+                        "description": "To Currency"
+                      },
+                      "NARR": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "9nk5z5hw1unko"
+                        },
+                        "description": "Narration"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "MSG_ID",
+                "TRANSACTIONS"
+              ]
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "MSG_ID": "9008765",
+                  "TRANSACTIONS": [
+                    {
+                      "EXT_REF_NO": "1844443046",
+                      "CSH_ACC": "C003314077",
+                      "CURR": "USD",
+                      "AMOUNT": 1000,
+                      "TRANS_REF_NO": "10945712"
+                    },
+                    {
+                      "EXT_REF_NO": "1844443046",
+                      "CSH_ACC": "C003314077",
+                      "CURR": "USD",
+                      "AMOUNT": 1000,
+                      "TRANS_REF_NO": "10945542",
+                      "CONV_CURR_FLAG": 1,
+                      "TO_CURR": ""
+                    },
+                    {
+                      "EXT_REF_NO": "1844443046",
+                      "CSH_ACC": "C003314077",
+                      "CURR": "USD",
+                      "AMOUNT": 1000,
+                      "TRANS_REF_NO": "1094512300",
+                      "CONV_CURR_FLAG": 1,
+                      "TO_CURR": "AED"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
