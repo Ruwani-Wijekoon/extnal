@@ -46,12 +46,12 @@
         },
         {
           "type": "item",
-          "title": "Get combined portfolio, symbols and sukuk details",
+          "title": "Get Combined Portfolio, Symbols And Sukuk Details",
           "uri": "api/sukukDetails.json"
         },
         {
           "type": "item",
-          "title": "Get Caller Details",
+          "title": "Get Account Details By Mobile Number",
           "uri": "api/callerDetail.json"
         },
         {
@@ -93,7 +93,7 @@
         },
         {
           "type": "item",
-          "title": "Get all portfolio by customer No",
+          "title": "Get All Portfolioes By Customer No",
           "uri": "api/allPortfolios.json"
         },
         {
@@ -151,12 +151,12 @@
         },
         {
           "type": "item",
-          "title": "Get whether the customer account is opened",
+          "title": "Get Whether The Customer Account Is Opened",
           "uri": "api/isCustomerAccountOpen.json"
         },
         {
           "type": "item",
-          "title": "Get customer profile by customer No",
+          "title": "Get Customer Profile By Customer No",
           "uri": "api/customerProfile.json"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
           "type": "item",
-          "title": "API Approved Withdrawal",
+          "title": "Approved Withdrawal API",
           "uri": "api/withdrawalDetailsRequest.json"
         },
         {
@@ -238,7 +238,7 @@
         },
         {
           "type": "item",
-          "title": "Get balance all currency by customer No",
+          "title": "Get Balance All Currency By Customer No",
           "uri": "api/allCurrencyBalance.json"
         },
         {
@@ -293,7 +293,7 @@
     },
     {
       "type": "item",
-      "title": "Available cash balance inquiry",
+      "title": "Available Cash Balance Inquiry",
       "uri": "api/withdrawableCashRequest.json"
     },
     {
@@ -308,12 +308,12 @@
     },
     {
       "type": "item",
-      "title": "Set cash transfer/transaction restriction level",
+      "title": "Set Cash Transfer/Transaction Restriction Level",
       "uri": "api/updateCashTransactionLevel.json"
     },
     {
       "type": "item",
-      "title": "Add/Remove Symbol wise Buy/Sell Restrictions",
+      "title": "Add/Remove Symbol Wise Buy/Sell Restrictions",
       "uri": "api/symbolWiseRestrictions.json"
     },
     {
@@ -337,12 +337,12 @@
     },
     {
       "type": "item",
-      "title": "Get orders information by Customer No",
+      "title": "Get Orders Information By Customer No",
       "uri": "api/orderDetails.json"
     },
     {
       "type": "item",
-      "title": "Get Order Information by OrderId",
+      "title": "Get Order Information By OrderId",
       "uri": "api/orderDetailsByOrderId.json"
     },
     {

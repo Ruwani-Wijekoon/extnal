@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Set cash transfer/transaction restriction level",
+    "title": "Set Cash Transfer/Transaction Restriction Level",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/update-cash-trans-restriction-lvl": {
       "post": {
-        "summary": "Set cash transfer/transaction restriction level",
+        "summary": "Set Cash Transfer/Transaction Restriction Level",
         "operationId": "post-client-services-update-cash-trans-restriction-lvl",
         "responses": {
           "200": {

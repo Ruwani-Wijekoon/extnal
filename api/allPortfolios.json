@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get all portfolio by customer No",
+    "title": "Get All Portfolioes By Customer No",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/all-portfolios": {
       "post": {
-        "summary": "Get all portfolio by customer No",
+        "summary": "Get All Portfolioes By Customer No",
         "operationId": "post-client-services-all-portfolios",
         "responses": {
           "200": {

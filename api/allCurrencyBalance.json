@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get balance all currency by customer No",
+    "title": "Get Balance All Currency By Customer No",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/all-currency-balance": {
       "post": {
-        "summary": "Get balance all currency by customer No",
+        "summary": "Get Balance All Currency By Customer No",
         "operationId": "post-client-services-all-currency-balance",
         "responses": {
           "200": {

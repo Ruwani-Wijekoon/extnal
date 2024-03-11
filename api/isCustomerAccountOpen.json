@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get whether the customer account is opened",
+    "title": "Get Whether The Customer Account Is Opened",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/is-customer-account-open": {
       "post": {
-        "summary": "Get whether the customer account is opened",
+        "summary": "Get Whether The Customer Account Is Opened",
         "operationId": "post-client-services-is-customer-account-open",
         "responses": {
           "200": {

@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get Caller Details",
+    "title": "Get Account Details By Mobile Number",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/caller-details": {
       "post": {
-        "summary": "Get Caller Details",
+        "summary": "Get Account Details By Mobile Number",
         "operationId": "post-client-services-caller-details",
         "responses": {
           "200": {

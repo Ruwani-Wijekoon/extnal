@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get orders information by Customer No",
+    "title": "Get Orders Information By Customer No",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/order-details": {
       "post": {
-        "summary": "Get orders information by Customer No",
+        "summary": "Get Orders Information By Customer No",
         "operationId": "post-client-services-order-details",
         "responses": {
           "200": {

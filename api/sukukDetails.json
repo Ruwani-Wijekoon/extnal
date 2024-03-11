@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Get combined portfolio, symbols and sukuk details",
+    "title": "Get Combined Portfolio, Symbols And Sukuk Details",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/combined-portfolio-symbols-sukuk-details": {
       "post": {
-        "summary": "Get combined portfolio, symbols and sukuk details",
+        "summary": "Get Combined Portfolio, Symbols And Sukuk Details",
         "operationId": "post-client-services-combined-portfolio-symbols-sukuk-details",
         "responses": {
           "200": {

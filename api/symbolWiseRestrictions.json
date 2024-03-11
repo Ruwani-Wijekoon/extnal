@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Add/Remove symbol wise buy/sell restrictions",
+    "title": "Add/Remove Symbol Wise Buy/Sell Restrictions",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-services/symbol-wise-restrictions": {
       "post": {
-        "summary": "Add/Remove symbol wise buy/sell restrictions",
+        "summary": "Add/Remove Symbol Wise Buy/Sell Restrictions",
         "operationId": "post-client-services-symbol-wise-restrictions",
         "responses": {
           "200": {

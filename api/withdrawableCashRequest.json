@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Available cash balance inquiry",
+    "title": "Available Cash Balance Inquiry",
     "version": "1.0",
     "description": ""
   },
@@ -13,7 +13,7 @@
   "paths": {
     "/client-service/withdrawable-cash": {
       "post": {
-        "summary": "Available cash balance inquiry",
+        "summary": "Available Cash Balance Inquiry",
         "operationId": "post-client-service-withdrawable-cash",
         "responses": {
           "200": {
