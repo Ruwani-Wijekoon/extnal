@@ -43,6 +43,31 @@
           "type": "item",
           "title": "Update Individual Investor Account",
           "uri": "api/updateIndividualInvestor.json"
+        },
+        {
+          "type": "item",
+          "title": "Get combined portfolio, symbols and sukuk details",
+          "uri": "api/sukukDetails.json"
+        },
+        {
+          "type": "item",
+          "title": "Get Caller Details",
+          "uri": "api/callerDetail.json"
+        },
+        {
+          "type": "item",
+          "title": "Reset Password",
+          "uri": "api/resetPassword.json"
+        },
+        {
+          "type": "item",
+          "title": "Reset Transaction Password",
+          "uri": "api/resetTransactionPassword.json"
+        },
+        {
+          "type": "item",
+          "title": "Update ASBB Token",
+          "uri": "api/updateAssbToken.json"
         }
       ]
     },
@@ -161,11 +186,6 @@
         },
         {
           "type": "item",
-          "title": "Stock Deposit Request",
-          "uri": "api/stockDeposit.json"
-        },
-        {
-          "type": "item",
           "title": "Deposit New Request",
           "uri": "api/depositNewRequest.json"
         },
@@ -202,11 +222,6 @@
         },
         {
           "type": "item",
-          "title": "Stock Withdrawal Request",
-          "uri": "api/stockWithdrawal.json"
-        },
-        {
-          "type": "item",
           "title": "Reverse Cash Withdrawal Request",
           "uri": "api/reverseCashWithdrawal.json"
         }
@@ -223,16 +238,6 @@
         },
         {
           "type": "item",
-          "title": "Add Pledge Request",
-          "uri": "api/addPledge.json"
-        },
-        {
-          "type": "item",
-          "title": "Release Pledge Request",
-          "uri": "api/releasePledge.json"
-        },
-        {
-          "type": "item",
           "title": "Get balance all currency by customer No",
           "uri": "api/allCurrencyBalance.json"
         },
@@ -243,30 +248,44 @@
         },
         {
           "type": "item",
-          "title": "Get combined portfolio, symbols and sukuk details",
-          "uri": "api/sukukDetails.json"
-        },
-        {
-          "type": "item",
-          "title": "Get Caller Details",
-          "uri": "api/callerDetail.json"
-        },
-        {
-          "type": "item",
-          "title": "Reset Password",
-          "uri": "api/resetPassword.json"
-        },
-        {
-          "type": "item",
-          "title": "Reset Transaction Password",
-          "uri": "api/resetTransactionPassword.json"
-        },
-        {
-          "type": "item",
           "title": "Cross Currency Cash Transfer",
           "uri": "api/crossCurrencyCashTransfer.json"
+        },
+        {
+          "type": "item",
+          "title": "FX Currency Rate Upload",
+          "uri": "api/uploadFxRate.json"
         }
       ]
+    },
+    {
+      "type": "divider",
+      "title": "HOLDING MANAGEMENT"
+    },
+    {
+      "type": "item",
+      "title": "Stock Deposit Request",
+      "uri": "api/stockDeposit.json"
+    },
+    {
+      "type": "item",
+      "title": "Stock Withdrawal Request",
+      "uri": "api/stockWithdrawal.json"
+    },
+    {
+      "type": "item",
+      "title": "Add Pledge Request",
+      "uri": "api/addPledge.json"
+    },
+    {
+      "type": "item",
+      "title": "Release Pledge Request",
+      "uri": "api/releasePledge.json"
+    },
+    {
+      "type": "item",
+      "title": "Get Portfolio Wise Holdings",
+      "uri": "api/portfolioWiseHoldings.json"
     },
     {
       "type": "divider",
@@ -313,11 +332,6 @@
     },
     {
       "type": "item",
-      "title": "Get Portfolio Wise Holdings",
-      "uri": "api/portfolioWiseHoldings.json"
-    },
-    {
-      "type": "item",
       "title": "Get All Order Data For a Date",
       "uri": "api/allOrders.json"
     },
@@ -333,7 +347,7 @@
     },
     {
       "type": "item",
-      "title": "Mark Customer Margin",
+      "title": "Enable Customer Margin",
       "uri": "api/markCustomerMargin.json"
     },
     {
@@ -357,16 +371,6 @@
     },
     {
       "type": "item",
-      "title": "FX Currency Rate Upload",
-      "uri": "api/uploadFxRate.json"
-    },
-    {
-      "type": "item",
-      "title": "Update ASBB Token",
-      "uri": "api/updateAssbToken.json"
-    },
-    {
-      "type": "item",
       "title": "Upload Sharia Symbol",
       "uri": "api/uploadShariaSymbol.json"
     },
@@ -375,6 +379,5 @@
       "title": "Release Notes",
       "uri": "/docs/Release-Notes.md"
     }
-
   ]
 }
